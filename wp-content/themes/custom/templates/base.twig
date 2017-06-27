@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html class="h-100" {{ site.language_attributes }}>
+  <head>
+    <meta charset="{{ site.charset }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{ site.description }}">
+
+    <title>{% spaceless %}
+      {% if wp_title %}
+        {{ wp_title }} — {{ site.name }}
+      {% else %}
+        {{ site.name }}
+      {% endif %}
+    {% endspaceless %}</title>
+
+    {{ wp_head }}
+  </head>
+
+  <body class="{{ body_class }} h-100 lh-copy sans-serif dark-gray">
+    <div class="flex flex-column h-100">
+      <div class="bg-light-red">
+        <header class="mw8 center pv4 ph2">
+          {% block header %}
+            <h1 class="f1 lh-title">{{ site.title }}</h1>
+          {% endblock %}
+        </header>
+      </div>
+
+      <div class="flex-auto bg-light-gray">
+        <div class="flex-m mw8 center pv4 ph2">
+          <main class="w-two-thirds-m mb5 mb0-m mr4-m">
+            {% block content %}{% endblock %}
+          </main>
+
+          {% if widgets %}
+            <aside class="w-third-m">
+              {{ widgets }}
+            </aside>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="bg-washed-red">
+        <footer class="mw8 center pv3 ph2">
+          {% block footer %}
+            <p class="f7">© {{ "now" | date("Y") }} {{ site.title }}</p>
+          {% endblock %}
+        </footer>
+      </div>
+    </div>
+
+    {{ wp_footer }}
+  </body>
+</html>
