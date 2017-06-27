@@ -1,0 +1,39 @@
+{
+  "name": "wp-dev-kit",
+  "version": "5.0.0",
+  "description": "WordPress development kit",
+  "author": "Bearform LLC (https://bearform.xyz)",
+  "license": "ISC",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bearform/wp-dev-kit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bearform/wp-dev-kit/issues"
+  },
+  "homepage": "https://github.com/bearform/wp-dev-kit#readme",
+  "scripts": {
+    "start": "gulp",
+    "build": "gulp build"
+  },
+  "devDependencies": {
+    "babel-preset-env": "^1.5.2",
+    "babel-register": "^6.24.1",
+    "browser-sync": "^2.18.12",
+    "cssnano": "^3.10.0",
+    "del": "^3.0.0",
+    "gulp": "gulpjs/gulp#4.0",
+    "gulp-babel": "^6.1.2",
+    "gulp-flatten": "^0.3.1",
+    "gulp-plumber": "^1.1.0",
+    "gulp-postcss": "^7.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^2.6.0",
+    "gulp-uglify": "^3.0.0",
+    "postcss-cssnext": "^2.11.0",
+    "postcss-import": "^10.0.0",
+    "sanitize.css": "^5.0.0",
+    "tachyons": "^4.7.4"
+  }
+}

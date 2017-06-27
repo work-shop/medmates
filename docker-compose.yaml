@@ -1,0 +1,49 @@
+version: "3"
+
+volumes:
+  database:
+  wordpress:
+  composer:
+
+services:
+  database:
+    image: "mariadb"
+    ports:
+      - "3306:3306"
+    restart: "always"
+    environment:
+      MYSQL_ROOT_PASSWORD: "docker"
+      MYSQL_DATABASE: "wordpress"
+      MYSQL_USER: "docker"
+      MYSQL_PASSWORD: "docker"
+    volumes:
+      - "database:/var/lib/mysql"
+
+  wordpress:
+    depends_on:
+      - "database"
+    image: "wordpress"
+    ports:
+      - "8080:80"
+    restart: "always"
+    environment:
+      WORDPRESS_DB_HOST: "database:3306"
+      WORDPRESS_DB_NAME: "wordpress"
+      WORDPRESS_DB_USER: "docker"
+      WORDPRESS_DB_PASSWORD: "docker"
+    volumes:
+      - "wordpress:/var/www/html"
+      - "./wp-content/plugins:/var/www/html/wp-content/plugins"
+      - "./wp-content/themes:/var/www/html/wp-content/themes"
+
+  composer:
+    depends_on:
+      - "wordpress"
+    image: "composer"
+    restart: "no"
+    environment:
+      ACF_PRO_KEY: ""
+    volumes:
+      - "./:/app"
+      - "composer:/app/vendor"
+    command: "install"

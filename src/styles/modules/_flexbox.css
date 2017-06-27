@@ -1,0 +1,5 @@
+.flex-auto {
+  flex: 1 1 auto;
+  min-width: auto;
+  min-height: auto;
+}

@@ -1,0 +1,9 @@
+{% extends "base.twig" %}
+
+{% block content %}
+  <h1 class="mb3 f2 lh-title">Posts</h1>
+
+  {% for post in posts %}
+    {% include ["teaser-" ~ post.post_type ~ ".twig", "teaser.twig"] %}
+  {% endfor %}
+{% endblock %}
