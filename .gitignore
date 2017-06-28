@@ -1,8 +1,5 @@
 ## WordPress ##
-/wp-content/*
-!/wp-content/themes/
-/wp-content/themes/*
-!/wp-content/themes/custom
+/wp-content/
 
 
 # Created by https://www.gitignore.io/api/git,node,macos,linux,windows,composer
