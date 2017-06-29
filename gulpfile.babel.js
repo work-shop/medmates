@@ -13,8 +13,8 @@ import cssnano from "cssnano";
 import browserSync from "browser-sync";
 
 const basePaths = {
-  src: "src",
-  dest: "dist/wp-content/themes/custom"
+  src: "./src",
+  dest: "./dist/wp-content/themes/custom"
 };
 
 const paths = {
