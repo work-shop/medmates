@@ -14,7 +14,7 @@ import browserSync from "browser-sync";
 
 const basePaths = {
   src: "src",
-  dest: "wp-content/themes/custom"
+  dest: "dist/wp-content/themes/custom"
 };
 
 const paths = {
