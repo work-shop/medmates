@@ -27,7 +27,7 @@
   },
   "extra": {
     "installer-paths": {
-      "dist/wp-content/plugins/{$name}": ["type: wordpress-plugin"]
+      "./dist/wp-content/plugins/{$name}": ["type:wordpress-plugin"]
     }
   }
 }
