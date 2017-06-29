@@ -3,7 +3,6 @@ version: "3"
 volumes:
   database:
   wordpress:
-  composer:
 
 services:
   database:
@@ -37,12 +36,8 @@ services:
       - "./dist/wp-content/themes:/var/www/html/wp-content/themes"
 
   composer:
-    depends_on:
-      - "wordpress"
     image: "composer"
     restart: "no"
-    environment:
-      ACF_PRO_KEY: ""
     volumes:
       - "./:/app"
     command: "install"

@@ -4,8 +4,8 @@
 
 1.  Install [Docker][].
 
-2.  Edit `docker-compose.yml` and add your Advanced Custom Fields PRO license
-    key to the `ACF_PRO_KEY` field.
+2.  Copy `.env.sample` to `.env` and add your Advanced Custom Fields PRO
+    license key to the `ACF_PRO_KEY` field.
 
 3.  Run `docker-compose up` to create your development environment. Be patient;
     this may take a little while.
