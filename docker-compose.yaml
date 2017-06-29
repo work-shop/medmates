@@ -45,5 +45,4 @@ services:
       ACF_PRO_KEY: ""
     volumes:
       - "./:/app"
-      - "composer:/app/vendor"
     command: "install"
