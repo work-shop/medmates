@@ -2,10 +2,10 @@
 
 ## Installation
 
-1.  Edit `docker-compose.yml` and add your Advanced Custom Fields PRO license
-    key to the `ACF_PRO_KEY` field.
+1.  Install [Docker][].
 
-2.  Install [Docker][].
+2.  Edit `docker-compose.yml` and add your Advanced Custom Fields PRO license
+    key to the `ACF_PRO_KEY` field.
 
 3.  Run `docker-compose up` to create your development environment. Be patient;
     this may take a little while.
@@ -25,8 +25,9 @@
 1.  Run `docker-compose up` to bring up your development environment (if it's
     not up already).
 
-2.  Run `yarn run start` to start the watch and build tasks.
+2.  Run `yarn start` to launch the build and watch tasks. A browser window
+    should appear showing your WordPress website.
 
-3.  Activate "Custom" WordPress theme.
+3.  Activate the "Custom" WordPress theme.
 
 4.  Get coding!
