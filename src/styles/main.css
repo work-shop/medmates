@@ -62,6 +62,7 @@
 @import "tachyons/src/_styles";
 
 /* Custom Modules */
+@import "./modules/_flexbox";
 @import "./modules/_hovers";
 
 /* Variables */
