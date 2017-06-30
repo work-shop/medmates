@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html class="h-100" {{ site.language_attributes }}>
+<html {{ site.language_attributes }}>
   <head>
     <meta charset="{{ site.charset }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,34 +17,34 @@
     {{ wp_head }}
   </head>
 
-  <body class="{{ body_class }} h-100 lh-copy sans-serif dark-gray">
-    <div class="flex flex-column h-100">
-      <div class="bg-blue white">
-        <header class="mw8 center pv4 ph2">
-          {% block header %}
-            <h1 class="f1 lh-title">{{ site.title }}</h1>
-          {% endblock %}
-        </header>
-      </div>
+  <body class="{{ body_class }} lh-copy sans-serif dark-gray">
+    <div class="">
+      <header class="">
+        <div class="mw8 center pv4 ph3">
+          {% include "nav.twig" %}
+        </div>
 
-      <div class="flex-auto bg-light-gray">
-        <div class="flex-m mw8 center pv4 ph2">
-          <main class="w-two-thirds-m mb5 mb0-m mr4-m">
+        <div class="bg-blue white">
+          <div class="mw8 center pv4 ph3">
+            <h1 class="mv0 f1 lh-title fw6">
+              {% block title %}{{ site.title }}{% endblock %}
+            </h1>
+          </div>
+        </div>
+      </header>
+
+      <div class="pv4">
+        <div class="mw8 center ph3">
+          <main class="mb5 mb0-m">
             {% block content %}{% endblock %}
           </main>
-
-          {% if widgets %}
-            <aside class="w-third-m">
-              {{ widgets }}
-            </aside>
-          {% endif %}
         </div>
       </div>
 
-      <div class="bg-washed-red">
-        <footer class="mw8 center pv3 ph2">
+      <div class="bg-dark-gray">
+        <footer class="mw8 center pv3 ph3">
           {% block footer %}
-            <p class="f7">© {{ "now" | date("Y") }} {{ site.title }}</p>
+            <div class="f7 fw6 ttu tracked gray">© {{ "now" | date("Y") }} {{ site.title }}</div>
           {% endblock %}
         </footer>
       </div>

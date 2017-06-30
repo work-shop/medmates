@@ -1,5 +1,7 @@
 <?php
 
+require_once(get_template_directory() . "/routes.php");
+
 if (!class_exists("Timber")) {
   add_action("admin_notices", function () {
     echo "<div class='error'><p>Timber is not activated.
@@ -17,7 +19,6 @@ class MyTimberSite extends TimberSite {
     add_theme_support("post-formats");
     add_theme_support("post-thumbnails");
     add_theme_support("menus");
-    add_action("widgets_init", array($this, "register_widgets"));
     add_action("init", array($this, "register_post_types"));
     add_action("init", array($this, "register_taxonomies"));
     add_action("wp_enqueue_scripts", array($this, "enqueue_scripts"));
@@ -27,19 +28,18 @@ class MyTimberSite extends TimberSite {
     parent::__construct();
   }
 
-  function register_widgets() {
-    register_sidebar(array(
-      "name"          => "Widgets",
-      "id"            => "widgets",
-      "before_widget" => "<section class=''>",
-      "after_widget"  => "</section>",
-      "before_title"  => "<h1 class='f6 ttu tracked gray'>",
-      "after_title"   => "</h1>",
-    ));
-  }
-
   function register_post_types() {
-    // This is where you can register custom post types
+    $labels = array(
+      "name" => __("Teams"),
+      "singular_name" => __("Team")
+    );
+
+    $args = array(
+      "labels" => $labels,
+      "public" => true
+    );
+
+    register_post_type("team", $args);
   }
 
   function register_taxonomies() {

@@ -1,0 +1,31 @@
+{% extends "base.twig" %}
+
+{% block title %}
+  {{ member.name }}
+{% endblock %}
+
+{% block content %}
+  <img class="dib w5 h5 mb3" src="{{ member.avatar(384) }}">
+
+  <div class="">
+    <div class="f6 fw6 ttu tracked gray">{{ member.company_affiliation }}</div>
+    <div class="f6 fw6 ttu tracked gray">{{ member.professional_title }}</div>
+    <div class="f6 fw6 ttu tracked gray">{{ member.job_functions }}</div>
+
+    {% if member.facebook_url or member.twitter_url or member.linkedin_url %}
+      {% if member.facebook_url %}
+        <a href="{{ member.facebook_url }}" target="_blank">Facebook</a>
+      {% endif %}
+
+      {% if member.twitter_url %}
+        <a href="{{ member.twitter_url }}" target="_blank">Twitter</a>
+      {% endif %}
+
+      {% if member.linkedin_url %}
+        <a href="{{ member.linkedin_url }}" target="_blank">LinkedIn</a>
+      {% endif %}
+    {% endif %}
+  </div>
+
+  <div class="measure-wide">{{ member.description | wpautop }}</div>
+{% endblock %}
