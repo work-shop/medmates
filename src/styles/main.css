@@ -63,6 +63,8 @@
 
 /* Custom Modules */
 @import "./modules/_flexbox";
+@import "./modules/_font-family";
+@import "./modules/_max-widths";
 @import "./modules/_hovers";
 
 /* Variables */
@@ -76,3 +78,7 @@
 
 /* Uncomment out the line below to help debug layout issues */
 /*@import "tachyons/src/_debug";*/
+
+:root {
+  font-size: 13.99999px;
+}
