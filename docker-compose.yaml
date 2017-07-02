@@ -1,4 +1,4 @@
-version: "3"
+version: "2"
 
 volumes:
   database:
@@ -32,12 +32,12 @@ services:
       WORDPRESS_DB_PASSWORD: "docker"
     volumes:
       - "wordpress:/var/www/html"
-      - "./dist/wp-content/plugins:/var/www/html/wp-content/plugins"
-      - "./dist/wp-content/themes:/var/www/html/wp-content/themes"
+      - "${VOLUME_BASE_PATH}/dist/wp-content/plugins:/var/www/html/wp-content/plugins"
+      - "${VOLUME_BASE_PATH}/dist/wp-content/themes:/var/www/html/wp-content/themes"
 
   composer:
     image: "composer"
     restart: "no"
     volumes:
-      - "./:/app"
+      - "${VOLUME_BASE_PATH}:/app"
     command: "install"
