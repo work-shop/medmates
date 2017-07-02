@@ -6,7 +6,7 @@
 
 {% block content %}
   <div class="flex-m mb4">
-    <img style="width: 244px; height: 244px;" class="dib mb3 mb0-m" src="{{ member.avatar(244) }}">
+    <img class="dib mb3 mb0-m" src="{{ member.avatar(248) }}" width="248" height="248" alt="">
 
     <div class="ml3-m">
       <div class="f6 fw6 ttu tracked gray">{{ member.company_affiliation }}</div>
@@ -14,7 +14,7 @@
       <div class="f6 fw6 ttu tracked gray">{{ member.job_functions }}</div>
 
       {% if member.facebook_url or member.twitter_url or member.linkedin_url %}
-        <div class="f5">
+        <div class="">
           {% if member.facebook_url %}
             <a href="{{ member.facebook_url }}" target="_blank">Facebook</a>
           {% endif %}
