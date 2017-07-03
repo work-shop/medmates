@@ -64,6 +64,7 @@
 /* Custom Modules */
 @import "./modules/_flexbox";
 @import "./modules/_font-family";
+@import "./modules/_line-height";
 @import "./modules/_hovers";
 
 /* Variables */
@@ -77,3 +78,8 @@
 
 /* Uncomment out the line below to help debug layout issues */
 /*@import "tachyons/src/_debug";*/
+
+/* Global Styles */
+a { color: var(--blue); }
+a:hover { color: var(--light-blue); }
+h1, h2, h3, h4, h5, h6 { color: var(--green); }
