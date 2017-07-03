@@ -21,7 +21,7 @@
     <div class="">
       <header class="">
         <div class="mw8 center pv4 ph3">
-          {% include "nav.twig" %}
+          {% include "header-nav.twig" %}
         </div>
 
         <div class="bg-blue">
@@ -42,7 +42,9 @@
       </div>
 
       <div class="bg-dark-gray">
-        <footer class="mw8 center pv3 ph3">
+        <footer class="mw8 center pv4 ph3">
+          {% include "footer-nav.twig" %}
+
           {% block footer %}
             <div class="f7 fw6 ttu tracked gray">© {{ "now" | date("Y") }} {{ site.title }}</div>
           {% endblock %}
