@@ -1,33 +1,23 @@
 # WordPress Development Kit
 
-## Installation
+## Getting Started
 
-1.  Install [Docker][].
+1.  [Install Docker][Docker].
 
-2.  Copy `.env.sample` to `.env` and add your Advanced Custom Fields PRO
-    license key to the `ACF_PRO_KEY` field.
+2.  Install project dependencies with `yarn install` (or `npm install`).
 
-3.  Run `docker-compose up` to create your development environment. Be patient;
-    this may take a little while.
+3.  Duplicate the __.env.sample__ file and name it __.env__.
 
-4.  Navigate to [http://localhost:8080][localhost] and install WordPress.
-
-5.  Activate Advanced Custom Fields PRO and Timber plugins.
-
-6.  Run `yarn install` to install project dependencies.
+4.  Edit the __.env__ file and add your Advanced Custom Fields PRO license key
+    to the __ACF_PRO_KEY__ field.
 
 [Docker]: https://store.docker.com/search?type=edition&offering=community
-[localhost]: http://localhost:8080
 
 
 ## Development
 
-1.  Run `docker-compose up` to bring up your development environment (if it's
-    not up already).
+1.  Run `make start` to bring up the development environment. Be patient; this
+    may take a while when first run. A browser window should eventually appear
+    showing your WordPress website. If not, check the console for information.
 
-2.  Run `yarn start` to launch the build and watch tasks. A browser window
-    should appear showing your WordPress website.
-
-3.  Activate the "Custom" WordPress theme.
-
-4.  Get coding!
+2.  Get coding!
