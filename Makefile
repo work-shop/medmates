@@ -1,7 +1,7 @@
 start:
 	trap "printf '\nFinishing up...\n' && docker-compose down" EXIT && \
 	docker-compose up -d && \
-	gulp
+	./node_modules/.bin/gulp
 
 build:
-	gulp build
+	./node_modules/.bin/gulp build
