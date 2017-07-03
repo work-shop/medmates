@@ -67,6 +67,9 @@
 @import "./modules/_line-height";
 @import "./modules/_hovers";
 
+/* Skins */
+@import "tachyons-skins-psuedo/src/_tachyons-skins-psuedo";
+
 /* Variables */
 /* Importing here will allow you to override any variables in the modules */
 @import "./variables/_colors";
