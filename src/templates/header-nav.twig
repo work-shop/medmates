@@ -1,13 +1,13 @@
 <nav class="flex justify-between items-end">
-  <div class="flex-auto">
-    <a class="db" href="{{ site.url }}">
-      <img class="db" src="{{ theme.link }}/images/logo.svg" width="184" alt="MedMates">
+  <div class="flex-auto flex items-end">
+    <a class="dib f2 fw6 lh-solid no-underline" href="{{ site.url }}">
+      <img style="min-width: 192px;" class="db" src="{{ theme.link }}/images/logo.svg" alt="MedMates">
     </a>
   </div>
 
-  <section class="dn-l ml3">
-    <a class="dib" href="">
-      <img class="db" src="{{ theme.link }}/images/icon-menu.svg" height="27" alt="Menu" title="Menu">
+  <section class="dib dn-l">
+    <a class="db ml3 f3 lh-solid dark-gray hover-gray no-underline" href="#">
+      <img style="min-width: 36px;" class="db" src="{{ theme.link }}/images/icon-menu.svg" alt="Menu" title="Menu">
     </a>
 
     <div style="left: 0;" class="child absolute w-100 pv4 ph3 bg-white shadow-6">
@@ -33,12 +33,13 @@
 
   {% for item in menu.get_items %}
     <section class="dn db-l hide-child ml3 mr2">
-      <h1 class="ma0 nb2 f3 fw4">
-        <a class="db dark-gray hover-gray no-underline" href="{{ item.link }}">{{ item.title }}</a>
+      <h1 class="ma0 f3 fw4 lh-solid">
+        <a class="dib dark-gray hover-gray no-underline" href="{{ item.link }}">{{ item.title }}</a>
       </h1>
 
       {% if item.get_children %}
-        <div class="child absolute mt2 nl3 pa3 pt2 bg-white shadow-6">
+        <div class="child absolute mt1 nl3 pa3 pt2 bg-white shadow-6">
+          <div class="pt1"></div>
           {% for subitem in item.get_children %}
             <div>
               <a class="dib" href="{{ subitem.link }}">{{ subitem.title }}</a>
@@ -50,12 +51,12 @@
   {% endfor %}
 
   {% if user %}
-    <a class="dn db-l ml3 mr2 nb2 f3 dark-gray hover-gray no-underline" href="/directory/{{ user.id }}/">Profile</a>
+    <a class="dn dib-l ml3 mr2 f3 lh-solid dark-gray hover-gray no-underline" href="/directory/{{ user.id }}/">Profile</a>
   {% else %}
-    <a class="dn db-l ml3 mr2 nb2 f3 dark-gray hover-gray no-underline" href="{{ function("wp_login_url", site.link) }}">Log&nbsp;In</a>
+    <a class="dn dib-l ml3 mr2 f3 dark-gray hover-gray no-underline" href="{{ function("wp_login_url", site.link) }}">Log&nbsp;In</a>
   {% endif %}
 
-  <a class="dn db-l ml3" href="/search/">
-    <img class="db" src="{{ theme.link }}/images/icon-search.svg" height="20" alt="Search" title="Search">
+  <a class="dn dib-l ml3 f3 lh-solid dark-gray hover-gray no-underline" href="/search/">
+    <img style="min-width: 24px;" class="db" src="{{ theme.link }}/images/icon-search.svg" alt="Search" title="Search">
   </a>
 </nav>
