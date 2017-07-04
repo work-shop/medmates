@@ -53,7 +53,7 @@
   {% if user %}
     <a class="dn dib-l ml3 mr2 f3 lh-solid dark-gray hover-gray no-underline" href="/directory/{{ user.id }}/">Profile</a>
   {% else %}
-    <a class="dn dib-l ml3 mr2 f3 dark-gray hover-gray no-underline" href="{{ function("wp_login_url", site.link) }}">Log&nbsp;In</a>
+    <a class="dn dib-l ml3 mr2 f3 lh-solid dark-gray hover-gray no-underline" href="{{ function("wp_login_url", site.link) }}">Log&nbsp;In</a>
   {% endif %}
 
   <a class="dn dib-l ml3 f3 lh-solid dark-gray hover-gray no-underline" href="/search/">
