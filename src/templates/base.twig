@@ -18,39 +18,44 @@
   </head>
 
   <body class="{{ body_class }} lh-copy transport dark-gray">
-    <div class="">
-      <header class="">
-        <div class="mw8 center pv4 ph3">
-          {% include "header-nav.twig" %}
-        </div>
+    <header>
+      <div class="mw8 center ph3 pv4">
+        {% include "header-nav.twig" %}
+      </div>
 
-        <div class="bg-blue">
-          <div class="mw8 center pv4 ph3">
-            <h1 class="mv3 f1 lh-title fw6 white">
-              {% block title %}{{ site.title }}{% endblock %}
-            </h1>
+      <div class="bg-blue">
+        <div class="mw8 center ph3 pv4">
+          <h1 class="mv0 f1 lh-title white">
+            {% block title %}
+              {{ site.title }}
+            {% endblock %}
+          </h1>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="mw8 center ph3 mv5">
+        <div class="mt0 mb5 mb0-m">
+          {% block content %}
+          {% endblock %}
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="bg-dark-gray">
+        <div class="mw8 center ph3 pv4">
+          <div class="mb4">
+            {% include "footer-nav.twig" %}
+          </div>
+
+          <div class="f7 fw6 ttu tracked gray">
+            © {{ "now" | date("Y") }} {{ site.title }}
           </div>
         </div>
-      </header>
-
-      <div class="pv4">
-        <div class="mw8 center ph3">
-          <main class="mt0 mb5 mb0-m">
-            {% block content %}{% endblock %}
-          </main>
-        </div>
       </div>
-
-      <div class="bg-dark-gray">
-        <footer class="mw8 center pv4 ph3">
-          {% include "footer-nav.twig" %}
-
-          {% block footer %}
-            <div class="f7 fw6 ttu tracked gray">© {{ "now" | date("Y") }} {{ site.title }}</div>
-          {% endblock %}
-        </footer>
-      </div>
-    </div>
+    </footer>
 
     {{ wp_footer }}
   </body>
