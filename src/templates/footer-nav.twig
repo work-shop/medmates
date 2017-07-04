@@ -1,15 +1,19 @@
 <nav>
-  <div><a class="dib f3 gray hover-light-gray no-underline" href="">About</a></div>
-  <div><a class="dib f3 gray hover-light-gray no-underline" href="">Membership</a></div>
-  <div><a class="dib f3 gray hover-light-gray no-underline" href="">Events</a></div>
-  <div><a class="dib f3 gray hover-light-gray no-underline" href="">News</a></div>
-  <div><a class="dib f3 gray hover-light-gray no-underline" href="">Resources</a></div>
+  {% for item in menu.get_items %}
+    <div>
+      <a class="dib f3 gray hover-light-gray no-underline" href="{{ item.link }}">{{ item.title }}</a>
+    </div>
+  {% endfor %}
+
   <div>
     {% if user %}
-      <a class="dib f3 gray hover-light-gray no-underline" href="">Profile</a>
+      <a class="dib f3 gray hover-light-gray no-underline" href="/directory/{{ user.id }}/">Profile</a>
     {% else %}
       <a class="dib f3 gray hover-light-gray no-underline" href="{{ function("wp_login_url", site.link) }}">Log&nbsp;In</a>
     {% endif %}
   </div>
-  <div><a class="dib f3 gray hover-light-gray no-underline" href="">Search</a></div>
+
+  <div>
+    <a class="dib f3 gray hover-light-gray no-underline" href="/search/">Search</a>
+  </div>
 </nav>

@@ -5,100 +5,57 @@
     </a>
   </div>
 
-  <section class="dn-l ml5">
+  <section class="dn-l ml3">
     <a class="dib" href="">
       <img class="db" src="{{ theme.link }}/images/icon-menu.svg" height="27" alt="Menu" title="Menu">
     </a>
+
     <div style="left: 0;" class="child absolute w-100 pv4 ph3 bg-white shadow-6">
-      <div><a class="dib f3 dark-gray hover-gray no-underline" href="">About</a></div>
-      <div><a class="dib f3 dark-gray hover-gray no-underline" href="">Membership</a></div>
-      <div><a class="dib f3 dark-gray hover-gray no-underline" href="">Events</a></div>
-      <div><a class="dib f3 dark-gray hover-gray no-underline" href="">News</a></div>
-      <div><a class="dib f3 dark-gray hover-gray no-underline" href="">Resources</a></div>
+      {% for item in menu.get_items %}
+        <div>
+          <a class="dib f3 dark-gray hover-gray no-underline" href="{{ item.link }}">{{ item.title }}</a>
+        </div>
+      {% endfor %}
+
       <div>
         {% if user %}
-          <a class="dib f3 dark-gray hover-gray no-underline" href="">Profile</a>
+          <a class="dib f3 dark-gray hover-gray no-underline" href="/directory/{{ user.id }}/">Profile</a>
         {% else %}
           <a class="dib f3 dark-gray hover-gray no-underline" href="{{ function("wp_login_url", site.link) }}">Log&nbsp;In</a>
         {% endif %}
       </div>
-      <div><a class="dib f3 dark-gray hover-gray no-underline" href="">Search</a></div>
+
+      <div>
+        <a class="dib f3 dark-gray hover-gray no-underline" href="/search/">Search</a>
+      </div>
     </div>
   </section>
 
-  <section class="dn db-l hide-child ml5 mr2">
-    <h1 class="ma0 nb2 f3 fw4">
-      <a class="db dark-gray hover-gray no-underline" href="">About</a>
-    </h1>
-    <div class="child absolute mt2 nl3 pa3 pt2 bg-white shadow-6">
-      <div><a class="dib" href="">Mission</a></div>
-      <div><a class="dib" href="">What We Do</a></div>
-      <div><a class="dib" href="">History</a></div>
-      <div><a class="dib" href="">Board of Directors</a></div>
-      <div><a class="dib" href="">Leadership</a></div>
-    </div>
-  </section>
+  {% for item in menu.get_items %}
+    <section class="dn db-l hide-child ml3 mr2">
+      <h1 class="ma0 nb2 f3 fw4">
+        <a class="db dark-gray hover-gray no-underline" href="{{ item.link }}">{{ item.title }}</a>
+      </h1>
 
-  <section class="dn db-l hide-child ml3 mr2">
-    <h1 class="ma0 nb2 f3 fw4">
-      <a class="db dark-gray hover-gray no-underline" href="">Membership</a>
-    </h1>
-    <div class="child absolute mt2 nl3 pa3 pt2 bg-white shadow-6">
-      <div><a class="dib" href="">Benefits</a></div>
-      <div><a class="dib" href="">Directory</a></div>
-      <div><a class="dib" href="">Active Teams</a></div>
-      <div><a class="dib" href="">Join</a></div>
-    </div>
-  </section>
-
-  <section class="dn db-l hide-child ml3 mr2">
-    <h1 class="ma0 nb2 f3 fw4">
-      <a class="db dark-gray hover-gray no-underline" href="">Events</a>
-    </h1>
-    <div class="child absolute mt2 nl3 pa3 pt2 bg-white shadow-6">
-      <div><a class="dib" href="">Calendar</a></div>
-      <div><a class="dib" href="">Open Networking</a></div>
-      <div><a class="dib" href="">Workshops</a></div>
-      <div><a class="dib" href="">Pitch Events</a></div>
-      <div><a class="dib" href="">Team Meetings</a></div>
-      <div><a class="dib" href="">Regional Events</a></div>
-      <div><a class="dib" href="">EXPO</a></div>
-    </div>
-  </section>
-
-  <section class="dn db-l hide-child ml3 mr2">
-    <h1 class="ma0 nb2 f3 fw4">
-      <a class="db dark-gray hover-gray no-underline" href="">News</a>
-    </h1>
-    <div class="child absolute mt2 nl3 pa3 pt2 bg-white shadow-6">
-      <div><a class="dib" href="">Category 1</a></div>
-      <div><a class="dib" href="">Category 2</a></div>
-      <div><a class="dib" href="">Category 3</a></div>
-      <div><a class="dib" href="">Category 4</a></div>
-    </div>
-  </section>
-
-  <section class="dn db-l hide-child ml3 mr2">
-    <h1 class="ma0 nb2 f3 fw4">
-      <a class="db dark-gray hover-gray no-underline" href="">Resources</a>
-    </h1>
-    <div class="child absolute mt2 nl3 pa3 pt2 bg-white shadow-6">
-      <div><a class="dib" href="">Member Directory</a></div>
-      <div><a class="dib" href="">Training</a></div>
-      <div><a class="dib" href="">Mentors</a></div>
-      <div><a class="dib" href="">Equipment</a></div>
-      <div><a class="dib" href="">Facilities</a></div>
-      <div><a class="dib" href="">Capital</a></div>
-    </div>
-  </section>
+      {% if item.get_children %}
+        <div class="child absolute mt2 nl3 pa3 pt2 bg-white shadow-6">
+          {% for subitem in item.get_children %}
+            <div>
+              <a class="dib" href="{{ subitem.link }}">{{ subitem.title }}</a>
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </section>
+  {% endfor %}
 
   {% if user %}
-    <a class="dn db-l ml3 mr2 nb2 f3 dark-gray hover-gray no-underline" href="">Profile</a>
+    <a class="dn db-l ml3 mr2 nb2 f3 dark-gray hover-gray no-underline" href="/directory/{{ user.id }}/">Profile</a>
   {% else %}
     <a class="dn db-l ml3 mr2 nb2 f3 dark-gray hover-gray no-underline" href="{{ function("wp_login_url", site.link) }}">Log&nbsp;In</a>
   {% endif %}
 
-  <a class="dn db-l ml3" href="">
+  <a class="dn db-l ml3" href="/search/">
     <img class="db" src="{{ theme.link }}/images/icon-search.svg" height="20" alt="Search" title="Search">
   </a>
 </nav>
