@@ -60,9 +60,8 @@
 @import "tachyons/src/_styles";
 
 /* Custom Modules */
-@import "./modules/_flexbox";
+@import "./modules/_box-shadow";
 @import "./modules/_font-family";
-@import "./modules/_line-height";
 @import "./modules/_hovers";
 
 /* Skins */

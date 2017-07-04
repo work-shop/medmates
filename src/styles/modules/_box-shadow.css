@@ -1,0 +1,13 @@
+.shadow-6 { box-shadow: 4px 4px 16px 0px rgba(0, 0, 0, 0.2); }
+
+@media (--breakpoint-not-small) {
+  .shadow-6-ns { box-shadow: 4px 4px 16px 0px rgba(0, 0, 0, 0.2); }
+}
+
+@media (--breakpoint-medium) {
+  .shadow-6-m { box-shadow: 4px 4px 16px 0px rgba(0, 0, 0, 0.2); }
+}
+
+@media (--breakpoint-large) {
+  .shadow-6-l { box-shadow: 4px 4px 16px 0px rgba(0, 0, 0, 0.2); }
+}
