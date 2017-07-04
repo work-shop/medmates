@@ -31,6 +31,6 @@
     "postcss-import": "^10.0.0",
     "sanitize.css": "^5.0.0",
     "tachyons": "^4.7.4",
-    "tachyons-skins-psuedo": "^1.0.0"
+    "tachyons-skins-pseudo": "^1.0.3"
   }
 }

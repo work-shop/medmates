@@ -4263,9 +4263,9 @@ svgo@^0.7.0:
     sax "~1.2.1"
     whet.extend "~0.9.9"
 
-tachyons-skins-psuedo@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/tachyons-skins-psuedo/-/tachyons-skins-psuedo-1.0.0.tgz#d69a1e5092e625f59a7ed78c10c4f627eec540f8"
+tachyons-skins-pseudo@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/tachyons-skins-pseudo/-/tachyons-skins-pseudo-1.0.3.tgz#33de70ef4f1a59e26244a8ba2f55f76e7bae1d63"
 
 tachyons@^4.7.4:
   version "4.7.4"
