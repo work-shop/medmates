@@ -1,13 +1,15 @@
-<article class="teaser teaser-{{ post.post_type }}" id="teaser-{{ post.ID }}">
+<article class="mb3">
   {% block content %}
-    <h1 class="teaser-title">
+    <h1 class="mv3 f3 lh-title">
       <a href="{{ post.link }}">{{ post.title }}</a>
     </h1>
 
-    <p class="teaser-preview">{{ post.preview }}</p>
+    <div class="mv3 f6 fw6 ttu tracked gray">Posted {{ post.post_date_gmt | time_ago }} by {{ post.author }}</div>
+
+    <p>{{ post.preview }}</p>
 
     {% if post.get_thumbnail %}
-      <img class="teaser-thumbnail" src="{{ post.thumbnail.src }}">
+      <img class="db" src="{{ post.thumbnail.src }}">
     {% endif %}
   {% endblock %}
 </article>
