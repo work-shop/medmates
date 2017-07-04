@@ -10,13 +10,19 @@
       <img class="db" src="{{ theme.link }}/images/icon-menu.svg" height="27" alt="Menu" title="Menu">
     </a>
     <div style="left: 0;" class="child absolute w-100 pv4 ph3 bg-white shadow-6">
-      <div><a class="dib f3 fw4 dark-gray hover-gray no-underline" href="">About</a></div>
-      <div><a class="dib f3 fw4 dark-gray hover-gray no-underline" href="">Membership</a></div>
-      <div><a class="dib f3 fw4 dark-gray hover-gray no-underline" href="">Events</a></div>
-      <div><a class="dib f3 fw4 dark-gray hover-gray no-underline" href="">News</a></div>
-      <div><a class="dib f3 fw4 dark-gray hover-gray no-underline" href="">Resources</a></div>
-      <div><a class="dib f3 fw4 dark-gray hover-gray no-underline" href="">Log&nbsp;In</a></div>
-      <div><a class="dib f3 fw4 dark-gray hover-gray no-underline" href="">Search</a></div>
+      <div><a class="dib f3 dark-gray hover-gray no-underline" href="">About</a></div>
+      <div><a class="dib f3 dark-gray hover-gray no-underline" href="">Membership</a></div>
+      <div><a class="dib f3 dark-gray hover-gray no-underline" href="">Events</a></div>
+      <div><a class="dib f3 dark-gray hover-gray no-underline" href="">News</a></div>
+      <div><a class="dib f3 dark-gray hover-gray no-underline" href="">Resources</a></div>
+      <div>
+        {% if user %}
+          <a class="dib f3 dark-gray hover-gray no-underline" href="">Profile</a>
+        {% else %}
+          <a class="dib f3 dark-gray hover-gray no-underline" href="{{ function("wp_login_url", site.link) }}">Log&nbsp;In</a>
+        {% endif %}
+      </div>
+      <div><a class="dib f3 dark-gray hover-gray no-underline" href="">Search</a></div>
     </div>
   </section>
 
@@ -65,7 +71,6 @@
       <a class="db dark-gray hover-gray no-underline" href="">News</a>
     </h1>
     <div class="child absolute mt2 nl3 pa3 pt2 bg-white shadow-6">
-      <div><a class="dib" href="">Latest News</a></div>
       <div><a class="dib" href="">Category 1</a></div>
       <div><a class="dib" href="">Category 2</a></div>
       <div><a class="dib" href="">Category 3</a></div>
@@ -87,9 +92,13 @@
     </div>
   </section>
 
-  <a class="dn db-l ml3 mr2 nb2 f3 fw4 dark-gray hover-gray no-underline" href="">Log&nbsp;In</a>
+  {% if user %}
+    <a class="dn db-l ml3 mr2 nb2 f3 dark-gray hover-gray no-underline" href="">Profile</a>
+  {% else %}
+    <a class="dn db-l ml3 mr2 nb2 f3 dark-gray hover-gray no-underline" href="{{ function("wp_login_url", site.link) }}">Log&nbsp;In</a>
+  {% endif %}
 
-  <a class="dn db-l flex-no-shrink ml3" href="">
+  <a class="dn db-l ml3" href="">
     <img class="db" src="{{ theme.link }}/images/icon-search.svg" height="20" alt="Search" title="Search">
   </a>
 </nav>

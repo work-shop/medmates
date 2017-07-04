@@ -4,6 +4,12 @@
   <div><a class="dib f3 gray hover-light-gray no-underline" href="">Events</a></div>
   <div><a class="dib f3 gray hover-light-gray no-underline" href="">News</a></div>
   <div><a class="dib f3 gray hover-light-gray no-underline" href="">Resources</a></div>
-  <div><a class="dib f3 gray hover-light-gray no-underline" href="">Log&nbsp;In</a></div>
+  <div>
+    {% if user %}
+      <a class="dib f3 gray hover-light-gray no-underline" href="">Profile</a>
+    {% else %}
+      <a class="dib f3 gray hover-light-gray no-underline" href="{{ function("wp_login_url", site.link) }}">Log&nbsp;In</a>
+    {% endif %}
+  </div>
   <div><a class="dib f3 gray hover-light-gray no-underline" href="">Search</a></div>
 </nav>
