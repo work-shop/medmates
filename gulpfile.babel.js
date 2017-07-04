@@ -88,12 +88,12 @@ export const styles = () => gulp.src(paths.styles.src)
   .pipe(gulp.dest(paths.styles.dest)
 );
 
-export const images = () => gulp.src(paths.images.src)
-  .pipe(gulp.dest(paths.images.dest)
-);
-
 export const fonts = () => gulp.src(paths.fonts.src)
   .pipe(gulp.dest(paths.fonts.dest)
+);
+
+export const images = () => gulp.src(paths.images.src)
+  .pipe(gulp.dest(paths.images.dest)
 );
 
 export const build = gulp.series(clean,
