@@ -7,8 +7,8 @@
     <meta name="description" content="{{ site.description }}">
 
     <title>{% spaceless %}
-      {% if wp_title %}
-        {{ wp_title }} — {{ site.name }}
+      {% if page_title and not function("is_home") %}
+        {{ page_title }} — {{ site.name }}
       {% else %}
         {{ site.name }}
       {% endif %}
@@ -26,8 +26,8 @@
       <div class="bg-blue">
         <div class="mw8 center ph3 pv5">
           <h1 class="measure-narrow f1 fw6 lh-title white">
-            {% block title %}
-              {{ site.description }}
+            {% block header_title %}
+              {{ page_title }}
             {% endblock %}
           </h1>
         </div>

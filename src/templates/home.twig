@@ -1,5 +1,9 @@
 {% extends "base.twig" %}
 
+{% block header_title %}
+  {{ site.description }}
+{% endblock %}
+
 {% block content %}
   <h1 class="mb4 f2 fw6 lh-title green">Latest {{ posts[0].type.labels.name }}</h1>
 
