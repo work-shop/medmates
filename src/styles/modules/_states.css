@@ -1,12 +1,10 @@
-.hide-child .child {
+.state-hide-child .child {
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.15s ease-in;
 }
 
-.hide-child:hover .child,
-.hide-child:focus .child,
-.hide-child:active .child {
+.state-show-child .child {
   pointer-events: initial;
   opacity: 1;
   transition: opacity 0.15s ease-in;

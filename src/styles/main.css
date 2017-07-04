@@ -63,6 +63,7 @@
 @import "./modules/_box-shadow";
 @import "./modules/_font-family";
 @import "./modules/_hovers";
+@import "./modules/_states";
 
 /* Skins */
 @import "tachyons-skins-pseudo/src/tachyons-skins-pseudo";

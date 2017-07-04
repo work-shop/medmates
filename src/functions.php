@@ -47,9 +47,11 @@ class MyTimberSite extends TimberSite {
   }
 
   function enqueue_scripts() {
+    wp_enqueue_script("jquery");
+
     $bundle_src = get_template_directory_uri() . "/bundle.js";
     $bundle_ver = filemtime(get_template_directory() . "/bundle.js");
-    wp_enqueue_script("bundle", $bundle_src, array(), $bundle_ver, true);
+    wp_enqueue_script("bundle", $bundle_src, array("jquery"), $bundle_ver, true);
   }
 
   function enqueue_styles() {
