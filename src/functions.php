@@ -108,7 +108,10 @@ class MyTimberSite extends TimberSite {
 
     $args = array(
       "labels" => $labels,
-      "public" => true
+      "public" => true,
+      "rewrite" => array(
+        "slug" => "active-teams"
+      )
     );
 
     register_post_type("active-team", $args);
