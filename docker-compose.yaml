@@ -2,7 +2,6 @@ version: "2"
 
 volumes:
   database:
-  wordpress:
 
 services:
   database:
@@ -10,11 +9,6 @@ services:
     ports:
       - "3306:3306"
     restart: "always"
-    environment:
-      MYSQL_ROOT_PASSWORD: "docker"
-      MYSQL_DATABASE: "wordpress"
-      MYSQL_USER: "docker"
-      MYSQL_PASSWORD: "docker"
     volumes:
       - "database:/var/lib/mysql"
 
@@ -25,15 +19,8 @@ services:
     ports:
       - "8080:80"
     restart: "always"
-    environment:
-      WORDPRESS_DB_HOST: "database:3306"
-      WORDPRESS_DB_NAME: "wordpress"
-      WORDPRESS_DB_USER: "docker"
-      WORDPRESS_DB_PASSWORD: "docker"
     volumes:
-      - "wordpress:/var/www/html"
-      - "${VOLUME_BASE_PATH}/dist/wp-content/plugins:/var/www/html/wp-content/plugins"
-      - "${VOLUME_BASE_PATH}/dist/wp-content/themes:/var/www/html/wp-content/themes"
+      - "${VOLUME_BASE_PATH}/dist:/var/www/html"
 
   composer:
     image: "composer"
