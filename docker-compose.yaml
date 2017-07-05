@@ -5,26 +5,37 @@ volumes:
 
 services:
   database:
-    image: "mariadb"
+    image: mariadb
     ports:
-      - "3306:3306"
-    restart: "always"
+      - 3306:3306
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
-      - "database:/var/lib/mysql"
+      - database:/var/lib/mysql
 
   wordpress:
     depends_on:
-      - "database"
-    image: "wordpress"
+      - database
+    image: wordpress
     ports:
-      - "8080:80"
-    restart: "always"
+      - 8080:80
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: ${WORDPRESS_DB_HOST}
+      WORDPRESS_DB_NAME: ${WORDPRESS_DB_NAME}
+      WORDPRESS_DB_USER: ${WORDPRESS_DB_USER}
+      WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
     volumes:
-      - "${VOLUME_BASE_PATH}/dist:/var/www/html"
+      - ${VOLUME_BASE_PATH}/dist:/var/www/html
 
   composer:
-    image: "composer"
+    image: composer
     restart: "no"
     volumes:
-      - "${VOLUME_BASE_PATH}:/app"
-    command: "install"
+      - ${VOLUME_BASE_PATH}:/app
+    command: install
+ 
