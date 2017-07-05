@@ -1,0 +1,9 @@
+{% extends "base.twig" %}
+
+{% block content %}
+  <article class="measure-wide">
+    <div class="mb4 f6 fw6 ttu tracked gray">Posted {{ post.post_date_gmt | time_ago }} by {{ post.author }}</div>
+
+    <div>{{ post.content }}</div>
+  </article>
+{% endblock %}
