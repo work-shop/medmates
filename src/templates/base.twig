@@ -7,8 +7,8 @@
     <meta name="description" content="{{ site.description }}">
 
     <title>{% spaceless %}
-      {% if page_title and not function("is_home") %}
-        {{ page_title }} — {{ site.name }}
+      {% if wp_title %}
+        {{ wp_title }} — {{ site.name }}
       {% else %}
         {{ site.name }}
       {% endif %}
@@ -20,14 +20,14 @@
   <body class="{{ body_class }} lh-copy transport dark-gray">
     <header>
       <div class="mw8 center ph3 pv4">
-        {% include "header-menu.twig" %}
+        {% include "includes/header-menu.twig" %}
       </div>
 
       <div class="bg-blue">
-        <div class="mw8 center ph3 pv5">
-          <h1 class="measure-narrow f1 fw6 lh-title white">
+        <div class="mw8 center ph3 pv4">
+          <h1 class="measure-narrow mv3 f1 fw6 lh-title white">
             {% block header_title %}
-              {{ page_title }}
+              {{ wp_title }}
             {% endblock %}
           </h1>
         </div>
@@ -35,11 +35,9 @@
     </header>
 
     <main>
-      <div class="mw8 center ph3 mv5">
-        <div class="mt0 mb5 mb0-m">
-          {% block content %}
-          {% endblock %}
-        </div>
+      <div class="mw8 center ph3 mv4 mv5-m">
+        {% block content %}
+        {% endblock %}
       </div>
     </main>
 
@@ -47,7 +45,7 @@
       <div class="bg-dark-gray">
         <div class="mw8 center ph3 pv4">
           <div class="mb4">
-            {% include "footer-menu.twig" %}
+            {% include "includes/footer-menu.twig" %}
           </div>
 
           <div class="f7 fw6 ttu tracked gray">

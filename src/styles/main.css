@@ -1,5 +1,5 @@
 /*!
- * Theme Name: Custom
+ * Theme Name: MedMates
  * Author: Bearform LLC
  * Author URI: https://bearform.xyz
  * Version: 1.0
@@ -81,13 +81,4 @@
 /*@import "tachyons/src/_debug";*/
 
 /* Global Styles */
-*, h1 { margin: 0; padding: 0; font: inherit; }
-p { margin-bottom: 1rem; }
-a { color: var(--blue); }
-a:hover { color: var(--light-blue); }
-
-/* Global Font Size Adjustments */
-:root { font-size: 14px; }
-@media (--breakpoint-medium) {
-  :root { font-size: 16px; }
-}
+@import "./_global";

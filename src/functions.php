@@ -12,15 +12,6 @@ if (!class_exists("Timber")) {
   return;
 }
 
-// Get the page title
-function get_the_page_title() {
-  $title = get_the_title();
-  if (is_404()) {
-    $title = "Not Found";
-  }
-  return $title;
-}
-
 Timber::$dirname = "templates";
 
 class MyTimberSite extends TimberSite {
@@ -110,7 +101,8 @@ class MyTimberSite extends TimberSite {
       "labels" => $labels,
       "public" => true,
       "rewrite" => array(
-        "slug" => "active-teams"
+        "slug" => "active-teams",
+        "with_front" => false
       )
     );
 
@@ -139,7 +131,6 @@ class MyTimberSite extends TimberSite {
     $context["site"] = $this;
     $context["menu"] = new TimberMenu();
     $context["widgets"] = Timber::get_widgets("widgets");
-    $context["page_title"] = get_the_page_title();
     return $context;
   }
 

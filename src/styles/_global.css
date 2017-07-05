@@ -1,0 +1,50 @@
+/* Global Styles */
+
+:root {
+  font-size: 14px;
+}
+
+@media (--breakpoint-medium) {
+  :root {
+    font-size: 16px;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+/* Reset h1 styling from normalize.css */
+h1 {
+  margin: 0;
+  font-size: inherit;
+}
+
+address,
+blockquote,
+form,
+fieldset,
+figure,
+dl,
+ol,
+ul,
+p,
+pre,
+table {
+  margin-bottom: 1rem;
+}
+
+dt,
+li {
+  margin-bottom: 0.5rem;
+}
+
+a {
+  color: var(--blue);
+}
+
+a:hover {
+  color: var(--light-blue);
+}
