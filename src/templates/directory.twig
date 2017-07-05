@@ -1,0 +1,11 @@
+{% extends "base.twig" %}
+
+{% block header_title %}
+  Directory
+{% endblock %}
+
+{% block content %}
+  {% for member in members %}
+    {% include ["teaser-member.twig"] %}
+  {% endfor %}
+{% endblock %}
