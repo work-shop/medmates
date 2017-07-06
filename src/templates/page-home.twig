@@ -1,0 +1,13 @@
+{% extends "base.twig" %}
+
+{% block header_title %}
+  {{ site.description }}
+{% endblock %}
+
+{% block content %}
+  <h1 class="mb4 f3 f2-m fw6 lh-title green">Latest {{ posts[0].type.labels.name }}</h1>
+
+  {% for post in posts %}
+    {% include ["includes/teaser-" ~ post.post_type ~ ".twig", "includes/teaser.twig"] %}
+  {% endfor %}
+{% endblock %}

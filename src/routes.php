@@ -95,7 +95,7 @@ Routes::map("members/:member_id", function ($params) {
 
   // If member exists and its role is a valid one, show the member page
   if ($member && (array_intersect((array) $member->roles, $valid_member_roles))) {
-    Routes::load("member.php", $params, null, 200);
+    Routes::load("single-member.php", $params, null, 200);
   } else {
     Routes::load("404.php", null, null, 404);
   }
