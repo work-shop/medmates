@@ -23,9 +23,11 @@ class MyTimberSite extends TimberSite {
     add_action("admin_menu", array($this, "remove_menu_items"));
     add_action("wp_before_admin_bar_render", array($this, "remove_admin_bar_items"));
     add_action("admin_menu", array($this, "change_post_menu_label"));
-    add_action("init", array($this, "change_post_object_labels"));
-    add_action("init", array($this, "register_post_types"));
-    add_action("init", array($this, "register_taxonomies"));
+    add_action("init", array($this, "register_team_post_type"));
+    add_action("init", array($this, "register_event_post_type"));
+    add_action("init", array($this, "register_resource_post_type"));
+    add_action("init", array($this, "register_event_category"));
+    add_action("init", array($this, "register_resource_category"));
     add_action("wp_enqueue_scripts", array($this, "enqueue_scripts"));
     add_action("wp_enqueue_scripts", array($this, "enqueue_styles"));
     add_filter("timber_context", array($this, "add_to_context"));
@@ -57,30 +59,7 @@ class MyTimberSite extends TimberSite {
     echo "";
   }
 
-  // Change object labels for posts
-  function change_post_object_labels() {
-    global $wp_post_types;
-    $labels = &$wp_post_types["post"]->labels;
-    $labels->name = "Articles";
-    $labels->singular_name = "Article";
-    $labels->add_new_item = "Add New Article";
-    $labels->edit_item = "Edit Article";
-    $labels->new_item = "New Article";
-    $labels->view_item = "View Article";
-    $labels->view_items = "View Articles";
-    $labels->search_items = "Search Articles";
-    $labels->not_found = "No articles found";
-    $labels->not_found_in_trash = "No articles found in Trash";
-    $labels->all_items = "All Articles";
-    $labels->archives = "Article Archives";
-    $labels->attributes = "Article Attributes";
-    $labels->insert_into_item = "Insert into article";
-    $labels->uploaded_to_this_item = "Uploaded to this article";
-  }
-
-  function register_post_types() {
-    // Active Teams
-
+  function register_team_post_type() {
     $labels = array(
       "name" => __("Active Teams"),
       "singular_name" => __("Active Team"),
@@ -102,18 +81,14 @@ class MyTimberSite extends TimberSite {
     $args = array(
       "labels" => $labels,
       "public" => true,
-      "supports" => array("title", "editor", "thumbnail"),
-      "has_archive" => true,
-      "rewrite" => array(
-        "with_front" => false
-      )
+      "supports" => array("title", "editor", "excerpt", "thumbnail"),
+      "has_archive" => true
     );
 
-    register_post_type("active-team", $args);
+    register_post_type("team", $args);
+  }
 
-
-    // Events
-
+  function register_event_post_type() {
     $labels = array(
       "name" => __("Events"),
       "singular_name" => __("Event"),
@@ -135,18 +110,15 @@ class MyTimberSite extends TimberSite {
     $args = array(
       "labels" => $labels,
       "public" => true,
-      "supports" => array("title", "editor", "thumbnail"),
-      "has_archive" => true,
-      "rewrite" => array(
-        "with_front" => false
-      )
+      "supports" => array("title", "editor", "excerpt", "thumbnail"),
+      "taxonomies" => array("event_category"),
+      "has_archive" => true
     );
 
     register_post_type("event", $args);
+  }
 
-
-    // Resources
-
+  function register_resource_post_type() {
     $labels = array(
       "name" => __("Resources"),
       "singular_name" => __("Resource"),
@@ -168,18 +140,64 @@ class MyTimberSite extends TimberSite {
     $args = array(
       "labels" => $labels,
       "public" => true,
-      "supports" => array("title", "editor", "thumbnail"),
-      "has_archive" => true,
-      "rewrite" => array(
-        "with_front" => false
-      )
+      "supports" => array("title", "editor", "excerpt", "thumbnail", "page-attributes"),
+      "hierarchical" => true,
+      "has_archive" => true
     );
 
     register_post_type("resource", $args);
   }
 
-  function register_taxonomies() {
-    // This is where you can register custom taxonomies
+  function register_event_category() {
+    $labels = array(
+      "name" => __("Event Categories"),
+      "singular_name" => __("Event Category"),
+      "search_items" => __("Search Event Categories"),
+      "all_items" => __("All Event Categories"),
+      "parent_item" => __("Parent Event Category"),
+      "edit_item" => __("Edit Event Category"),
+      "view_item" => __("View Event Category"),
+      "update_item" => __("Update Event Category"),
+      "add_new_item" => __("Add New Event Category"),
+      "new_item_name" => __("New Event Category Name"),
+      "not_found" => __("No event categories found"),
+      "no_terms" => __("No event categories")
+    );
+
+    $args = array(
+      "labels" => $labels,
+      "public" => true,
+      "hierarchical" => true,
+      "show_admin_column" => true
+    );
+
+    register_taxonomy("event-category", array("event"), $args);
+  }
+
+  function register_resource_category() {
+    $labels = array(
+      "name" => __("Resource Categories"),
+      "singular_name" => __("Resource Category"),
+      "search_items" => __("Search Resource Categories"),
+      "all_items" => __("All Resource Categories"),
+      "parent_item" => __("Parent Resource Category"),
+      "edit_item" => __("Edit Resource Category"),
+      "view_item" => __("View Resource Category"),
+      "update_item" => __("Update Resource Category"),
+      "add_new_item" => __("Add New Resource Category"),
+      "new_item_name" => __("New Resource Category Name"),
+      "not_found" => __("No resource categories found"),
+      "no_terms" => __("No resource categories")
+    );
+
+    $args = array(
+      "labels" => $labels,
+      "public" => true,
+      "hierarchical" => true,
+      "show_admin_column" => true
+    );
+
+    register_taxonomy("resource-category", array("resource"), $args);
   }
 
   function enqueue_scripts() {
