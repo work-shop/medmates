@@ -50,9 +50,7 @@ if ($total_members > $per_page) {
 
 $context["members"] = $members;
 $context["wp_title"] = "Directory";
-
-$base_path = explode("/", $_SERVER["REQUEST_URI"])[1];
-$context["companies_link"] = user_trailingslashit(get_site_url() . "/$base_path/companies");
-$context["professionals_link"] = user_trailingslashit(get_site_url() . "/$base_path/professionals");
+$context["companies_link"] = user_trailingslashit(get_site_url() . "/member-categories/company");
+$context["professionals_link"] = user_trailingslashit(get_site_url() . "/member-categories/professional");
 
 Timber::render("directory.twig", $context);

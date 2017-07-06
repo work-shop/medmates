@@ -22,10 +22,10 @@ class MyTimberSite extends TimberSite {
     add_action("init", array($this, "remove_comment_support"));
     add_action("admin_menu", array($this, "remove_menu_items"));
     add_action("wp_before_admin_bar_render", array($this, "remove_admin_bar_items"));
-    add_action("admin_menu", array($this, "change_post_menu_label"));
     add_action("init", array($this, "add_professional_role"));
     add_action("init", array($this, "add_company_role"));
     add_action("pre_option_default_role", array($this, "set_default_role"));
+    add_action("admin_menu", array($this, "change_post_menu_label"));
     add_action("init", array($this, "register_team_post_type"));
     add_action("init", array($this, "register_event_post_type"));
     add_action("init", array($this, "register_resource_post_type"));
@@ -35,6 +35,7 @@ class MyTimberSite extends TimberSite {
     add_action("wp_enqueue_scripts", array($this, "enqueue_styles"));
     add_filter("timber_context", array($this, "add_to_context"));
     add_filter("get_twig", array($this, "add_to_twig"));
+    remove_filter("template_redirect", "redirect_canonical");
     parent::__construct();
   }
 
@@ -210,10 +211,13 @@ class MyTimberSite extends TimberSite {
       "labels" => $labels,
       "public" => true,
       "hierarchical" => true,
-      "show_admin_column" => true
+      "show_admin_column" => true,
+      "rewrite" => array(
+        "slug" => "event-categories"
+      )
     );
 
-    register_taxonomy("event-categories", "event", $args);
+    register_taxonomy("event_category", "event", $args);
   }
 
   function register_resource_category() {
@@ -236,10 +240,13 @@ class MyTimberSite extends TimberSite {
       "labels" => $labels,
       "public" => true,
       "hierarchical" => true,
-      "show_admin_column" => true
+      "show_admin_column" => true,
+      "rewrite" => array(
+        "slug" => "resource-categories"
+      )
     );
 
-    register_taxonomy("resource-categories", "resource", $args);
+    register_taxonomy("resource_category", "resource", $args);
   }
 
   function enqueue_scripts() {
@@ -259,7 +266,7 @@ class MyTimberSite extends TimberSite {
   function add_to_context($context) {
     $context["menu"] = new TimberMenu();
     $context["login_link"] = wp_login_url(user_trailingslashit(get_site_url()));
-    $context["profile_link"] = user_trailingslashit(get_site_url() . "/directory/" . get_current_user_id());
+    $context["profile_link"] = user_trailingslashit(get_site_url() . "/members/" . get_current_user_id());
     return $context;
   }
 
