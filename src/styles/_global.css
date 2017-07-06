@@ -10,16 +10,26 @@
   }
 }
 
-* {
+address,
+blockquote,
+form,
+fieldset,
+figure,
+dl,
+ol,
+ul,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+pre,
+table {
   margin: 0;
   padding: 0;
   font: inherit;
-}
-
-/* Reset h1 styling from normalize.css */
-h1 {
-  margin: 0;
-  font-size: inherit;
 }
 
 address,
