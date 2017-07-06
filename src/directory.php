@@ -47,7 +47,7 @@ if ($total_members > $per_page) {
     "current" => max(1, $paged)
   );
 
-  $context["pagination"] = Timber::get_pagination($pg_args);
+  $context["posts"]["pagination"] = Timber::get_pagination($pg_args);
 }
 
 $context["members"] = $members;

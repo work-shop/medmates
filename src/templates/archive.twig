@@ -4,4 +4,6 @@
   {% for post in posts %}
     {% include ["includes/teaser-" ~ post.post_type ~ ".twig", "includes/teaser.twig"] %}
   {% endfor %}
+
+  {% include ["includes/pagination.twig"] %}
 {% endblock %}
