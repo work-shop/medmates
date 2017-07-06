@@ -22,7 +22,7 @@ services:
       - database
     image: wordpress
     ports:
-      - 8080:80
+      - ${HTTP_PORT}:80
     restart: always
     environment:
       WORDPRESS_DB_HOST: ${WORDPRESS_DB_HOST}
@@ -38,4 +38,3 @@ services:
     volumes:
       - ${VOLUME_BASE_PATH}:/app
     command: install
- 

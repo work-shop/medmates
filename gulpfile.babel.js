@@ -103,7 +103,7 @@ export const build = gulp.series(clean,
 const bs = browserSync.create();
 
 export const serve = (done) => bs.init({
-  proxy: "localhost:8080"
+  proxy: "localhost"
 });
 
 export const reload = (done) => {
