@@ -1,19 +1,17 @@
 <nav>
   {% for item in menu.get_items %}
+    {% if loop.last %}
+      <div>
+        {% if user %}
+          <a class="dib f3 gray hover-light-gray no-underline" href="{{ profile_link }}">Profile</a>
+        {% else %}
+          <a class="dib f3 gray hover-light-gray no-underline" href="{{ login_link }}">Log&nbsp;In</a>
+        {% endif %}
+      </div>
+    {% endif %}
+
     <div>
       <a class="dib f3 gray hover-light-gray no-underline" href="{{ item.link }}">{{ item.title }}</a>
     </div>
   {% endfor %}
-
-  <div>
-    {% if user %}
-      <a class="dib f3 gray hover-light-gray no-underline" href="/directory/{{ user.id }}/">Profile</a>
-    {% else %}
-      <a class="dib f3 gray hover-light-gray no-underline" href="{{ function("wp_login_url", site.link) }}">Log&nbsp;In</a>
-    {% endif %}
-  </div>
-
-  <div>
-    <a class="dib f3 gray hover-light-gray no-underline" href="/search/">Search</a>
-  </div>
 </nav>

@@ -1,6 +1,16 @@
 {% extends "base.twig" %}
 
 {% block content %}
+  <nav class="mv5">
+    <span class="mr3 f2 fw6">
+      <a href="{{ companies_link }}">Companies</a>
+    </span>
+
+    <span class="f2 fw6">
+      <a href="{{ professionals_link }}">Professionals</a>
+    </span>
+  </nav>
+
   {% for member in members %}
     {% include ["includes/teaser-member.twig"] %}
   {% endfor %}

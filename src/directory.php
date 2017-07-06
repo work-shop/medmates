@@ -28,9 +28,7 @@ $members = get_users($args);
 // Add a permalink to each member object
 for ($i = 0; $i < count($members); $i++) {
   $member = new Timber\User($members[$i]->ID); // Fetch member object so we have avatar data
-  $uri = $_SERVER["REQUEST_URI"];
-  $baseUri = substr($uri, 0, strpos($uri, "/", strpos($uri, "/") + 1));
-  $member->link = get_site_url() . "$baseUri/$member->ID/";
+  $member->link = user_trailingslashit(get_site_url() . "/members/$member->ID");
   $members[$i] = $member;
 }
 
@@ -52,5 +50,9 @@ if ($total_members > $per_page) {
 
 $context["members"] = $members;
 $context["wp_title"] = "Directory";
+
+$base_path = explode("/", $_SERVER["REQUEST_URI"])[1];
+$context["companies_link"] = user_trailingslashit(get_site_url() . "/$base_path/companies");
+$context["professionals_link"] = user_trailingslashit(get_site_url() . "/$base_path/professionals");
 
 Timber::render("directory.twig", $context);
