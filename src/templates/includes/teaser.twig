@@ -1,13 +1,11 @@
-<article class="measure-wide mb3">
-  {% block content %}
-    <h1 class="mb3 f3 fw6 lh-title">
-      <a href="{{ post.link }}">{{ post.title }}</a>
-    </h1>
+<article class="measure-wide mb4">
+  <h1 class="mb3 f3 fw6 lh-title">
+    <a href="{{ post.link }}">{{ post.title }}</a>
+  </h1>
 
-    <p>{{ post.preview }}</p>
+  <p>{{ post.preview }}</p>
 
-    {% if post.get_thumbnail %}
-      <img class="db" src="{{ post.thumbnail.src }}">
-    {% endif %}
-  {% endblock %}
+  {% if post.get_thumbnail %}
+    <img class="db" src="{{ post.thumbnail.src }}">
+  {% endif %}
 </article>

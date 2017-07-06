@@ -1,10 +1,5 @@
 <?php
 
-// Configuration
-
-$per_page = 2;
-
-
 // Helper Functions
 
 function get_total_users_of_type($user_type) {
@@ -29,10 +24,8 @@ function is_page_number_valid($page_number, $user_type, $per_page) {
 // Routes
 
 Routes::map("directory", function ($params) {
-  global $per_page;
-
   $params["user_type"] = "subscriber";
-  $params["per_page"] = $per_page;
+  $params["per_page"] = get_option("posts_per_page");
 
   if (is_page_number_valid(1, $params["user_type"], $params["per_page"])) {
     Routes::load("directory.php", $params, null, 200);
@@ -42,10 +35,8 @@ Routes::map("directory", function ($params) {
 });
 
 Routes::map("directory/page/:page_number", function ($params) {
-  global $per_page;
-
   $params["user_type"] = "subscriber";
-  $params["per_page"] = $per_page;
+  $params["per_page"] = get_option("posts_per_page");
 
   if (is_page_number_valid($params["page_number"], $params["user_type"], $params["per_page"])) {
     Routes::load("directory.php", $params, null, 200);
@@ -55,10 +46,8 @@ Routes::map("directory/page/:page_number", function ($params) {
 });
 
 Routes::map("directory/professionals/page/:page_number", function ($params) {
-  global $per_page;
-
   $params["user_type"] = "subscriber";
-  $params["per_page"] = $per_page;
+  $params["per_page"] = get_option("posts_per_page");
 
   if (is_page_number_valid($params["page_number"], $params["user_type"], $params["per_page"])) {
     Routes::load("directory.php", $params, null, 200);
