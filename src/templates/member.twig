@@ -3,31 +3,31 @@
 {% block content %}
   <article class="measure-wide">
     <div class="flex-m mb4">
-      <img class="dib mb3 mb0-m" src="{{ user.avatar(224) }}" width="224" height="224" alt="">
+      <img class="dib mb3 mb0-m" src="{{ member.avatar(224) }}" width="224" height="224" alt="">
 
       <div class="ml3-m">
-        <div class="f6 fw6 ttu tracked gray">{{ user.company_affiliation }}</div>
-        <div class="f6 fw6 ttu tracked gray">{{ user.professional_title }}</div>
-        <div class="f6 fw6 ttu tracked gray">{{ user.job_functions }}</div>
+        <div class="f6 fw6 ttu tracked gray">{{ member.company_affiliation }}</div>
+        <div class="f6 fw6 ttu tracked gray">{{ member.professional_title }}</div>
+        <div class="f6 fw6 ttu tracked gray">{{ member.job_functions }}</div>
 
-        {% if user.facebook_url or user.twitter_url or user.linkedin_url %}
+        {% if member.facebook_url or member.twitter_url or member.linkedin_url %}
           <div class="">
-            {% if user.facebook_url %}
-              <a href="{{ user.facebook_url }}" target="_blank">Facebook</a>
+            {% if member.facebook_url %}
+              <a href="{{ member.facebook_url }}" target="_blank">Facebook</a>
             {% endif %}
 
-            {% if user.twitter_url %}
-              <a href="{{ user.twitter_url }}" target="_blank">Twitter</a>
+            {% if member.twitter_url %}
+              <a href="{{ member.twitter_url }}" target="_blank">Twitter</a>
             {% endif %}
 
-            {% if user.linkedin_url %}
-              <a href="{{ user.linkedin_url }}" target="_blank">LinkedIn</a>
+            {% if member.linkedin_url %}
+              <a href="{{ member.linkedin_url }}" target="_blank">LinkedIn</a>
             {% endif %}
           </div>
         {% endif %}
       </div>
     </div>
 
-    <div>{{ user.description | wpautop }}</div>
+    <div>{{ member.description | wpautop }}</div>
   </article>
 {% endblock %}

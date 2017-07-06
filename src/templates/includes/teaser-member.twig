@@ -1,0 +1,21 @@
+<article class="flex measure-wide mb4">
+  {% if member.avatar %}
+    <figure class="mb3 mr3">
+      <a href="{{ member.link }}">
+        <img class="db" src="{{ member.avatar(112) }}" width="112" height="112" alt="">
+      </a>
+    </figure>
+  {% endif %}
+
+  <div>
+    <h1 class="mb3 f3 fw6 lh-title">
+      <a href="{{ member.link }}">{{ member.display_name }}</a>
+    </h1>
+
+    <div>
+      <div class="f6 fw6 ttu tracked gray">{{ member.company_affiliation }}</div>
+      <div class="f6 fw6 ttu tracked gray">{{ member.professional_title }}</div>
+      <div class="f6 fw6 ttu tracked gray">{{ member.job_functions }}</div>
+    </div>
+  </div>
+</article>

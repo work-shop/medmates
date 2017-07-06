@@ -4,7 +4,7 @@ global $params;
 
 $context = Timber::get_context();
 
-$member_type = $params["member_type"];
+$member_role = $params["member_role"];
 $per_page = $params["per_page"];
 $paged = 0;
 
@@ -17,7 +17,7 @@ set_query_var("paged", $paged);
 $args = array(
   "offset" => $paged ? ($paged - 1) * $per_page : 0,
   "number" => $per_page,
-  "role" => $member_type,
+  "role" => $member_role,
   "meta_key" => "last_name",
   "orderby" => "meta_value",
   "order" => "ASC"
@@ -27,16 +27,16 @@ $members = get_users($args);
 
 // Add a permalink to each member object
 for ($i = 0; $i < count($members); $i++) {
-  $member = $members[$i];
+  $member = new Timber\User($members[$i]->ID); // Fetch member object so we have avatar data
   $uri = $_SERVER["REQUEST_URI"];
   $baseUri = substr($uri, 0, strpos($uri, "/", strpos($uri, "/") + 1));
   $member->link = get_site_url() . "$baseUri/$member->ID/";
   $members[$i] = $member;
 }
 
-// Get total count of members (of $member_type)
+// Get total count of members (of $member_role)
 $total_members = count_users();
-$total_members = $total_members["avail_roles"][$member_type];
+$total_members = $total_members["avail_roles"][$member_role];
 
 if ($total_members > $per_page) {
   $big = 999999999;
