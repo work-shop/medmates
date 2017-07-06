@@ -1,0 +1,15 @@
+{% if pagination %}
+  <nav class="mv5">
+    {% if pagination.prev %}
+      <span class="{% if pagination.prev and pagination.next %} mr3 {% endif %}">
+        <a href="{{ pagination.prev.link }}">Previous Page</a>
+      </span>
+    {% endif %}
+
+    {% if pagination.next %}
+      <span>
+        <a href="{{ pagination.next.link }}">Next Page</a>
+      </span>
+    {% endif %}
+  </nav>
+{% endif %}

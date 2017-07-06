@@ -1,7 +1,9 @@
 {% extends "base.twig" %}
 
 {% block content %}
-  {% for member in members %}
-    {% include ["includes/teaser-member.twig"] %}
+  {% for user in users %}
+    {% include ["includes/teaser-user.twig"] %}
   {% endfor %}
+
+  {% include ["includes/pagination.twig"] %}
 {% endblock %}

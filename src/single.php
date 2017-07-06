@@ -1,12 +1,10 @@
 <?php
 
 $context = Timber::get_context();
-$context["post"] = Timber::get_post();
 
-$templates = array(
-  "single-" . $post->ID . ".twig",
-  "single-" . $post->post_type . ".twig",
-  "single.twig"
-);
+$post = Timber::get_post();
+$context["post"] = $post;
+
+$templates = array("single-" . $post->post_type . ".twig", "single.twig");
 
 Timber::render($templates, $context);

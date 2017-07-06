@@ -2,4 +2,4 @@
 
 $context = Timber::get_context();
 
-Timber::render("archive.twig", $context);
+Timber::render("search.twig", $context);

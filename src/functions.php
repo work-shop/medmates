@@ -100,8 +100,9 @@ class MyTimberSite extends TimberSite {
     $args = array(
       "labels" => $labels,
       "public" => true,
+      "supports" => array("title", "editor", "thumbnail"),
+      "has_archive" => true,
       "rewrite" => array(
-        "slug" => "active-teams",
         "with_front" => false
       )
     );
@@ -128,9 +129,7 @@ class MyTimberSite extends TimberSite {
   }
 
   function add_to_context($context) {
-    $context["site"] = $this;
     $context["menu"] = new TimberMenu();
-    $context["widgets"] = Timber::get_widgets("widgets");
     return $context;
   }
 

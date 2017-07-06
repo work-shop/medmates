@@ -1,0 +1,15 @@
+<article class="measure-wide mb3">
+    {% if post.get_thumbnail %}
+      <img class="db" src="{{ post.thumbnail.src }}">
+    {% endif %}
+
+    <h1 class="mb3 f3 fw6 lh-title">
+      <a href="{{ user.link }}">{{ user.display_name }}</a>
+    </h1>
+
+    <div>
+      <div class="f6 fw6 ttu tracked gray">{{ user.company_affiliation }}</div>
+      <div class="f6 fw6 ttu tracked gray">{{ user.professional_title }}</div>
+      <div class="f6 fw6 ttu tracked gray">{{ user.job_functions }}</div>
+    </div>
+</article>

@@ -1,0 +1,33 @@
+{% extends "base.twig" %}
+
+{% block content %}
+  <article class="measure-wide">
+    <div class="flex-m mb4">
+      <img class="dib mb3 mb0-m" src="{{ user.avatar(248) }}" width="248" height="248" alt="">
+
+      <div class="ml3-m">
+        <div class="f6 fw6 ttu tracked gray">{{ user.company_affiliation }}</div>
+        <div class="f6 fw6 ttu tracked gray">{{ user.professional_title }}</div>
+        <div class="f6 fw6 ttu tracked gray">{{ user.job_functions }}</div>
+
+        {% if user.facebook_url or user.twitter_url or user.linkedin_url %}
+          <div class="">
+            {% if user.facebook_url %}
+              <a href="{{ user.facebook_url }}" target="_blank">Facebook</a>
+            {% endif %}
+
+            {% if user.twitter_url %}
+              <a href="{{ user.twitter_url }}" target="_blank">Twitter</a>
+            {% endif %}
+
+            {% if user.linkedin_url %}
+              <a href="{{ user.linkedin_url }}" target="_blank">LinkedIn</a>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <div>{{ user.description | wpautop }}</div>
+  </article>
+{% endblock %}
