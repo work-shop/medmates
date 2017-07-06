@@ -1,13 +1,17 @@
 <article class="measure-wide mb4">
-  <h1 class="mb3 f3 fw6 lh-title">
+  <h1 class="mb3 f4 f3-m fw6 lh-title">
     <a href="{{ post.link }}">{{ post.title }}</a>
   </h1>
 
-  <div class="mb3 f6 fw6 ttu tracked gray">Posted {{ post.post_date_gmt | time_ago }} by {{ post.author }}</div>
-
-  <p>{{ post.preview }}</p>
+  <div class="mb3 f6 fw6 ttu tracked gray">
+    Posted {{ post.post_date_gmt | time_ago }} by {{ post.author }}
+  </div>
 
   {% if post.get_thumbnail %}
-    <img class="db" src="{{ post.thumbnail.src }}">
+    <a href="{{ post.link }}"><img class="db" src="{{ post.thumbnail.src }}"></a>
   {% endif %}
+
+  <p>
+    {{ post.preview }}
+  </p>
 </article>

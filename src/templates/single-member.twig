@@ -1,17 +1,37 @@
 {% extends "base.twig" %}
 
 {% block content %}
-  <article class="measure-wide">
+  <article>
+    <h1 class="mb4 f3 f2-m fw6 lh-title green">
+      {{ member_category }}
+    </h1>
+
     <div class="flex-m mb4">
       <img class="dib mb3 mb0-m" src="{{ member.avatar(224) }}" width="224" height="224" alt="">
 
       <div class="ml3-m">
-        <div class="f6 fw6 ttu tracked gray">{{ member.company_affiliation }}</div>
-        <div class="f6 fw6 ttu tracked gray">{{ member.professional_title }}</div>
-        <div class="f6 fw6 ttu tracked gray">{{ member.job_functions }}</div>
+        <div class="f6 fw6 ttu tracked gray">
+          {{ member.company_affiliation }}
+        </div>
 
-        {% if member.facebook_url or member.twitter_url or member.linkedin_url %}
-          <div class="">
+        {% if member.professional_title %}
+          <div class="f6 fw6 ttu tracked gray">
+            {{ member.professional_title }}
+          </div>
+        {% endif %}
+
+        {% if member.job_functions %}
+          <div class="f6 fw6 ttu tracked gray">
+            {{ member.job_functions }}
+          </div>
+        {% endif %}
+
+        {% if member.user_url or member.facebook_url or member.twitter_url or member.linkedin_url %}
+          <div>
+            {% if member.user_url %}
+              <a href="{{ member.user_url }}" target="_blank">Website</a>
+            {% endif %}
+
             {% if member.facebook_url %}
               <a href="{{ member.facebook_url }}" target="_blank">Facebook</a>
             {% endif %}
@@ -28,6 +48,10 @@
       </div>
     </div>
 
-    <div>{{ member.description | wpautop }}</div>
+    {% if member.description %}
+      <div class="measure-wide">
+        {{ member.description | wpautop }}
+      </div>
+    {% endif %}
   </article>
 {% endblock %}
