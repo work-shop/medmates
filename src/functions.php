@@ -79,6 +79,8 @@ class MyTimberSite extends TimberSite {
   }
 
   function register_post_types() {
+    // Active Teams
+
     $labels = array(
       "name" => __("Active Teams"),
       "singular_name" => __("Active Team"),
@@ -108,6 +110,72 @@ class MyTimberSite extends TimberSite {
     );
 
     register_post_type("active-team", $args);
+
+
+    // Events
+
+    $labels = array(
+      "name" => __("Events"),
+      "singular_name" => __("Event"),
+      "add_new_item" => __("Add New Event"),
+      "edit_item" => __("Edit Event"),
+      "new_item" => __("New Event"),
+      "view_item" => __("View Event"),
+      "view_items" => __("View Events"),
+      "search_items" => __("Search Events"),
+      "not_found" => __("No events found"),
+      "not_found_in_trash" => __("No events found in Trash"),
+      "all_items" => __("All Events"),
+      "archives" => __("Event Archives"),
+      "attributes" => __("Event Attributes"),
+      "insert_into_item" => __("Insert into event"),
+      "uploaded_to_this_item" => __("Uploaded to this event")
+    );
+
+    $args = array(
+      "labels" => $labels,
+      "public" => true,
+      "supports" => array("title", "editor", "thumbnail"),
+      "has_archive" => true,
+      "rewrite" => array(
+        "with_front" => false
+      )
+    );
+
+    register_post_type("event", $args);
+
+
+    // Resources
+
+    $labels = array(
+      "name" => __("Resources"),
+      "singular_name" => __("Resource"),
+      "add_new_item" => __("Add New Resource"),
+      "edit_item" => __("Edit Resource"),
+      "new_item" => __("New Resource"),
+      "view_item" => __("View Resource"),
+      "view_items" => __("View Resources"),
+      "search_items" => __("Search Resources"),
+      "not_found" => __("No resources found"),
+      "not_found_in_trash" => __("No resources found in Trash"),
+      "all_items" => __("All Resources"),
+      "archives" => __("Resource Archives"),
+      "attributes" => __("Resource Attributes"),
+      "insert_into_item" => __("Insert into resource"),
+      "uploaded_to_this_item" => __("Uploaded to this resource")
+    );
+
+    $args = array(
+      "labels" => $labels,
+      "public" => true,
+      "supports" => array("title", "editor", "thumbnail"),
+      "has_archive" => true,
+      "rewrite" => array(
+        "with_front" => false
+      )
+    );
+
+    register_post_type("resource", $args);
   }
 
   function register_taxonomies() {
