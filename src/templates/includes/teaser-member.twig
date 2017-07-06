@@ -12,10 +12,26 @@
       <a href="{{ member.link }}">{{ member.display_name }}</a>
     </h1>
 
-    <div>
-      <div class="f6 fw6 ttu tracked gray">{{ member.company_affiliation }}</div>
-      <div class="f6 fw6 ttu tracked gray">{{ member.professional_title }}</div>
-      <div class="f6 fw6 ttu tracked gray">{{ member.job_functions }}</div>
-    </div>
+    {% if member.company_affiliation or member.professional_title or member.job_functions %}
+      <div>
+        {% if member.company_affiliation %}
+          <div class="f6 fw6 ttu tracked gray">
+            {{ member.company_affiliation }}
+          </div>
+        {% endif %}
+
+        {% if member.professional_title %}
+          <div class="f6 fw6 ttu tracked gray">
+            {{ member.professional_title }}
+          </div>
+        {% endif %}
+
+        {% if member.job_functions %}
+          <div class="f6 fw6 ttu tracked gray">
+            {{ member.job_functions }}
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
   </div>
 </article>
