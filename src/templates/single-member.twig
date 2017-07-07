@@ -2,29 +2,14 @@
 
 {% block content %}
   <article>
-    <h1 class="mb4 f3 f2-m fw6 lh-title green">
-      {{ member_category }}
-    </h1>
-
     <div class="flex-m mb4">
-      <img class="dib mb3 mb0-m" src="{{ member.avatar(224) }}" width="224" height="224" alt="">
+      {% if member.avatar %}
+        <img class="dib mb3 mb0-m" src="{{ member.avatar(224) }}" width="224" height="224" alt="">
+      {% endif %}
 
       <div class="ml3-m">
-        <div class="f6 fw6 ttu tracked gray">
-          {{ member.company_affiliation }}
-        </div>
-
-        {% if member.professional_title %}
-          <div class="f6 fw6 ttu tracked gray">
-            {{ member.professional_title }}
-          </div>
-        {% endif %}
-
-        {% if member.job_functions %}
-          <div class="f6 fw6 ttu tracked gray">
-            {{ member.job_functions }}
-          </div>
-        {% endif %}
+        {% block member_details %}
+        {% endblock %}
 
         {% if member.user_url or member.facebook_url or member.twitter_url or member.linkedin_url %}
           <div>

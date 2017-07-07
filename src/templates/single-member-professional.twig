@@ -1,0 +1,19 @@
+{% extends "single-member.twig" %}
+
+{% block member_details %}
+  <div class="f6 fw6 ttu tracked gray">
+    {{ member.company_affiliation }}
+  </div>
+
+  {% if member.professional_title %}
+    <div class="f6 fw6 ttu tracked gray">
+      {{ member.professional_title }}
+    </div>
+  {% endif %}
+
+  {% if member.job_functions %}
+    <div class="f6 fw6 ttu tracked gray">
+      {{ member.job_functions }}
+    </div>
+  {% endif %}
+{% endblock %}
