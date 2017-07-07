@@ -3,7 +3,6 @@
 global $params;
 
 $context = Timber::get_context();
-
 $member_role = $params["member_role"];
 $per_page = $params["per_page"];
 $paged = 1;
