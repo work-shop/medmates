@@ -1,3 +1,4 @@
+import dotenv from "dotenv";
 import gulp from "gulp";
 import del from "del";
 import plumber from "gulp-plumber";
@@ -11,6 +12,8 @@ import atImport from "postcss-import";
 import cssnext from "postcss-cssnext";
 import cssnano from "cssnano";
 import browserSync from "browser-sync";
+
+dotenv.config();
 
 const basePaths = {
   src: "./src",
@@ -103,7 +106,7 @@ export const build = gulp.series(clean,
 const bs = browserSync.create();
 
 export const serve = (done) => bs.init({
-  proxy: "localhost"
+  proxy: process.env.BS_PROXY_HOST
 });
 
 export const reload = (done) => {
