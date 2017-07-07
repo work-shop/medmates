@@ -58,4 +58,4 @@ $context["wp_title"] = "Directory";
 $context["companies_link"] = user_trailingslashit(get_site_url() . "/member-categories/company");
 $context["professionals_link"] = user_trailingslashit(get_site_url() . "/member-categories/professional");
 
-Timber::render("archive-member.twig", $context);
+Timber::render("directory.twig", $context);
