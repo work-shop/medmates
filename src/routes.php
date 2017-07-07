@@ -28,7 +28,7 @@ Routes::map("members", function ($params) {
   $params["per_page"] = get_option("posts_per_page");
 
   if (is_page_number_valid(1, $params["member_role"], $params["per_page"])) {
-    Routes::load("directory.php", $params, null, 200);
+    Routes::load("archive-member.php", $params, null, 200);
   } else {
     Routes::load("404.php", null, null, 404);
   }
@@ -39,7 +39,7 @@ Routes::map("member/page/:page_number", function ($params) {
   $params["per_page"] = get_option("posts_per_page");
 
   if (is_page_number_valid($params["page_number"], $params["member_role"], $params["per_page"])) {
-    Routes::load("directory.php", $params, null, 200);
+    Routes::load("archive-member.php", $params, null, 200);
   } else {
     Routes::load("404.php", null, null, 404);
   }
@@ -50,7 +50,7 @@ Routes::map("member-categories/company", function ($params) {
   $params["per_page"] = get_option("posts_per_page");
 
   if (is_page_number_valid(1, $params["member_role"], $params["per_page"])) {
-    Routes::load("directory.php", $params, null, 200);
+    Routes::load("archive-member.php", $params, null, 200);
   } else {
     Routes::load("404.php", null, null, 404);
   }
@@ -61,7 +61,7 @@ Routes::map("member-categories/company/page/:page_number", function ($params) {
   $params["per_page"] = get_option("posts_per_page");
 
   if (is_page_number_valid($params["page_number"], $params["member_role"], $params["per_page"])) {
-    Routes::load("directory.php", $params, null, 200);
+    Routes::load("archive-member.php", $params, null, 200);
   } else {
     Routes::load("404.php", null, null, 404);
   }
@@ -72,7 +72,7 @@ Routes::map("member-categories/professional", function ($params) {
   $params["per_page"] = get_option("posts_per_page");
 
   if (is_page_number_valid(1, $params["member_role"], $params["per_page"])) {
-    Routes::load("directory.php", $params, null, 200);
+    Routes::load("archive-member.php", $params, null, 200);
   } else {
     Routes::load("404.php", null, null, 404);
   }
@@ -83,7 +83,7 @@ Routes::map("member-categories/professional/page/:page_number", function ($param
   $params["per_page"] = get_option("posts_per_page");
 
   if (is_page_number_valid($params["page_number"], $params["member_role"], $params["per_page"])) {
-    Routes::load("directory.php", $params, null, 200);
+    Routes::load("archive-member.php", $params, null, 200);
   } else {
     Routes::load("404.php", null, null, 404);
   }

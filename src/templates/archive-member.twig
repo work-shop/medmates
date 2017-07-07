@@ -1,0 +1,19 @@
+{% extends "base.twig" %}
+
+{% block content %}
+  <nav class="mv4 mv5-m">
+    <span class="mr3 f3 f2-m fw6 lh-title">
+      <a href="{{ companies_link }}">Companies</a>
+    </span>
+
+    <span class="f3 f2-m fw6 lh-title">
+      <a href="{{ professionals_link }}">Professionals</a>
+    </span>
+  </nav>
+
+  {% for member in members %}
+    {% include ["includes/teaser-member.twig"] %}
+  {% endfor %}
+
+  {% include ["includes/pagination.twig"] %}
+{% endblock %}
