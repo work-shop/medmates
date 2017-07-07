@@ -16,7 +16,7 @@ function get_total_pages_of_members_of_type($member_role, $per_page) {
 
 function is_page_number_valid($page_number, $member_role, $per_page) {
   $total_pages = get_total_pages_of_members_of_type($member_role, $per_page);
-  $bool = (($page_number > 0) && ($page_number <= $total_pages)) ? true : false;
+  $bool = (($page_number >= 0) && ($page_number <= $total_pages)) ? true : false;
   return $bool;
 }
 

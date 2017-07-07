@@ -6,7 +6,7 @@ $context = Timber::get_context();
 
 $member_role = $params["member_role"];
 $per_page = $params["per_page"];
-$paged = 0;
+$paged = 1;
 
 if (isset($params["page_number"])) {
   $paged = $params["page_number"];
@@ -45,7 +45,13 @@ if ($total_members > $per_page) {
     "current" => max(1, $paged)
   );
 
-  $context["posts"]["pagination"] = Timber::get_pagination($pg_args);
+  $pagination = Timber::get_pagination($pg_args);
+
+  if (!empty($pagination["prev"])) {
+    $pagination["prev"]["link"] = str_replace("/page/1", "", $pagination["prev"]["link"]);
+  }
+
+  $context["posts"]["pagination"] = $pagination;
 }
 
 $context["members"] = $members;
