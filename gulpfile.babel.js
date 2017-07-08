@@ -106,7 +106,7 @@ export const build = gulp.series(clean,
 const bs = browserSync.create();
 
 export const serve = (done) => bs.init({
-  proxy: process.env.BS_PROXY_HOST
+  proxy: `${process.env.HTTP_HOST}:${process.env.HTTP_PORT}`
 });
 
 export const reload = (done) => {
