@@ -13,12 +13,12 @@
     "url": "https://github.com/bearform/wp-dev-kit/issues"
   },
   "homepage": "https://github.com/bearform/wp-dev-kit#readme",
-  "scripts":{
+  "scripts": {
     "start": "gulp",
     "build": "gulp build"
   },
   "devDependencies": {
-    "babel-preset-env": "^1.5.2",
+    "babel-preset-env": "^1.6.0",
     "babel-register": "^6.24.1",
     "browser-sync": "^2.18.12",
     "cssnano": "^3.10.0",
@@ -32,7 +32,7 @@
     "gulp-rename": "^1.2.2",
     "gulp-sourcemaps": "^2.6.0",
     "gulp-uglify": "^3.0.0",
-    "postcss-cssnext": "^2.11.0",
+    "postcss-cssnext": "^3.0.0",
     "postcss-import": "^10.0.0",
     "tachyons": "^4.7.4",
     "tachyons-skins-pseudo": "^1.0.3"
