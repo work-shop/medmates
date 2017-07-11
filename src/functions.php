@@ -30,6 +30,7 @@ class MyTimberSite extends TimberSite {
     add_action("init", array($this, "register_resource_post_type"));
     add_action("init", array($this, "register_event_category"));
     add_action("init", array($this, "register_resource_category"));
+    add_action("init", array($this, "register_industry_category"));
     add_action("wp_enqueue_scripts", array($this, "enqueue_scripts"));
     add_action("wp_enqueue_scripts", array($this, "enqueue_styles"));
     add_filter("timber_context", array($this, "add_to_context"));
@@ -233,6 +234,35 @@ class MyTimberSite extends TimberSite {
     );
 
     register_taxonomy("resource_category", "resource", $args);
+  }
+
+  function register_industry_category() {
+    $labels = array(
+      "name" => __("Industry Categories"),
+      "singular_name" => __("Industry Category"),
+      "search_items" => __("Search Industry Categories"),
+      "all_items" => __("All Industry Categories"),
+      "parent_item" => __("Parent Industry Category"),
+      "edit_item" => __("Edit Industry Category"),
+      "view_item" => __("View Industry Category"),
+      "update_item" => __("Update Industry Category"),
+      "add_new_item" => __("Add New Industry Category"),
+      "new_item_name" => __("New Industry Category Name"),
+      "not_found" => __("No industry categories found"),
+      "no_terms" => __("No industry categories")
+    );
+
+    $args = array(
+      "labels" => $labels,
+      "public" => true,
+      "hierarchical" => true,
+      "show_admin_column" => true,
+      "rewrite" => array(
+        "slug" => "industry-category"
+      )
+    );
+
+    register_taxonomy("industry_category", "", $args);
   }
 
   function enqueue_scripts() {
