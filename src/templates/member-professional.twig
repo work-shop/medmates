@@ -1,19 +1,43 @@
 {% extends "member.twig" %}
 
 {% block member_details %}
-  <div class="f6 fw6 ttu tracked gray">
-    {{ member.company_affiliation }}
-  </div>
-
-  {% if member.professional_title %}
-    <div class="f6 fw6 ttu tracked gray">
-      {{ member.professional_title }}
+  {% if member.job_title %}
+    <div>
+      {{ member.job_title }}
     </div>
   {% endif %}
 
   {% if member.job_functions %}
-    <div class="f6 fw6 ttu tracked gray">
+    <div>
       {{ member.job_functions }}
     </div>
+  {% endif %}
+
+  {% if member.company_affiliation %}
+    <div>
+      {{ member.company_affiliation }}
+    </div>
+  {% endif %}
+{% endblock %}
+
+{% block member_contact %}
+  {% if member.user_email or member.phone_number %}
+    <section class="mb4">
+      <h1 class="mb3 f3 f2-m fw6 lh-title green">
+        Contact Information
+      </h1>
+
+      {% if member.user_email %}
+        <div>
+          <a href="mailto:{{ member.user_email }}">{{ member.user_email }}</a>
+        </div>
+      {% endif %}
+
+      {% if member.phone_number %}
+        <div>
+          {{ member.phone_number }}
+        </div>
+      {% endif %}
+    </section>
   {% endif %}
 {% endblock %}

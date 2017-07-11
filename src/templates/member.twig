@@ -4,39 +4,66 @@
   <article>
     <div class="flex-m mb4">
       {% if member.avatar %}
-        <img class="dib mb3 mb0-m" src="{{ member.avatar(224) }}" width="224" height="224" alt="">
+        <img class="flex-no-shrink db mb3 mb0-m" src="{{ member.avatar(224) }}" width="224" height="224" alt="">
       {% endif %}
 
       <div class="ml3-m">
-        {% block member_details %}
-        {% endblock %}
+        <div class="mb3 measure-wide">
+          {% if member.industry_categories %}
+            <div class="mb3 f6 fw6 ttu tracked gray">
+              {% for category in member.get_field("industry_categories") %}
+                {{ category.label }}{% spaceless %}
+                  {% if not loop.last %}, {% endif %}
+                {% endspaceless %}
+              {% endfor %}
+            </div>
+          {% endif %}
 
-        {% if member.user_url or member.facebook_url or member.twitter_url or member.linkedin_url %}
+          {% block member_details %}
+          {% endblock %}
+        </div>
+
+        {% if member.user_url or member.linkedin_url or member.facebook_url or member.twitter_url %}
           <div>
             {% if member.user_url %}
-              <a href="{{ member.user_url }}" target="_blank">Website</a>
+              <a href="{{ member.user_url }}" target="_blank">Website</a>{% spaceless %}
+                {% if member.linkedin_url or member.facebook_url or member.twitter_url %}, {% endif %}
+              {% endspaceless %}
+            {% endif %}
+
+            {% if member.linkedin_url %}
+              <a href="{{ member.linkedin_url }}" target="_blank">LinkedIn</a>{% spaceless %}
+                {% if member.facebook_url or member.twitter_url %}, {% endif %}
+              {% endspaceless %}
             {% endif %}
 
             {% if member.facebook_url %}
-              <a href="{{ member.facebook_url }}" target="_blank">Facebook</a>
+              <a href="{{ member.facebook_url }}" target="_blank">Facebook</a>{% spaceless %}
+                {% if member.twitter_url %}, {% endif %}
+              {% endspaceless %}
             {% endif %}
 
             {% if member.twitter_url %}
               <a href="{{ member.twitter_url }}" target="_blank">Twitter</a>
-            {% endif %}
-
-            {% if member.linkedin_url %}
-              <a href="{{ member.linkedin_url }}" target="_blank">LinkedIn</a>
             {% endif %}
           </div>
         {% endif %}
       </div>
     </div>
 
+    {% block member_contact %}
+    {% endblock %}
+
     {% if member.description %}
-      <div class="measure-wide">
-        {{ member.description | wpautop }}
-      </div>
+      <section>
+        <h1 class="mb3 f3 f2-m fw6 lh-title green">
+          Biography
+        </h1>
+
+        <div class="measure-wide">
+          {{ member.description | wpautop }}
+        </div>
+      </section>
     {% endif %}
   </article>
 {% endblock %}

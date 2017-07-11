@@ -1,11 +1,11 @@
 <nav class="flex justify-between items-end">
-  <div class="flex-auto flex items-end">
+  <div class="flex-auto flex-no-shrink flex items-end">
     <a class="dib f3 fw6 lh-solid no-underline" href="{{ site.url }}">
       <img style="min-width: 192px;" class="db" src="{{ theme.link }}/images/logo.svg" alt="MedMates">
     </a>
   </div>
 
-  <section class="dib dn-l ml3 state-hide-child" id="mini-menu">
+  <section class="flex-no-shrink dib dn-l ml3 state-hide-child" id="mini-menu">
     <span class="db f3 lh-solid dark-gray hover-gray no-underline">
       <img style="min-width: 36px;" class="db" src="{{ theme.link }}/images/icon-menu.svg" alt="Menu" title="Menu">
     </span>
@@ -39,7 +39,7 @@
     {% endif %}
 
     {% if item.link matches "/^.*search.*$/" %}
-      <a class="dn dib-l ml3 f3 lh-solid dark-gray hover-gray no-underline" href="{{ item.link }}">
+      <a class="flex-no-shrink dn dib-l ml3 f3 lh-solid dark-gray hover-gray no-underline" href="{{ item.link }}">
         <img style="min-width: 24px;" class="db" src="{{ theme.link }}/images/icon-search.svg" alt="{{ item.title }}" title="{{ item.title }}">
       </a>
     {% else %}

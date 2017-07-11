@@ -1,19 +1,47 @@
 {% extends "member.twig" %}
 
 {% block member_details %}
-  <div class="f6 fw6 ttu tracked gray">
-    {{ member.company_affiliation }}
-  </div>
-
-  {% if member.professional_title %}
-    <div class="f6 fw6 ttu tracked gray">
-      {{ member.professional_title }}
+  {% if member.development_stage %}
+    <div>
+      {{ member.get_field("development_stage").label }}
     </div>
   {% endif %}
 
-  {% if member.job_functions %}
-    <div class="f6 fw6 ttu tracked gray">
-      {{ member.job_functions }}
+  {% if member.number_of_employees %}
+    <div>
+      {{ member.number_of_employees }} Employees
     </div>
+  {% endif %}
+
+  {% if member.address %}
+    <address class="mt3">
+      {{ member.get_field("address") }}
+    </address>
+  {% endif %}
+{% endblock %}
+
+{% block member_contact %}
+  {% if member.contact_name %}
+    <section class="mb4">
+      <h1 class="mb3 f3 f2-m fw6 lh-title green">
+        Point of Contact
+      </h1>
+
+      <div>
+        {{ member.contact_name }}
+      </div>
+
+      {% if member.contact_email %}
+        <div>
+          <a href="mailto:{{ member.contact_email }}">{{ member.contact_email }}</a>
+        </div>
+      {% endif %}
+
+      {% if member.contact_phone_number %}
+        <div>
+          {{ member.contact_phone_number }}
+        </div>
+      {% endif %}
+    </section>
   {% endif %}
 {% endblock %}
