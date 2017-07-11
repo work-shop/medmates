@@ -199,7 +199,7 @@ class MyTimberSite extends TimberSite {
       "hierarchical" => true,
       "show_admin_column" => true,
       "rewrite" => array(
-        "slug" => "event-categories"
+        "slug" => "event-category"
       )
     );
 
@@ -228,7 +228,7 @@ class MyTimberSite extends TimberSite {
       "hierarchical" => true,
       "show_admin_column" => true,
       "rewrite" => array(
-        "slug" => "resource-categories"
+        "slug" => "resource-category"
       )
     );
 
