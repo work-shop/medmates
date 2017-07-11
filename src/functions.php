@@ -103,7 +103,6 @@ class MyTimberSite extends TimberSite {
       "public" => true,
       "supports" => array("title", "editor", "excerpt", "thumbnail"),
       "taxonomies" => array("post_tag"),
-      // "has_archive" => true,
       "rewrite" => array(
         "slug" => "active-team"
       )
@@ -136,7 +135,6 @@ class MyTimberSite extends TimberSite {
       "public" => true,
       "supports" => array("title", "editor", "excerpt", "thumbnail"),
       "taxonomies" => array("event_category", "post_tag"),
-      // "has_archive" => true,
       "rewrite" => array(
         "slug" => "event"
       )
@@ -169,7 +167,6 @@ class MyTimberSite extends TimberSite {
       "public" => true,
       "supports" => array("title", "editor", "excerpt", "thumbnail", "page-attributes"),
       "taxonomies" => array("resource_category", "post_tag"),
-      // "has_archive" => true,
       "rewrite" => array(
         "slug" => "resource"
       )
