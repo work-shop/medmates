@@ -24,7 +24,6 @@ class MyTimberSite extends TimberSite {
     add_action("wp_before_admin_bar_render", array($this, "remove_admin_bar_items"));
     add_action("init", array($this, "add_professional_role"));
     add_action("init", array($this, "add_company_role"));
-    add_action("pre_option_default_role", array($this, "set_default_role"));
     add_action("admin_menu", array($this, "change_post_menu_label"));
     add_action("init", array($this, "register_team_post_type"));
     add_action("init", array($this, "register_event_post_type"));
@@ -56,15 +55,6 @@ class MyTimberSite extends TimberSite {
     $wp_admin_bar->remove_menu("comments");
   }
 
-  function rename_subscriber_role() {
-    global $wp_roles;
-
-    if (!isset($wp_roles))
-      $wp_roles = new WP_Roles();
-
-    $wp_roles->role_names["subscriber"] = "Company";
-  }
-
   function add_professional_role() {
     $caps = array(
       "read" => true
@@ -79,10 +69,6 @@ class MyTimberSite extends TimberSite {
     );
 
     add_role("company", __("Company"), $caps);
-  }
-
-  function set_default_role() {
-    return "professional";
   }
 
   // Change menu label for posts
@@ -116,9 +102,9 @@ class MyTimberSite extends TimberSite {
       "public" => true,
       "supports" => array("title", "editor", "excerpt", "thumbnail"),
       "taxonomies" => array("post_tag"),
-      "has_archive" => true,
+      // "has_archive" => true,
       "rewrite" => array(
-        "slug" => "active-teams"
+        "slug" => "active-team"
       )
     );
 
@@ -149,9 +135,9 @@ class MyTimberSite extends TimberSite {
       "public" => true,
       "supports" => array("title", "editor", "excerpt", "thumbnail"),
       "taxonomies" => array("event_category", "post_tag"),
-      "has_archive" => true,
+      // "has_archive" => true,
       "rewrite" => array(
-        "slug" => "events"
+        "slug" => "event"
       )
     );
 
@@ -182,9 +168,9 @@ class MyTimberSite extends TimberSite {
       "public" => true,
       "supports" => array("title", "editor", "excerpt", "thumbnail", "page-attributes"),
       "taxonomies" => array("resource_category", "post_tag"),
-      "has_archive" => true,
+      // "has_archive" => true,
       "rewrite" => array(
-        "slug" => "resources"
+        "slug" => "resource"
       )
     );
 
