@@ -38,7 +38,9 @@ table {
 
 dt,
 li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  margin-left: 1.33333rem;
+  padding-left: 0.25rem;
 }
 
 a {
