@@ -9,10 +9,10 @@
 
       <div class="ml3-m">
         <div class="mb3 measure-wide">
-          {% if member.industry_categories %}
+          {% if not member.get_field("industry_categories")[0].errors %}
             <div class="mb3 f6 fw6 ttu tracked gray">
               {% for category in member.get_field("industry_categories") %}
-                {{ category.label }}{% spaceless %}
+                {{ category.name }}{% spaceless %}
                   {% if not loop.last %}, {% endif %}
                 {% endspaceless %}
               {% endfor %}
