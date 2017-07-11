@@ -45,7 +45,7 @@ Routes::map("member/page/:page_number", function ($params) {
   }
 });
 
-Routes::map("member-categories/company", function ($params) {
+Routes::map("member-category/company", function ($params) {
   $params["member_role"] = "company";
   $params["per_page"] = get_option("posts_per_page");
 
@@ -56,7 +56,7 @@ Routes::map("member-categories/company", function ($params) {
   }
 });
 
-Routes::map("member-categories/company/page/:page_number", function ($params) {
+Routes::map("member-category/company/page/:page_number", function ($params) {
   $params["member_role"] = "company";
   $params["per_page"] = get_option("posts_per_page");
 
@@ -67,7 +67,7 @@ Routes::map("member-categories/company/page/:page_number", function ($params) {
   }
 });
 
-Routes::map("member-categories/professional", function ($params) {
+Routes::map("member-category/professional", function ($params) {
   $params["member_role"] = "professional";
   $params["per_page"] = get_option("posts_per_page");
 
@@ -78,7 +78,7 @@ Routes::map("member-categories/professional", function ($params) {
   }
 });
 
-Routes::map("member-categories/professional/page/:page_number", function ($params) {
+Routes::map("member-category/professional/page/:page_number", function ($params) {
   $params["member_role"] = "professional";
   $params["per_page"] = get_option("posts_per_page");
 

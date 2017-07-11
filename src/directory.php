@@ -55,7 +55,7 @@ if ($total_members > $per_page) {
 
 $context["members"] = $members;
 $context["wp_title"] = "Directory";
-$context["companies_link"] = user_trailingslashit(get_site_url() . "/member-categories/company");
-$context["professionals_link"] = user_trailingslashit(get_site_url() . "/member-categories/professional");
+$context["companies_link"] = user_trailingslashit(get_site_url() . "/member-category/company");
+$context["professionals_link"] = user_trailingslashit(get_site_url() . "/member-category/professional");
 
 Timber::render("directory.twig", $context);
