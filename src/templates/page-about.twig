@@ -1,19 +1,21 @@
-{% extends "base.twig" %}
+{% extends "page.twig" %}
 
 {% block content %}
-  <article class="measure-wide">
-    <section class="mb4">
-      <h1 class="mb3 f3 f2-m fw6 lh-title green">
-        Mission
-      </h1>
+  <article>
+    {% if page.content %}
+      <section class="mw7 mb4">
+        <h1 class="mb3 f3 f2-m fw6 lh-title green">
+          Mission
+        </h1>
 
-      <div>
-        {{ page.content }}
-      </div>
-    </section>
+        <div>
+          {{ page.content }}
+        </div>
+      </section>
+    {% endif %}
 
     {% if page.what_we_do %}
-      <section class="mb4">
+      <section class="mw7 mb4">
         <h1 class="mb3 f3 f2-m fw6 lh-title green">
           What We Do
         </h1>
@@ -26,7 +28,7 @@
     </section>
 
     {% if page.history %}
-      <section class="mb4">
+      <section class="mw7 mb4">
         <h1 class="mb3 f3 f2-m fw6 lh-title green">
           History
         </h1>

@@ -11,9 +11,13 @@
     </span>
   </nav>
 
-  {% for member in members %}
-    {% include ["includes/teaser-member.twig"] %}
-  {% endfor %}
+  <div class="col-2-l colg5">
+    {% for member in members %}
+      <div class="colbia-l mb4">
+        {% include ["includes/teaser-member.twig"] %}
+      </div>
+    {% endfor %}
+  </div>
 
   {% include ["includes/pagination.twig"] %}
 {% endblock %}

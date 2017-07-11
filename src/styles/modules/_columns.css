@@ -1,0 +1,40 @@
+.col-2 { column-count: 2; }
+
+.colbia { break-inside: avoid; }
+
+.colg3 { column-gap: var(--spacing-medium); }
+.colg4 { column-gap: var(--spacing-large); }
+.colg5 { column-gap: var(--spacing-extra-large); }
+
+
+@media (--breakpoint-not-small) {
+  .col-2-ns { column-count: 2; }
+
+  .colbia-ns { break-inside: avoid; }
+
+  .colg3-ns { column-gap: var(--spacing-medium); }
+  .colg4-ns { column-gap: var(--spacing-large); }
+  .colg5-ns { column-gap: var(--spacing-extra-large); }
+}
+
+
+@media (--breakpoint-medium) {
+  .col-2-m { column-count: 2; }
+
+  .colbia-m { break-inside: avoid; }
+
+  .colg3-m { column-gap: var(--spacing-medium); }
+  .colg4-m { column-gap: var(--spacing-large); }
+  .colg5-m { column-gap: var(--spacing-extra-large); }
+}
+
+
+@media (--breakpoint-large) {
+  .col-2-l { column-count: 2; }
+
+  .colbia-l { break-inside: avoid; }
+
+  .colg3-l { column-gap: var(--spacing-medium); }
+  .colg4-l { column-gap: var(--spacing-large); }
+  .colg5-l { column-gap: var(--spacing-extra-large); }
+}

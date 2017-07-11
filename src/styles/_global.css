@@ -33,14 +33,14 @@ ul,
 p,
 pre,
 table {
-  margin-bottom: 1rem;
+  margin-bottom: var(--spacing-medium);
 }
 
 dt,
 li {
-  margin-bottom: 1rem;
+  margin-bottom: var(--spacing-medium);
   margin-left: 1.33333rem;
-  padding-left: 0.25rem;
+  padding-left: var(--spacing-extra-small);
 }
 
 a {

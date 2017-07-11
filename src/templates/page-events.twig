@@ -1,6 +1,12 @@
-{% extends "base.twig" %}
+{% extends "page.twig" %}
 
 {% block content %}
+  <article class="mb5">
+    <div class="mw7">
+      {{ page.content }}
+    </div>
+  </article>
+
   <section>
     <div class="col-2-l colg5">
       {% for post in posts %}
@@ -10,7 +16,4 @@
       {% endfor %}
     </div>
   </section>
-
-
-  {% include ["includes/pagination.twig"] %}
 {% endblock %}
