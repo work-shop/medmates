@@ -25,13 +25,14 @@
     information.
 
 3.  If you're using a remote database, it may be necessary to add the following
-    snippet to __dist/wp-config.php__ so that WordPress permalinks work
-    properly.
+    snippet to __dist/wp-config.php__, right before the line containing
+    `require_once(ABSPATH . 'wp-settings.php');`, so that WordPress permalinks
+    work properly.
 
     ```php
     if ($_SERVER['SERVER_NAME'] == 'localhost') {
-      define('WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST']);
-      define('WP_HOME', 'http://' . $_SERVER['HTTP_HOST']);
+      define('WP_SITEURL', '//' . $_SERVER['HTTP_HOST']);
+      define('WP_HOME', '//' . $_SERVER['HTTP_HOST']);
     }
     ```
 
