@@ -19,7 +19,9 @@
     </h1>
 
     {% for post in posts %}
-      {% include ["includes/teaser-" ~ post.post_type ~ ".twig", "includes/teaser.twig"] %}
+      <div class="mw7">
+        {% include ["includes/teaser-" ~ post.post_type ~ ".twig", "includes/teaser.twig"] %}
+      </div>
     {% endfor %}
   </section>
 {% endblock %}
