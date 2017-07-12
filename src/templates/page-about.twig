@@ -40,7 +40,7 @@
 
         <div class="flex flex-wrap">
           {% for partner in partners %}
-            <div class="w5 flex justify-center items-center">
+            <div class="flex justify-center items-center w-33 ph4">
               <a href="{{ partner.url }}"><img class="dib" src="{{ TimberImage(partner.logo).src("medium") }}"
                  target="_blank" title="{{ partner.name }}" alt="{{ partner.name }}"></a>
             </div>
@@ -56,7 +56,7 @@
 
         <div class="flex flex-wrap">
           {% for sponsor in sponsors %}
-            <div class="w5 flex justify-center items-center">
+            <div class="flex justify-center items-center w-25 ph4">
               <a href="{{ sponsor.url }}"><img class="dib" src="{{ TimberImage(sponsor.logo).src("medium") }}"
                  target="_blank" title="{{ sponsor.name }}" alt="{{ sponsor.name }}"></a>
             </div>
