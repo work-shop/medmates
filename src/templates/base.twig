@@ -48,9 +48,8 @@
             {% include "components/menu-footer.twig" %}
           </div>
 
-          <div class="f7 fw6 ttu tracked gray">
-            © {{ "now" | date("Y") }} {{ site.title }}
-          </div>
+          {% set metadata = "© " ~ "now" | date("Y") ~ " " ~ site.title %}
+          {% include "components/metadata.twig" with { "content": metadata } %}
         </div>
       </div>
     </footer>

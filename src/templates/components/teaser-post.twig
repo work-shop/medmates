@@ -2,7 +2,7 @@
   {% include "components/subtitle.twig" with { "content": post.title, "link": post.link } %}
 
   <div class="mb3">
-    {% set metadata = "Posted " ~ post.post_date_gmt | time_ago ~ "by " ~ post.author %}
+    {% set metadata = "Posted " ~ post.post_date_gmt | time_ago ~ " by " ~ post.author %}
     {% include "components/metadata.twig" with { "content": metadata } %}
   </div>
 

@@ -3,7 +3,7 @@
 {% block content %}
   <article>
     <div class="mw7 mb4">
-      {% set metadata = "Posted " ~ post.post_date_gmt | time_ago ~ "by " ~ post.author %}
+      {% set metadata = "Posted " ~ post.post_date_gmt | time_ago ~ " by " ~ post.author %}
       {% include "components/metadata.twig" with { "content": metadata } %}
     </div>
 

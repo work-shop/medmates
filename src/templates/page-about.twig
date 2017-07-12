@@ -3,9 +3,7 @@
 {% block content %}
   <article>
     {% if post.content %}
-      <section class="mw7" id="mission">
-        {% include "components/title.twig" with { "content": "Mission" } %}
-
+      <section class="mw7 mb5" id="mission">
         <div>
           {{ post.content }}
         </div>
@@ -13,7 +11,7 @@
     {% endif %}
 
     {% if post.what_we_do %}
-      <section class="mw7" id="what-we-do">
+      <section class="mw7 mb5" id="what-we-do">
         {% include "components/title.twig" with { "content": "What We Do" } %}
 
         <div>
@@ -24,7 +22,7 @@
     </section>
 
     {% if post.history %}
-      <section class="mw7" id="history">
+      <section class="mw7 mb5" id="history">
         {% include "components/title.twig" with { "content": "History" } %}
 
         <div>
@@ -33,9 +31,41 @@
       </section>
     {% endif %}
 
+    {% if post.board_of_directors or post.staff %}
+      <div class="flex-l">
+        {% if post.board_of_directors %}
+          <section class="w-50-l mb5">
+            {% include "components/title.twig" with {"content": "Board of Directors" } %}
+
+            {% for member_id in post.board_of_directors %}
+              {% set member = TimberUser(member_id) %}
+
+              <div class="mb4">
+                {% include "components/teaser-contact.twig" with { "post": member } %}
+              </div>
+            {% endfor %}
+          </section>
+        {% endif %}
+
+        {% if post.staff %}
+          <section class="w-50-l mb5">
+            {% include "components/title.twig" with {"content": "Staff" } %}
+
+            {% for member_id in post.staff %}
+              {% set member = TimberUser(member_id) %}
+
+              <div class="mb4">
+                {% include "components/teaser-contact.twig" with { "post": member } %}
+              </div>
+            {% endfor %}
+          </section>
+        {% endif %}
+      </div>
+    {% endif %}
+
     {% set partners = post.get_field("partners") %}
     {% if partners %}
-      <section>
+      <section class="mb5">
         {% include "components/title.twig" with {"content": "Partners" } %}
 
         <div class="flex-m flex-wrap-m">
@@ -51,7 +81,7 @@
     {% endif %}
 
     {% if post.sponsors %}
-      <section>
+      <section class="mb5">
         {% include "components/title.twig" with {"content": "Sponsors" } %}
 
         {% set sponsor_tiers = {
