@@ -2,8 +2,9 @@
 
 {% block content %}
   <article>
-    <div class="mw7 mb4 f6 fw6 ttu tracked gray">
-      Posted {{ post.post_date_gmt | time_ago }} by {{ post.author }}
+    <div class="mw7 mb4">
+      {% set metadata = "Posted " ~ post.post_date_gmt | time_ago ~ "by " ~ post.author %}
+      {% include "components/metadata.twig" with { "content": metadata } %}
     </div>
 
     <div class="mw7">

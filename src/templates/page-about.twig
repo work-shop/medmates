@@ -2,33 +2,33 @@
 
 {% block content %}
   <article>
-    {% if page.content %}
+    {% if post.content %}
       <section class="mw7 mb4">
-        {% include "components/title.twig" with {"content": "Mission"} %}
+        {% include "components/title.twig" with { "content": "Mission" } %}
 
         <div>
-          {{ page.content }}
+          {{ post.content }}
         </div>
       </section>
     {% endif %}
 
-    {% if page.what_we_do %}
+    {% if post.what_we_do %}
       <section class="mw7 mb4">
-        {% include "components/title.twig" with {"content": "What We Do"} %}
+        {% include "components/title.twig" with { "content": "What We Do" } %}
 
         <div>
-          {{ page.what_we_do }}
+          {{ post.what_we_do }}
         </div>
       </section>
     {% endif %}
     </section>
 
-    {% if page.history %}
+    {% if post.history %}
       <section class="mw7 mb4">
-        {% include "components/title.twig" with {"content": "History"} %}
+        {% include "components/title.twig" with { "content": "History" } %}
 
         <div>
-          {{ page.history }}
+          {{ post.history }}
         </div>
       </section>
     {% endif %}

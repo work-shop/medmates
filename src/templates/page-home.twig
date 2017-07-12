@@ -5,16 +5,16 @@
 {% endblock %}
 
 {% block content %}
-  {% if page.content %}
+  {% if post.content %}
     <article class="mb4">
       <div class="mw6">
-        {{ page.content }}
+        {{ post.content }}
       </div>
     </article>
   {% endif %}
 
   <section>
-    {% include "components/title.twig" with {"content": "Latest News"} %}
+    {% include "components/title.twig" with { "content": "Latest News" } %}
 
     {% for post in posts %}
       <div class="mw7">

@@ -7,7 +7,7 @@
         <img class="flex-no-shrink db mb3 mb0-m" src="{{ post.avatar(256) }}" width="256" height="256" alt="">
       {% endif %}
 
-      <div class="ml3-m">
+      <div class="ml4-m">
         <div class="mw5 mb3">
           {% if not post.get_field("industry_categories")[0].errors %}
             {% set metadata = "" %}
@@ -21,7 +21,7 @@
             {% endfor %}
 
             <div class="mb3">
-              {% include "components/metadata.twig" with {"content": metadata} %}
+              {% include "components/metadata.twig" with { "content": metadata } %}
             </div>
           {% endif %}
 
@@ -62,7 +62,7 @@
 
     {% if post.description %}
       <section>
-        {% include "components/title.twig" with {"content": "Biography"} %}
+        {% include "components/title.twig" with { "content": "Biography" } %}
 
         <div class="mw7">
           {{ post.description | wpautop }}
