@@ -14,7 +14,9 @@
   {% endif %}
 
   <section>
-    {% include "components/title.twig" with { "content": "Latest News" } %}
+    <div class="mb4">
+      {% include "components/title.twig" with { "content": "Latest News" } %}
+    </div>
 
     {% for post in posts %}
       <div class="mw7">
