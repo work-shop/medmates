@@ -41,7 +41,8 @@
         <div class="flex flex-wrap">
           {% for partner in partners %}
             <div class="flex justify-center items-center w-33 ph4">
-              <a href="{{ partner.url }}"><img class="dib" src="{{ TimberImage(partner.logo).src("medium") }}"
+              <a href="{{ partner.url }}"><img class="dib grayscale"
+                 src="{{ TimberImage(partner.logo).src("medium") }}"
                  target="_blank" title="{{ partner.name }}" alt="{{ partner.name }}"></a>
             </div>
           {% endfor %}
@@ -71,8 +72,9 @@
             <div class="flex flex-wrap mb4">
               {% for sponsor in sponsors %}
                 <div class="flex justify-center items-center w-25 ph4">
-                  <a href="{{ sponsor.url }}"><img class="dib" src="{{ TimberImage(sponsor.logo).src("medium") }}"
-                    target="_blank" title="{{ sponsor.name }}" alt="{{ sponsor.name }}"></a>
+                  <a href="{{ sponsor.url }}"><img class="dib grayscale"
+                     src="{{ TimberImage(sponsor.logo).src("medium") }}"
+                     target="_blank" title="{{ sponsor.name }}" alt="{{ sponsor.name }}"></a>
                 </div>
               {% endfor %}
             </div>
