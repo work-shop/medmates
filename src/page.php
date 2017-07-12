@@ -1,14 +1,18 @@
 <?php
 
+global $params;
+
 $context = Timber::get_context();
-$page = Timber::get_post();
+$post = Timber::get_post();
 
-$context["page"] = $page;
+$context["post"] = $post;
 
-if (is_front_page()) {
-  $context["posts"] = Timber::get_posts("post_type=post");
+if (isset($params["posts"])) {
+  $context["posts"] = $params["posts"];
+} else {
+  unset($context["posts"]);
 }
 
-$templates = array("page-$page->post_name.twig", "page.twig");
+$templates = array("page-$post->post_name.twig", "page.twig");
 
 Timber::render($templates, $context);

@@ -1,9 +1,15 @@
 {% extends "base.twig" %}
 
 {% block content %}
-  <article class="mb4">
+  <article class="mb5">
     <div class="mw7">
-      {{ page.content }}
+      {{ post.content }}
     </div>
   </article>
+
+  {% if posts %}
+    <section>
+      {% include "components/post-list.twig" %}
+    </section>
+  {% endif %}
 {% endblock %}

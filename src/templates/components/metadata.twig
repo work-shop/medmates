@@ -1,7 +1,3 @@
-{% if color is not defined %}
-  {% set color = "gray" %}
-{% endif %}
-
-<div class="f6 fw6 ttu tracked {{ color }}">
+<div class="f6 fw6 ttu tracked {{ color | default("gray") }}">
   {{ content }}
 </div>

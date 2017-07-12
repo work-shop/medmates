@@ -1,11 +1,7 @@
-{% if teaser_template is not defined %}
-  {% set teaser_template = ["components/teaser-" ~ post.post_type ~ ".twig", "components/teaser.twig"] %}
-{% endif %}
-
 <div class="col-2-l colg5">
   {% for post in posts %}
     <div class="colbia-l mb4">
-      {% include teaser_template %}
+      {% include teaser_template | default(["components/teaser-" ~ post.post_type ~ ".twig", "components/teaser.twig"]) %}
     </div>
   {% endfor %}
 </div>

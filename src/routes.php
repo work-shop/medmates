@@ -23,6 +23,30 @@ function is_page_number_valid($page_number, $member_role, $per_page) {
 
 // Routes
 
+Routes::map("/", function ($params) {
+  $params["posts"] = Timber::get_posts("post_type=post");
+  Routes::load("page.php", $params, null, 200);
+});
+
+Routes::map("/home", function ($params) {
+  Routes::load("404.php", null, null, 404);
+});
+
+Routes::map("/active-teams", function ($params) {
+  $params["posts"] = Timber::get_posts("post_type=team&numberposts=-1&orderby=title&order=ASC");
+  Routes::load("page.php", $params, null, 200);
+});
+
+Routes::map("/events", function ($params) {
+  $params["posts"] = Timber::get_posts("post_type=event&numberposts=-1&orderby=title&order=ASC");
+  Routes::load("page.php", $params, null, 200);
+});
+
+Routes::map("/resources", function ($params) {
+  $params["posts"] = Timber::get_posts("post_type=resource&numberposts=-1&orderby=title&order=ASC");
+  Routes::load("page.php", $params, null, 200);
+});
+
 Routes::map("members", function ($params) {
   $params["member_role"] = "company";
   $params["per_page"] = get_option("posts_per_page");
