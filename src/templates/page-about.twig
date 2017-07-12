@@ -3,7 +3,7 @@
 {% block content %}
   <article>
     {% if post.content %}
-      <section class="mw7 mb4">
+      <section class="mw7 mb4" id="mission">
         {% include "components/title.twig" with { "content": "Mission" } %}
 
         <div>
@@ -13,7 +13,7 @@
     {% endif %}
 
     {% if post.what_we_do %}
-      <section class="mw7 mb4">
+      <section class="mw7 mb4" id="what-we-do">
         {% include "components/title.twig" with { "content": "What We Do" } %}
 
         <div>
@@ -24,11 +24,43 @@
     </section>
 
     {% if post.history %}
-      <section class="mw7 mb4">
+      <section class="mw7 mb4" id="history">
         {% include "components/title.twig" with { "content": "History" } %}
 
         <div>
           {{ post.history }}
+        </div>
+      </section>
+    {% endif %}
+
+    {% set partners = post.get_field("partners") %}
+    {% if partners %}
+      <section>
+        {% include "components/title.twig" with {"content": "Partners" } %}
+
+        <div class="flex flex-wrap">
+          {% for partner in partners %}
+            <div class="w5">
+              <a href="{{ partner.url }}"><img class="dib" src="{{ TimberImage(partner.logo).src("medium") }}"
+                title="{{ partner.name }}" alt="{{ partner.name }}"></a>
+            </div>
+          {% endfor %}
+        </div>
+      </section>
+    {% endif %}
+
+    {% set sponsors = post.get_field("sponsors") %}
+    {% if sponsors %}
+      <section>
+        {% include "components/title.twig" with {"content": "Sponsors" } %}
+
+        <div class="flex flex-wrap">
+          {% for sponsor in sponsors %}
+            <div class="w5">
+              <a href="{{ sponsor.url }}"><img class="dib" src="{{ TimberImage(sponsor.logo).src("medium") }}"
+                title="{{ sponsor.name }}" alt="{{ sponsor.name }}"></a>
+            </div>
+          {% endfor %}
         </div>
       </section>
     {% endif %}
