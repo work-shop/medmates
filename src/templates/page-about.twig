@@ -3,7 +3,7 @@
 {% block content %}
   <article>
     {% if post.content %}
-      <section class="mw7 mb5" id="mission">
+      <section class="mw7 mb5">
         <div>
           {{ post.content }}
         </div>
@@ -34,7 +34,7 @@
     {% if post.board_of_directors or post.staff %}
       <div class="flex-l">
         {% if post.board_of_directors %}
-          <section class="w-50-l mb5">
+          <section class="w-50-l mb5" id="board-of-directors">
             {% include "components/title.twig" with {"content": "Board of Directors" } %}
 
             {% for member_id in post.board_of_directors %}
@@ -48,7 +48,7 @@
         {% endif %}
 
         {% if post.staff %}
-          <section class="w-50-l mb5">
+          <section class="w-50-l mb5" id="staff">
             {% include "components/title.twig" with {"content": "Staff" } %}
 
             {% for member_id in post.staff %}
@@ -65,7 +65,7 @@
 
     {% set partners = post.get_field("partners") %}
     {% if partners %}
-      <section class="mb5">
+      <section class="mb5" id="partners">
         {% include "components/title.twig" with {"content": "Partners" } %}
 
         <div class="flex-m flex-wrap-m">
@@ -81,7 +81,7 @@
     {% endif %}
 
     {% if post.sponsors %}
-      <section class="mb5">
+      <section class="mb5" id="sponsors">
         {% include "components/title.twig" with {"content": "Sponsors" } %}
 
         {% set sponsor_tiers = {
