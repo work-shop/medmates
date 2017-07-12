@@ -49,19 +49,35 @@
       </section>
     {% endif %}
 
-    {% set sponsors = post.get_field("sponsors") %}
-    {% if sponsors %}
+    {% if post.sponsors %}
       <section>
         {% include "components/title.twig" with {"content": "Sponsors" } %}
 
-        <div class="flex flex-wrap">
-          {% for sponsor in sponsors %}
-            <div class="flex justify-center items-center w-25 ph4">
-              <a href="{{ sponsor.url }}"><img class="dib" src="{{ TimberImage(sponsor.logo).src("medium") }}"
-                 target="_blank" title="{{ sponsor.name }}" alt="{{ sponsor.name }}"></a>
+        {% set sponsor_tiers = {
+          "platinum": "Platinum",
+          "gold": "Gold",
+          "silver": "Silver",
+          "media": "Media"
+        } %}
+
+        {% for tier, tier_label in sponsor_tiers %}
+          {% set sponsors = post.get_field(tier ~ "_sponsors") %}
+
+          {% if sponsors %}
+            <h2 class="mb3">
+              {% include "components/metadata.twig" with { "content": tier_label } %}
+            </h2>
+
+            <div class="flex flex-wrap mb4">
+              {% for sponsor in sponsors %}
+                <div class="flex justify-center items-center w-25 ph4">
+                  <a href="{{ sponsor.url }}"><img class="dib" src="{{ TimberImage(sponsor.logo).src("medium") }}"
+                    target="_blank" title="{{ sponsor.name }}" alt="{{ sponsor.name }}"></a>
+                </div>
+              {% endfor %}
             </div>
-          {% endfor %}
-        </div>
+          {% endif %}
+        {% endfor %}
       </section>
     {% endif %}
   </article>
