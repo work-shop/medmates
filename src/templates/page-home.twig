@@ -14,13 +14,11 @@
   {% endif %}
 
   <section>
-    <h1 class="mb4 f4 f3-m fw6 lh-title green">
-      Latest News
-    </h1>
+    {% include "components/title.twig" with {"content": "Latest News"} %}
 
     {% for post in posts %}
       <div class="mw7">
-        {% include ["includes/teaser-" ~ post.post_type ~ ".twig", "includes/teaser.twig"] %}
+        {% include ["components/teaser-" ~ post.post_type ~ ".twig", "components/teaser.twig"] %}
       </div>
     {% endfor %}
   </section>

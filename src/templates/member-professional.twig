@@ -1,41 +1,39 @@
 {% extends "member.twig" %}
 
 {% block member_details %}
-  {% if member.job_title %}
+  {% if post.job_title %}
     <div>
-      {{ member.job_title }}
+      {{ post.job_title }}
     </div>
   {% endif %}
 
-  {% if member.job_functions %}
+  {% if post.job_functions %}
     <div>
-      {{ member.job_functions }}
+      {{ post.job_functions }}
     </div>
   {% endif %}
 
-  {% if member.company_affiliation %}
+  {% if post.company_affiliation %}
     <div>
-      {{ member.company_affiliation }}
+      {{ post.company_affiliation }}
     </div>
   {% endif %}
 {% endblock %}
 
 {% block member_contact %}
-  {% if member.user_email or member.phone_number %}
+  {% if post.user_email or post.phone_number %}
     <section class="mb4">
-      <h1 class="mb3 f4 f3-m fw6 lh-title green">
-        Contact Information
-      </h1>
+      {% include "components/title.twig" with {"content": "Contact Information"} %}
 
-      {% if member.user_email %}
+      {% if post.user_email %}
         <div>
-          <a href="mailto:{{ member.user_email }}">{{ member.user_email }}</a>
+          <a href="mailto:{{ post.user_email }}">{{ post.user_email }}</a>
         </div>
       {% endif %}
 
-      {% if member.phone_number %}
+      {% if post.phone_number %}
         <div>
-          {{ member.phone_number }}
+          {{ post.phone_number }}
         </div>
       {% endif %}
     </section>

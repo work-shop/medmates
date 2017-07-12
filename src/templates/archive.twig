@@ -2,15 +2,8 @@
 
 {% block content %}
   <section>
-    <div class="col-2-l colg5">
-      {% for post in posts %}
-        <div class="colbia-l mb4">
-          {% include ["includes/teaser-" ~ post.post_type ~ ".twig", "includes/teaser.twig"] %}
-        </div>
-      {% endfor %}
-    </div>
+    {% include "components/post-list.twig" %}
   </section>
 
-
-  {% include ["includes/pagination.twig"] %}
+  {% include "components/pagination.twig" %}
 {% endblock %}

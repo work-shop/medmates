@@ -1,45 +1,43 @@
 {% extends "member.twig" %}
 
 {% block member_details %}
-  {% if member.development_stage %}
+  {% if post.development_stage %}
     <div>
-      {{ member.get_field("development_stage").label }}
+      {{ post.get_field("development_stage").label }}
     </div>
   {% endif %}
 
-  {% if member.number_of_employees %}
+  {% if post.number_of_employees %}
     <div>
-      {{ member.number_of_employees }} Employees
+      {{ post.number_of_employees }} Employees
     </div>
   {% endif %}
 
-  {% if member.address %}
+  {% if post.address %}
     <address class="mt3">
-      {{ member.get_field("address") }}
+      {{ post.get_field("address") }}
     </address>
   {% endif %}
 {% endblock %}
 
 {% block member_contact %}
-  {% if member.contact_name %}
+  {% if post.contact_name %}
     <section class="mb4">
-      <h1 class="mb3 f4 f3-m fw6 lh-title green">
-        Point of Contact
-      </h1>
+      {% include "components/title.twig" with {"content": "Point of Contact"} %}
 
       <div>
-        {{ member.contact_name }}
+        {{ post.contact_name }}
       </div>
 
-      {% if member.contact_email %}
+      {% if post.contact_email %}
         <div>
-          <a href="mailto:{{ member.contact_email }}">{{ member.contact_email }}</a>
+          <a href="mailto:{{ post.contact_email }}">{{ post.contact_email }}</a>
         </div>
       {% endif %}
 
-      {% if member.contact_phone_number %}
+      {% if post.contact_phone_number %}
         <div>
-          {{ member.contact_phone_number }}
+          {{ post.contact_phone_number }}
         </div>
       {% endif %}
     </section>

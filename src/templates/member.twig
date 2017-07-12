@@ -3,19 +3,25 @@
 {% block content %}
   <article>
     <div class="flex-m mb4">
-      {% if member.avatar %}
-        <img class="flex-no-shrink db mb3 mb0-m" src="{{ member.avatar(224) }}" width="224" height="224" alt="">
+      {% if post.avatar %}
+        <img class="flex-no-shrink db mb3 mb0-m" src="{{ post.avatar(256) }}" width="256" height="256" alt="">
       {% endif %}
 
       <div class="ml3-m">
-        <div class="mw6 mb3">
-          {% if not member.get_field("industry_categories")[0].errors %}
-            <div class="mb3 f6 fw6 ttu tracked gray">
-              {% for category in member.get_field("industry_categories") %}
-                {{ category.name }}{% spaceless %}
-                  {% if not loop.last %}, {% endif %}
-                {% endspaceless %}
-              {% endfor %}
+        <div class="mw5 mb3">
+          {% if not post.get_field("industry_categories")[0].errors %}
+            {% set metadata = "" %}
+
+            {% for category in post.get_field("industry_categories") %}
+              {% set metadata = metadata ~ category.name %}
+
+              {% if not loop.last %}
+                {% set metadata = metadata ~ ", " %}
+              {% endif %}
+            {% endfor %}
+
+            <div class="mb3">
+              {% include "components/metadata.twig" with {"content": metadata} %}
             </div>
           {% endif %}
 
@@ -23,28 +29,28 @@
           {% endblock %}
         </div>
 
-        {% if member.user_url or member.linkedin_url or member.facebook_url or member.twitter_url %}
+        {% if post.user_url or post.linkedin_url or post.facebook_url or post.twitter_url %}
           <div>
-            {% if member.user_url %}
-              <a href="{{ member.user_url }}" target="_blank">Website</a>{% spaceless %}
-                {% if member.linkedin_url or member.facebook_url or member.twitter_url %}, {% endif %}
+            {% if post.user_url %}
+              <a href="{{ post.user_url }}" target="_blank">Website</a>{% spaceless %}
+                {% if post.linkedin_url or post.facebook_url or post.twitter_url %}, {% endif %}
               {% endspaceless %}
             {% endif %}
 
-            {% if member.linkedin_url %}
-              <a href="{{ member.linkedin_url }}" target="_blank">LinkedIn</a>{% spaceless %}
-                {% if member.facebook_url or member.twitter_url %}, {% endif %}
+            {% if post.linkedin_url %}
+              <a href="{{ post.linkedin_url }}" target="_blank">LinkedIn</a>{% spaceless %}
+                {% if post.facebook_url or post.twitter_url %}, {% endif %}
               {% endspaceless %}
             {% endif %}
 
-            {% if member.facebook_url %}
-              <a href="{{ member.facebook_url }}" target="_blank">Facebook</a>{% spaceless %}
-                {% if member.twitter_url %}, {% endif %}
+            {% if post.facebook_url %}
+              <a href="{{ post.facebook_url }}" target="_blank">Facebook</a>{% spaceless %}
+                {% if post.twitter_url %}, {% endif %}
               {% endspaceless %}
             {% endif %}
 
-            {% if member.twitter_url %}
-              <a href="{{ member.twitter_url }}" target="_blank">Twitter</a>
+            {% if post.twitter_url %}
+              <a href="{{ post.twitter_url }}" target="_blank">Twitter</a>
             {% endif %}
           </div>
         {% endif %}
@@ -54,14 +60,12 @@
     {% block member_contact %}
     {% endblock %}
 
-    {% if member.description %}
+    {% if post.description %}
       <section>
-        <h1 class="mb3 f4 f3-m fw6 lh-title green">
-          Biography
-        </h1>
+        {% include "components/title.twig" with {"content": "Biography"} %}
 
-        <div class="mw6">
-          {{ member.description | wpautop }}
+        <div class="mw7">
+          {{ post.description | wpautop }}
         </div>
       </section>
     {% endif %}

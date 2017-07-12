@@ -53,7 +53,7 @@ if ($total_members > $per_page) {
   $context["posts"]["pagination"] = $pagination;
 }
 
-$context["members"] = $members;
+$context["posts"] = $members;
 $context["wp_title"] = "Directory";
 $context["companies_link"] = user_trailingslashit(get_site_url() . "/member-category/company");
 $context["professionals_link"] = user_trailingslashit(get_site_url() . "/member-category/professional");
