@@ -1,11 +1,13 @@
 {% extends "base.twig" %}
 
 {% block content %}
-  <article class="mb5">
-    <div class="mw7">
-      {{ post.content }}
-    </div>
-  </article>
+  {% if post.content %}
+    <article class="mb5">
+      <div class="mw7">
+        {{ post.content }}
+      </div>
+    </article>
+  {% endif %}
 
   {% if posts %}
     <section>
