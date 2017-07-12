@@ -35,14 +35,14 @@
 
     {% set partners = post.get_field("partners") %}
     {% if partners %}
-      <section>
+      <section class="mb4">
         {% include "components/title.twig" with {"content": "Partners" } %}
 
         <div class="flex flex-wrap">
           {% for partner in partners %}
-            <div class="w5">
+            <div class="w5 flex justify-center items-center">
               <a href="{{ partner.url }}"><img class="dib" src="{{ TimberImage(partner.logo).src("medium") }}"
-                title="{{ partner.name }}" alt="{{ partner.name }}"></a>
+                 target="_blank" title="{{ partner.name }}" alt="{{ partner.name }}"></a>
             </div>
           {% endfor %}
         </div>
@@ -56,9 +56,9 @@
 
         <div class="flex flex-wrap">
           {% for sponsor in sponsors %}
-            <div class="w5">
+            <div class="w5 flex justify-center items-center">
               <a href="{{ sponsor.url }}"><img class="dib" src="{{ TimberImage(sponsor.logo).src("medium") }}"
-                title="{{ sponsor.name }}" alt="{{ sponsor.name }}"></a>
+                 target="_blank" title="{{ sponsor.name }}" alt="{{ sponsor.name }}"></a>
             </div>
           {% endfor %}
         </div>
