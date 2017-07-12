@@ -40,7 +40,7 @@
 
         <div class="flex-m flex-wrap-m">
           {% for partner in partners %}
-            <div class="flex-m justify-center-m items-center w-50-m w-33-l ph4">
+            <div class="flex-m justify-center-m items-center w5 w-50-m w-33-l pa4">
               <a href="{{ partner.url }}" target="_blank"><img class="dib grayscale"
                  src="{{ TimberImage(partner.logo).src("medium") }}"
                  title="{{ partner.name }}" alt="{{ partner.name }}"></a>
@@ -69,9 +69,9 @@
               {% include "components/metadata.twig" with { "content": tier_label } %}
             </h2>
 
-            <div class="flex-m flex-wrap-m mb4">
+            <div class="flex-m flex-wrap-m">
               {% for sponsor in sponsors %}
-                <div class="flex-m justify-center-m items-center-m w-33-m w-25-l ph4">
+                <div class="flex-m justify-center-m items-center-m w5 w-33-m w-25-l pa4">
                   <a href="{{ sponsor.url }}" target="_blank"><img class="dib grayscale"
                      src="{{ TimberImage(sponsor.logo).src("medium") }}"
                      title="{{ sponsor.name }}" alt="{{ sponsor.name }}"></a>
