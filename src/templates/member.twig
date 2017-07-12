@@ -2,13 +2,13 @@
 
 {% block content %}
   <article>
-    <div class="flex-m mb4">
+    <div class="flex-m">
       {% if post.avatar %}
         <img class="flex-no-shrink db mb3 mb0-m" src="{{ post.avatar(256) }}" width="256" height="256" alt="">
       {% endif %}
 
       <div class="ml4-m">
-        <div class="mw5 mb3">
+        <div class="mw6 mb3">
           {% if not post.get_field("industry_categories")[0].errors %}
             {% set metadata = "" %}
 
@@ -20,7 +20,7 @@
               {% endif %}
             {% endfor %}
 
-            <div class="mb3">
+            <div class="mw5 mb3">
               {% include "components/metadata.twig" with { "content": metadata } %}
             </div>
           {% endif %}

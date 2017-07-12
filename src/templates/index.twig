@@ -1,11 +1,9 @@
 {% extends "base.twig" %}
 
 {% block content %}
-  {% for post in posts %}
-    <div class="mw7">
-      {% include ["components/teaser-" ~ post.post_type ~ ".twig", "components/teaser.twig"] %}
-    </div>
-  {% endfor %}
+  <section>
+    {% include "components/post-list.twig" %}
+  </section>
 
   {% include "components/pagination.twig" %}
 {% endblock %}

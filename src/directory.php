@@ -35,11 +35,6 @@ for ($i = 0; $i < count($members); $i++) {
 $total_members = count_users();
 $total_members = $total_members["avail_roles"][$member_role];
 
-$context["posts"] = $members;
-$context["wp_title"] = "Directory";
-$context["companies_link"] = user_trailingslashit(get_site_url() . "/member-category/company");
-$context["professionals_link"] = user_trailingslashit(get_site_url() . "/member-category/professional");
-
 // Get pagination
 if ($total_members > $per_page) {
   $big = 999999999;
@@ -56,7 +51,12 @@ if ($total_members > $per_page) {
     $pagination["prev"]["link"] = str_replace("/page/1", "", $pagination["prev"]["link"]);
   }
 
-  $context["posts"]["pagination"] = $pagination;
+  $context["pagination"] = $pagination;
 }
+
+$context["posts"] = $members;
+$context["wp_title"] = "Directory";
+$context["companies_link"] = user_trailingslashit(get_site_url() . "/member-category/company");
+$context["professionals_link"] = user_trailingslashit(get_site_url() . "/member-category/professional");
 
 Timber::render("directory.twig", $context);

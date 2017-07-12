@@ -6,7 +6,7 @@
 
 {% block content %}
   {% if post.content %}
-    <article class="mb4">
+    <article>
       <div class="mw6">
         {{ post.content }}
       </div>
@@ -14,7 +14,7 @@
   {% endif %}
 
   <section>
-    <div class="mb4">
+    <div>
       {% include "components/title.twig" with { "content": "Latest News" } %}
     </div>
 

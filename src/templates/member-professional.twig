@@ -22,7 +22,7 @@
 
 {% block member_contact %}
   {% if post.user_email or post.phone_number %}
-    <section class="mb4">
+    <section>
       {% include "components/title.twig" with { "content": "Contact Information" } %}
 
       {% if post.user_email %}

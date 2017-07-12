@@ -3,7 +3,7 @@
 {% block content %}
   <article>
     {% if post.content %}
-      <section class="mw7 mb4" id="mission">
+      <section class="mw7" id="mission">
         {% include "components/title.twig" with { "content": "Mission" } %}
 
         <div>
@@ -13,7 +13,7 @@
     {% endif %}
 
     {% if post.what_we_do %}
-      <section class="mw7 mb4" id="what-we-do">
+      <section class="mw7" id="what-we-do">
         {% include "components/title.twig" with { "content": "What We Do" } %}
 
         <div>
@@ -24,7 +24,7 @@
     </section>
 
     {% if post.history %}
-      <section class="mw7 mb4" id="history">
+      <section class="mw7" id="history">
         {% include "components/title.twig" with { "content": "History" } %}
 
         <div>
@@ -35,7 +35,7 @@
 
     {% set partners = post.get_field("partners") %}
     {% if partners %}
-      <section class="mb4">
+      <section>
         {% include "components/title.twig" with {"content": "Partners" } %}
 
         <div class="flex flex-wrap">
