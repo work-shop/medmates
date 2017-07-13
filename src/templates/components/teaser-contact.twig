@@ -6,7 +6,7 @@
   {% endif %}
 
   <div>
-    {% include "components/subtitle.twig" with { "content": post.display_name, "color": "blue" } %}
+    {% include "components/subtitle.twig" with { "content": post.display_name } %}
 
     {% if post.job_title or post.user_email or post.phone_number %}
       {% if post.job_title %}
