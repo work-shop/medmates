@@ -1,17 +1,19 @@
-<nav>
+<nav class="flex-l flex-wrap-l">
   {% for item in menu.get_items %}
-    {% if loop.last %}
-      <div>
-        {% if user %}
-          <a class="dib f3 gray hover-light-gray no-underline" href="{{ profile_link }}">Profile</a>
-        {% else %}
-          <a class="dib f3 gray hover-light-gray no-underline" href="{{ login_link }}">Log&nbsp;In</a>
-        {% endif %}
-      </div>
-    {% endif %}
+    {% if item.link matches "/^((?!search).)*$/" %}
+      <section class="w-20-l">
+        <h1 class="mb2-l f3 fw6-l">
+          <a class="dib gray hover-light-gray no-underline" href="{{ item.link }}">{{ item.title }}</a>
+        </h1>
 
-    <div>
-      <a class="dib f3 gray hover-light-gray no-underline" href="{{ item.link }}">{{ item.title }}</a>
-    </div>
+        {% if item.get_children %}
+          {% for subitem in item.get_children %}
+            <div class="dn db-l">
+              <a class="dib light-gray hover-white" href="{{ subitem.link }}">{{ subitem.title }}</a>
+            </div>
+          {% endfor %}
+        {% endif %}
+      </section>
+    {% endif %}
   {% endfor %}
 </nav>
