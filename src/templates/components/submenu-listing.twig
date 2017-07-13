@@ -2,7 +2,7 @@
   {% for item in menu.get_items %}
     {% if post.slug in item.link %}
       {% for subitem in item.get_children %}
-        {% include "components/title.twig" with { "content": subitem.title, "link": subitem.link } %}
+        {% include "components/subtitle.twig" with { "content": subitem.title, "link": subitem.link } %}
       {% endfor %}
     {% endif %}
   {% endfor %}
