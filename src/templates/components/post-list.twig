@@ -1,6 +1,6 @@
-<div class="col-2-l colg5">
+<div class="flex-l flex-wrap-l">
   {% for post in posts %}
-    <div class="colbia-l mb4">
+    <div class="w-50 mb4 {% if loop.index is odd %}pr3-l{% else %}pl3-l{% endif %}">
       {% include teaser_template | default(["components/teaser-" ~ post.post_type ~ ".twig", "components/teaser.twig"]) %}
     </div>
   {% endfor %}

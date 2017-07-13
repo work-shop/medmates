@@ -65,7 +65,6 @@
 @import "./modules/_font-family";
 @import "./modules/_hovers";
 @import "./modules/_states";
-@import "./modules/_columns";
 @import "./modules/_filters";
 
 /* Skins */
@@ -81,7 +80,7 @@
 /*@import "tachyons/src/_debug-grid";*/
 
 /* Uncomment out the line below to help debug layout issues */
- /* @import "tachyons/src/_debug"; */
+/* @import "tachyons/src/_debug";  */
 
 /* Global Styles */
 @import "./_global";
