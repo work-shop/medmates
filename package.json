@@ -1,6 +1,6 @@
 {
   "name": "wp-dev-kit",
-  "version": "5.0.0",
+  "version": "6.0.0",
   "description": "WordPress development kit",
   "author": "Bearform LLC (https://bearform.xyz)",
   "license": "ISC",
@@ -23,7 +23,6 @@
     "browser-sync": "^2.18.12",
     "cssnano": "^3.10.0",
     "del": "^3.0.0",
-    "dotenv": "^4.0.0",
     "gulp": "gulpjs/gulp#4.0",
     "gulp-babel": "^6.1.2",
     "gulp-flatten": "^0.3.1",

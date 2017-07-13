@@ -22,6 +22,7 @@
     }
   ],
   "require": {
+    "wpackagist-plugin/wp-migrate-db": "*",
     "wpackagist-plugin/timber-library": "*",
     "advanced-custom-fields/advanced-custom-fields-pro": "*"
   },

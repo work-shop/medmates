@@ -1,4 +1,3 @@
-import dotenv from "dotenv";
 import gulp from "gulp";
 import del from "del";
 import plumber from "gulp-plumber";
@@ -12,8 +11,6 @@ import atImport from "postcss-import";
 import cssnext from "postcss-cssnext";
 import cssnano from "cssnano";
 import browserSync from "browser-sync";
-
-dotenv.config();
 
 const basePaths = {
   src: "./src",
@@ -106,7 +103,12 @@ export const build = gulp.series(clean,
 const bs = browserSync.create();
 
 export const serve = (done) => bs.init({
-  proxy: `${process.env.HTTP_HOST}:${process.env.HTTP_PORT}`
+  proxy: "wordpress",
+  port: 3000,
+  ui: {
+    port: 3001
+  },
+  open: false
 });
 
 export const reload = (done) => {
