@@ -279,7 +279,7 @@ class MyTimberSite extends TimberSite {
   function add_to_context($context) {
     $context["menu"] = new TimberMenu();
     $context["login_link"] = wp_login_url(user_trailingslashit(get_site_url()));
-    $context["profile_link"] = user_trailingslashit(get_site_url() . "/members/" . get_current_user_id());
+    $context["profile_link"] = user_trailingslashit(get_site_url() . "/member/" . get_current_user_id());
     return $context;
   }
 

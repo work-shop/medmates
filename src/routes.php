@@ -24,7 +24,7 @@ function is_page_number_valid($page_number, $member_role, $per_page) {
 // Routes
 
 Routes::map("/", function ($params) {
-  $params["posts"] = Timber::get_posts("post_type=post");
+  $params["posts"] = Timber::get_posts("post_type=post&numberposts=5");
   Routes::load("page.php", $params, null, 200);
 });
 
@@ -113,7 +113,7 @@ Routes::map("member-category/professional/page/:page_number", function ($params)
   }
 });
 
-Routes::map("members/:member_id", function ($params) {
+Routes::map("member/:member_id", function ($params) {
   $member = get_userdata($params["member_id"]);
   $valid_member_roles = ["professional", "company"];
 

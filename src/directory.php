@@ -27,7 +27,7 @@ $members = get_users($args);
 // Add a permalink to each member object
 for ($i = 0; $i < count($members); $i++) {
   $member = new Timber\User($members[$i]->ID); // Fetch member object so we have avatar data
-  $member->link = user_trailingslashit(get_site_url() . "/members/$member->ID");
+  $member->link = user_trailingslashit(get_site_url() . "/member/$member->ID");
   $members[$i] = $member;
 }
 
