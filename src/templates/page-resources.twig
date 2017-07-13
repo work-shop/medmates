@@ -1,0 +1,9 @@
+{% extends "page.twig" %}
+
+{% block content %}
+  <section class="mb5">
+    {{ parent() }}
+  </section>
+
+  {% include "components/submenu-listing.twig" %}
+{% endblock %}

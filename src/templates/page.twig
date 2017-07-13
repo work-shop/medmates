@@ -2,16 +2,10 @@
 
 {% block content %}
   {% if post.content %}
-    <article class="mb5">
+    <article>
       <div class="mw7">
         {{ post.content }}
       </div>
     </article>
-  {% endif %}
-
-  {% if posts %}
-    <section>
-      {% include "components/post-list.twig" %}
-    </section>
   {% endif %}
 {% endblock %}

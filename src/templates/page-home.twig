@@ -5,19 +5,15 @@
 {% endblock %}
 
 {% block content %}
-  {% if post.content %}
-    <article class="mb5">
-      <div class="mw6">
-        {{ post.content }}
-      </div>
-    </article>
-  {% endif %}
+  <section class="mb5">
+    {{ parent() }}
+  </section>
 
   <section>
     {% include "components/title.twig" with { "content": "Latest News" } %}
 
     {% for post in posts %}
-      <div class="mw7 mb4">
+      <div class="mw7">
         {% include ["components/teaser-" ~ post.post_type ~ ".twig", "components/teaser.twig"] %}
       </div>
     {% endfor %}

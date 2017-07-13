@@ -4,9 +4,7 @@
   <article>
     {% if post.content %}
       <section class="mw7 mb5">
-        <div>
-          {{ post.content }}
-        </div>
+        {{ post.content }}
       </section>
     {% endif %}
 
@@ -68,7 +66,7 @@
       <section class="mb5" id="partners">
         {% include "components/title.twig" with {"content": "Partners" } %}
 
-        <div class="flex-m flex-wrap-m">
+        <div class="flex-m flex-wrap-m mb4">
           {% for partner in partners %}
             <div class="flex-m justify-center-m items-center w5 w-33-m pv3 pa3-m pa4-l">
               <a href="{{ partner.url }}" target="_blank"><img class="dib border-box pa2-m pa0-l grayscale"
@@ -81,7 +79,7 @@
     {% endif %}
 
     {% if post.sponsors %}
-      <section class="mb5" id="sponsors">
+      <section id="sponsors">
         {% include "components/title.twig" with {"content": "Sponsors" } %}
 
         {% set sponsor_tiers = {
@@ -99,7 +97,7 @@
               {% include "components/metadata.twig" with { "content": tier_label } %}
             </h2>
 
-            <div class="flex-m flex-wrap-m">
+            <div class="flex-m flex-wrap-m mb4">
               {% for sponsor in sponsors %}
                 <div class="flex-m justify-center-m items-center-m w5 w-33-m w-25-l pv3 pa3-m pa4-l">
                   <a href="{{ sponsor.url }}" target="_blank"><img class="dib border-box pa2-m pa0-l grayscale"

@@ -1,7 +1,7 @@
 {% set pagination = pagination | default(posts.pagination) %}
 
 {% if pagination.prev or pagination.next %}
-  <nav class="mv4 mv5-m">
+  <nav>
     {% if pagination.prev %}
       <span class="{% if pagination.prev and pagination.next %} mr3 {% endif %}">
         <a href="{{ pagination.prev.link }}">Previous Page</a>

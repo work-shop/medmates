@@ -1,25 +1,14 @@
-{% extends "base.twig" %}
+{% extends "page.twig" %}
 
 {% block content %}
-  {% if post.content %}
-    <article class="mb5">
-      <div class="mw7">
-        {{ post.content }}
-      </div>
-    </article>
-  {% endif %}
+  {{ parent() }}
 
-  <nav class="mv5 flex">
-    <div class="mr4">
-      {% include "components/title.twig" with { "content": "Companies", "link": companies_link } %}
-    </div>
-
-    <div>
-      {% include "components/title.twig" with { "content": "Professionals", "link": professionals_link } %}
-    </div>
+  <nav class="mb5">
+    {% include "components/title.twig" with { "content": "Companies", "link": companies_link } %}
+    {% include "components/title.twig" with { "content": "Professionals", "link": professionals_link } %}
   </nav>
 
-  <div>
+  <div class="mb5">
     {% include "components/post-list.twig" with { "teaser_template": "components/teaser-member.twig" } %}
   </div>
 
