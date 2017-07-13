@@ -6,6 +6,6 @@
   {% endif %}
 
   <p>
-    {{ post.preview }}
+    {{ post.get_preview(50, false, "") }}
   </p>
 </article>

@@ -1,16 +1,11 @@
 <article>
   {% include "components/subtitle.twig" with { "content": post.title, "link": post.link } %}
 
-  <div class="mb3">
-    {% set metadata = "Posted " ~ post.post_date_gmt | time_ago ~ " by " ~ post.author %}
-    {% include "components/metadata.twig" with { "content": metadata } %}
-  </div>
-
   {% if post.get_thumbnail %}
     <a href="{{ post.link }}"><img class="db" src="{{ post.thumbnail.src }}"></a>
   {% endif %}
 
   <p>
-    {{ post.preview }}
+    {{ post.get_preview(50, false, "") }}
   </p>
 </article>
