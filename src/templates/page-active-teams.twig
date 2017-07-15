@@ -5,5 +5,9 @@
     {{ parent() }}
   </section>
 
-  {% include "components/post-list.twig" %}
+  <div class="mb5">
+    {% include "components/post-list.twig" %}
+  </div>
+
+  {% include "components/join-callout.twig" %}
 {% endblock %}

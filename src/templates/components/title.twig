@@ -1,11 +1,11 @@
-<h1 class="mb4 f3 fw6 lh-title {{ color | default("green") }}">
-  {% if link %}
+<h1 class="mb3 f3 fw6 lh-title {{ color | default("green") }}">
+  {% if link %}{% spaceless %}
     <a href="{{ link }}">
-  {% endif %}
+  {% endspaceless %}{% endif %}{% spaceless %}
 
   {{ content }}
 
-  {% if link %}
-    </a>
+  {% endspaceless %}{% if link %}{% spaceless %}
+    {% endspaceless %}</a>
   {% endif %}
 </h1>

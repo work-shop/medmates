@@ -1,7 +1,7 @@
 {% extends "page.twig" %}
 
 {% block content %}
-  <article>
+  <article class="mb5">
     {% if post.content %}
       <section class="mw7 mb5">
         {{ post.content }}
@@ -111,4 +111,6 @@
       </section>
     {% endif %}
   </article>
+
+  {% include "components/join-callout.twig" %}
 {% endblock %}

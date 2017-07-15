@@ -58,7 +58,7 @@ Routes::map("members", function ($params) {
   }
 });
 
-Routes::map("member/page/:page_number", function ($params) {
+Routes::map("members/page/:page_number", function ($params) {
   $params["member_role"] = "company";
   $params["per_page"] = get_option("posts_per_page");
 

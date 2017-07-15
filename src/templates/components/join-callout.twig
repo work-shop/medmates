@@ -1,0 +1,7 @@
+{% if not user %}
+  {% include "components/title.twig" with { "content": "Join " ~ site.title } %}
+
+  <p class="mw6">
+    <a href="{{ join_link }}">Join the MedMates community and connect with other professionals!<a>
+  </p>
+{% endif %}

@@ -34,7 +34,7 @@ const paths = {
     watch: `${basePaths.src}/scripts/**/*.js`
   },
   styles: {
-    src: `${basePaths.src}/styles/main.css`,
+    src: `${basePaths.src}/styles/[^_]*.css`,
     dest: basePaths.dest,
     watch: `${basePaths.src}/styles/**/*.css`
   },
@@ -83,7 +83,6 @@ export const styles = () => gulp.src(paths.styles.src)
     })
   ]))
   .pipe(plumber.stop())
-  .pipe(rename("style.css"))
   .pipe(sourcemaps.write("."))
   .pipe(gulp.dest(paths.styles.dest)
 );

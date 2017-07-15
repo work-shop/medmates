@@ -50,3 +50,11 @@ a {
 a:hover {
   color: var(--light-blue);
 }
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 0;
+  border: 1px solid var(--blue);
+  box-shadow: none;
+}

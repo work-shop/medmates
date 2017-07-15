@@ -32,7 +32,21 @@
   {% for item in menu.get_items %}
     {% if loop.last %}
       {% if user %}
-        <a class="dn dib-l ml3 mr2 f3 lh-solid dark-gray hover-gray no-underline" href="{{ profile_link }}">Profile</a>
+        <section class="dn db-l ml3 mr2 hide-child">
+          <h1 class="f3 lh-solid">
+            <a class="dib dark-gray hover-gray no-underline" href="{{ profile_link }}">Profile</a>
+          </h1>
+
+          <div class="child absolute mt1 nl3 pa3 pt2 bg-white shadow-6">
+            <div class="pt1"></div>
+            <div>
+              <a class="dib" href="{{ edit_profile_link }}">Edit Profile</a>
+            </div>
+            <div>
+              <a class="dib" href="{{ logout_link }}">Log&nbsp;Out</a>
+            </div>
+          </div>
+        </section>
       {% else %}
         <a class="dn dib-l ml3 mr2 f3 lh-solid dark-gray hover-gray no-underline" href="{{ login_link }}">Log&nbsp;In</a>
       {% endif %}

@@ -9,8 +9,10 @@
     {{ parent() }}
   </section>
 
-  <section>
-    {% include "components/title.twig" with { "content": "Latest News" } %}
+  <section class="mb5">
+    <div class="mb4">
+      {% include "components/title.twig" with { "content": "Latest News" } %}
+    </div>
 
     {% for post in posts %}
       <div class="mw7 mb4">
@@ -18,4 +20,6 @@
       </div>
     {% endfor %}
   </section>
+
+  {% include "components/join-callout.twig" %}
 {% endblock %}

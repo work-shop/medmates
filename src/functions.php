@@ -19,6 +19,11 @@ class MyTimberSite extends TimberSite {
     add_theme_support("post-formats");
     add_theme_support("post-thumbnails");
     add_theme_support("menus");
+    add_action("admin_head", array($this, "my_profile_subject_start"));
+    add_action("admin_footer", array($this, "my_profile_subject_end"));
+    add_action("after_setup_theme", array($this, "remove_admin_bar_for_members"));
+    add_action("admin_bar_menu", array($this, "remove_wp_logo_from_admin_bar"), 11);
+    add_action("wp_dashboard_setup", array($this, "remove_dashboard_widgets"));
     add_action("init", array($this, "remove_comment_support"));
     add_action("admin_menu", array($this, "remove_menu_items"));
     add_action("wp_before_admin_bar_render", array($this, "remove_admin_bar_items"));
@@ -33,10 +38,50 @@ class MyTimberSite extends TimberSite {
     add_action("init", array($this, "register_industry_category"));
     add_action("wp_enqueue_scripts", array($this, "enqueue_scripts"));
     add_action("wp_enqueue_scripts", array($this, "enqueue_styles"));
+    add_action("login_enqueue_scripts", array($this, "enqueue_login_styles"));
+    add_action("user_register", array($this, "my_registration_save"));
+    add_filter("acf/load_field", array($this, "my_acf_hide_field_on_profile_page"));
+    add_filter("login_headertitle", array($this, "my_login_title"));
     add_filter("timber_context", array($this, "add_to_context"));
     add_filter("get_twig", array($this, "add_to_twig"));
+    remove_action("admin_color_scheme_picker", "admin_color_scheme_picker");
     remove_filter("template_redirect", "redirect_canonical");
     parent::__construct();
+  }
+
+  // Remove the leftover personal options from the profile page for members
+  function my_remove_personal_options($subject) {
+    if (current_user_can("professional") || current_user_can("company")) {
+      $subject = preg_replace("#<h2>Personal Options</h2>.+?/table>#s", "", $subject, 1);
+    }
+
+    return $subject;
+  }
+
+  function my_profile_subject_start() {
+    ob_start(array($this, "my_remove_personal_options"));
+  }
+
+  function my_profile_subject_end() {
+    ob_end_flush();
+  }
+
+  // Remove the admin bar for members
+  function remove_admin_bar_for_members() {
+    if (current_user_can("professional") || current_user_can("company")) {
+      show_admin_bar(false);
+    }
+  }
+
+  // Remove WordPress logo from the admin bar
+  function remove_wp_logo_from_admin_bar($wp_admin_bar) {
+    $wp_admin_bar->remove_node("wp-logo");
+  }
+
+  // Remove Dashboard widgets
+  function remove_dashboard_widgets () {
+    remove_meta_box("dashboard_primary", "dashboard", "side");   // WordPress.com blog
+    remove_meta_box("dashboard_secondary", "dashboard", "side"); // Other WordPress news
   }
 
   // Remove comment support from posts and pages
@@ -262,6 +307,63 @@ class MyTimberSite extends TimberSite {
     register_taxonomy("industry_category", "", $args);
   }
 
+  // Hide some ACF fields from the user profile page
+  function my_acf_hide_field_on_profile_page($field) {
+    if (is_admin()) {
+      $fields_to_hide = array(
+        "field_5968fd11a35f8", // Member role
+        "field_5968fabdd18fd", // First name
+        "field_5968facbd18fe", // Last name
+        "field_5968fd95463c1", // Company name
+        "field_5968fb2b409b6", // Website URL
+        "field_596910b2fe57f"  // Biography
+      );
+
+      if (in_array($field["key"], $fields_to_hide)) {
+        $field["readonly"] = true;
+        $field["conditional_logic"] = true;
+      }
+    }
+
+    return $field;
+  }
+
+  function my_registration_save($user_id) {
+    $role = $_POST["acf"]["field_5968fd11a35f8"];
+
+    // Format display name
+    if ($role === "company") {
+      $company_name = $_POST["acf"]["field_5968fd95463c1"];
+      $first_name = $company_name;
+      $display_name = $company_name;
+    } else {
+      $first_name = $_POST["acf"]["field_5968fabdd18fd"];
+      $last_name = $_POST["acf"]["field_5968facbd18fe"];
+      $display_name = $first_name . " " . $last_name;
+    }
+
+    $website = $_POST["acf"]["field_5968fb2b409b6"];
+    $biography = $_POST["acf"]["field_596910b2fe57f"];
+
+    $userdata = array(
+      "ID" => $user_id,
+      "role" => $role,
+      "first_name" => $first_name,
+      "last_name" => $last_name,
+      "nickname" => $display_name,
+      "display_name" => $display_name,
+      "user_url" => $website,
+      "description" => $biography
+    );
+
+    wp_update_user($userdata);
+  }
+
+  // Set the title text on the login logo to the site's name
+  function my_login_title() {
+    return get_option("blogname");
+  }
+
   function enqueue_scripts() {
     wp_enqueue_script("jquery");
 
@@ -271,15 +373,24 @@ class MyTimberSite extends TimberSite {
   }
 
   function enqueue_styles() {
-    $bundle_src = get_stylesheet_uri();
-    $bundle_ver = filemtime(get_stylesheet_directory() . "/style.css");
-    wp_enqueue_style("bundle", $bundle_src, array(), $bundle_ver);
+    $style_src = get_stylesheet_uri();
+    $style_ver = filemtime(get_stylesheet_directory() . "/style.css");
+    wp_enqueue_style("style", $style_src, array(), $style_ver);
+  }
+
+  function enqueue_login_styles() {
+    $style_login_src = get_stylesheet_directory_uri() . "/style-login.css";
+    $style_login_ver = filemtime(get_stylesheet_directory() . "/style-login.css");
+    wp_enqueue_style("style-login", $style_login_src, array(), $style_login_ver);
   }
 
   function add_to_context($context) {
     $context["menu"] = new TimberMenu();
-    $context["login_link"] = wp_login_url(user_trailingslashit(get_site_url()));
+    $context["join_link"] = wp_registration_url();
+    $context["login_link"] = wp_login_url(get_site_url());
+    $context["logout_link"] = wp_logout_url(get_site_url());
     $context["profile_link"] = user_trailingslashit(get_site_url() . "/member/" . get_current_user_id());
+    $context["edit_profile_link"] = get_edit_user_link();
     return $context;
   }
 
