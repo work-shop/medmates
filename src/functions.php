@@ -40,6 +40,7 @@ class MyTimberSite extends TimberSite {
     add_action("wp_enqueue_scripts", array($this, "enqueue_styles"));
     add_action("login_enqueue_scripts", array($this, "enqueue_login_styles"));
     add_action("user_register", array($this, "my_registration_save"));
+    add_filter("acf/load_field", array($this, "my_acf_load_user_role_field"));
     add_filter("acf/load_field", array($this, "my_acf_hide_field_on_profile_page"));
     add_filter("login_headertitle", array($this, "my_login_title"));
     add_filter("timber_context", array($this, "add_to_context"));
@@ -307,27 +308,6 @@ class MyTimberSite extends TimberSite {
     register_taxonomy("industry_category", "", $args);
   }
 
-  // Hide some ACF fields from the user profile page
-  function my_acf_hide_field_on_profile_page($field) {
-    if (is_admin()) {
-      $fields_to_hide = array(
-        "field_5968fd11a35f8", // Member role
-        "field_5968fabdd18fd", // First name
-        "field_5968facbd18fe", // Last name
-        "field_5968fd95463c1", // Company name
-        "field_5968fb2b409b6", // Website URL
-        "field_596910b2fe57f"  // Biography
-      );
-
-      if (in_array($field["key"], $fields_to_hide)) {
-        $field["readonly"] = true;
-        $field["conditional_logic"] = true;
-      }
-    }
-
-    return $field;
-  }
-
   function my_registration_save($user_id) {
     $role = $_POST["acf"]["field_5968fd11a35f8"];
 
@@ -357,6 +337,47 @@ class MyTimberSite extends TimberSite {
     );
 
     wp_update_user($userdata);
+  }
+
+  // Hide some ACF fields from the user profile page
+  function my_acf_hide_field_on_profile_page($field) {
+    if (is_admin()) {
+      $fields_to_hide = array(
+        "field_5968fd11a35f8", // Member role
+        "field_5968fabdd18fd", // First name
+        "field_5968facbd18fe", // Last name
+        "field_5968fd95463c1", // Company name
+        "field_5968fb2b409b6", // Website URL
+        "field_596910b2fe57f"  // Biography
+      );
+
+      if (in_array($field["key"], $fields_to_hide)) {
+        $field["readonly"] = true;
+        $field["conditional_logic"] = true;
+      }
+    }
+
+    return $field;
+  }
+
+  // Set user role field for ACF fields in the profile page
+  function my_acf_load_user_role_field($field) {
+    if (is_user_logged_in()) {
+      // Get user ID
+      if (IS_PROFILE_PAGE)  {
+        $user_id = get_current_user_id();
+      } elseif (!empty($_GET["user_id"])) {
+        $user_id = $_GET["user_id"];
+      }
+
+      $user = get_userdata($user_id);
+
+      if ($field["key"] === "field_5968fd11a35f8") { // Member role
+        $field["value"] = $user->roles[0];
+      }
+    }
+
+    return $field;
   }
 
   // Set the title text on the login logo to the site's name
