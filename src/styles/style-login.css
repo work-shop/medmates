@@ -68,6 +68,15 @@ select {
   background-repeat: no-repeat;
 }
 
+.interim-login.login h1 a {
+  width: 192px !important;
+}
+
+#wp-auth-check-wrap #wp-auth-check {
+  width: 480px !important;
+  margin: 0 0 0 -240px !important;
+}
+
 .login h2 {
   display: none;
 }
