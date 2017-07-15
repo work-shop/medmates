@@ -42,7 +42,8 @@ class MyTimberSite extends TimberSite {
     add_action("user_register", array($this, "my_registration_save"));
     add_filter("acf/load_field", array($this, "my_acf_load_user_role_field"));
     add_filter("acf/load_field", array($this, "my_acf_hide_field_on_profile_page"));
-    add_filter("login_headertitle", array($this, "my_login_title"));
+    add_filter("login_headerurl", array($this, "my_login_header_url"));
+    add_filter("login_headertitle", array($this, "my_login_header_title"));
     add_filter("timber_context", array($this, "add_to_context"));
     add_filter("get_twig", array($this, "add_to_twig"));
     remove_action("admin_color_scheme_picker", "admin_color_scheme_picker");
@@ -380,8 +381,13 @@ class MyTimberSite extends TimberSite {
     return $field;
   }
 
-  // Set the title text on the login logo to the site's name
-  function my_login_title() {
+  // Set the URL of the login logo to the site URL
+  function my_login_header_url() {
+    return get_bloginfo("url");
+  }
+
+  // Set the title text on the login logo to the site name
+  function my_login_header_title() {
     return get_option("blogname");
   }
 
