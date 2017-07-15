@@ -1,4 +1,5 @@
 @import "tachyons/src/_normalize";
+@import "tachyons/src/_spacing";
 @import "./fonts/_transport";
 @import "./variables/_colors";
 @import "./variables/_media-queries";
