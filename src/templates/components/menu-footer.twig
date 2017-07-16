@@ -2,7 +2,7 @@
   {% for item in menu.get_items %}
     {% if item.link matches "/^((?!search).)*$/" %}
       <section class="w-20-l">
-        <h1 class="mb2-l f3 fw6-l">
+        <h1 class="mb2-l f3 normal b-l">
           <a class="dib gray hover-light-gray no-underline" href="{{ item.link }}">{{ item.title }}</a>
         </h1>
 

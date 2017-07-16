@@ -1,83 +1,72 @@
-/**
- * Reset HTML 5.2 elements
- * Reference: https://w3c.github.io/html/index.html (Editor's Draft, 13 July 2017)
- */
+/* Reset HTML 5.2 elements */
 
+@import "_normalize.css";
+@import "_variables.css";
 
-/* Sections */
-body,
-article, section, nav, aside,
-h1, h2, h3, h4, h5, h6,
-header, footer,
-/* Grouping content */
-p, address, hr, pre, blockquote,
-ol, ul, li,
-dl, dt, dd,
-figure, figcaption,
-main, div,
-/* Text-level semantics */
-a,
-em, strong,
-small,
-s,
-cite, q,
-dfn, abbr,
-ruby, rb, rt, rtc, rp,
-data, time,
-code, var, samp, kbd,
-sub, sup,
-i, b, u,
-mark,
-bdi, bdo,
-span,
-br, wbr,
-/* Edits */
-ins, del,
-/* Embedded content */
-picture, source, img,
-iframe,
-embed, object, param,
-video, audio, track,
-map, area,
-/* Tabular data */
-table,
-caption,
-colgroup, col,
-tbody, thead, tfoot,
-tr, td, th,
-/* Forms */
-form,
-label,
-input,
-button,
-select, datalist, optgroup, option,
-textarea,
-output,
-progress,
-meter,
-fieldset,
-legend,
-/* Interactive elements */
-details, summary,
-menu, menuitem,
-dialog,
-/* Scripting */
-script, noscript,
-template,
-canvas {
+a, abbr, address, area, article, aside, audio, b, base, bdi, bdo, blockquote,
+body, br, button, canvas, caption, cite, code, col, colgroup, menuitem, data,
+datalist, dd, del, details, dfn, dialog, div, dl, dt, em, embed, fieldset,
+figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, head, header, hr,
+html, i, iframe, img, input, ins, kbd, label, legend, li, link, main, map, mark,
+menu, meta, meter, nav, noscript, object, ol, optgroup, option, output, p,
+param, picture, pre, progress, q, rb, rp, rt, rtc, ruby, s, samp, script,
+section, select, small, source, span, strong, style, sub, summary, sup, table,
+tbody, td, template, textarea, tfoot, th, thead, time, title, tr, track, u, ul,
+var, video, wbr {
   margin: 0;
   padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
+
+}
+
+html {
+  line-height: var(--line-height);
+}
+
+body {
+  font-family: var(--font-family-sans-serif);
+}
+
+h1 {
+  font-size: var(--font-size-extra-extra-large);
+}
+
+h2 {
+  font-size: var(--font-size-extra-large);
+}
+
+h3 {
+  font-size: var(--font-size-large);
+}
+
+h4 {
+  font-size: var(--font-size-medium);
+}
+
+h5 {
+  font-size: var(--font-size-small);
+}
+
+h6 {
+  font-size: var(--font-size-extra-small);
 }
 
 ol, ul {
-  list-style: none;
+  padding-left: var(--spacing-large);
+}
+
+small, sub, sup {
+  font-size: var(--font-size-extra-small);
+}
+
+pre, code, kbd, samp {
+  font-family: var(--font-family-monospace);
 }
 
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+
+caption, th {
+  text-align: inherit;
 }

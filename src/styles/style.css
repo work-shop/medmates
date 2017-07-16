@@ -6,7 +6,6 @@
 **/
 
 /* Modules */
-@import "tachyons/src/_normalize";
 @import "tachyons/src/_box-sizing";
 @import "tachyons/src/_aspect-ratios";
 @import "tachyons/src/_images";

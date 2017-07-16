@@ -1,6 +1,6 @@
 <nav class="flex justify-between items-end">
   <div class="flex-auto flex-no-shrink flex items-end">
-    <a class="dib f3 fw6 lh-solid no-underline" href="{{ site.url }}">
+    <a class="dib f3 b lh-solid no-underline" href="{{ site.url }}">
       <img style="min-width: 192px;" class="db" src="{{ theme.link }}/images/logo.svg" alt="MedMates">
     </a>
   </div>
@@ -33,7 +33,7 @@
     {% if loop.last %}
       {% if user %}
         <section class="dn db-l ml3 mr2 hide-child">
-          <h1 class="f3 lh-solid">
+          <h1 class="f3 normal lh-solid">
             <a class="dib dark-gray hover-gray no-underline" href="{{ profile_link }}">Profile</a>
           </h1>
 
@@ -58,7 +58,7 @@
       </a>
     {% else %}
       <section class="dn db-l ml3 mr2 hide-child">
-        <h1 class="f3 lh-solid">
+        <h1 class="f3 normal lh-solid">
           <a class="dib dark-gray hover-gray no-underline" href="{{ item.link }}">{{ item.title }}</a>
         </h1>
 
