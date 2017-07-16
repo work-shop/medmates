@@ -1,0 +1,83 @@
+/**
+ * Reset HTML 5.2 elements
+ * Reference: https://w3c.github.io/html/index.html (Editor's Draft, 13 July 2017)
+ */
+
+
+/* Sections */
+body,
+article, section, nav, aside,
+h1, h2, h3, h4, h5, h6,
+header, footer,
+/* Grouping content */
+p, address, hr, pre, blockquote,
+ol, ul, li,
+dl, dt, dd,
+figure, figcaption,
+main, div,
+/* Text-level semantics */
+a,
+em, strong,
+small,
+s,
+cite, q,
+dfn, abbr,
+ruby, rb, rt, rtc, rp,
+data, time,
+code, var, samp, kbd,
+sub, sup,
+i, b, u,
+mark,
+bdi, bdo,
+span,
+br, wbr,
+/* Edits */
+ins, del,
+/* Embedded content */
+picture, source, img,
+iframe,
+embed, object, param,
+video, audio, track,
+map, area,
+/* Tabular data */
+table,
+caption,
+colgroup, col,
+tbody, thead, tfoot,
+tr, td, th,
+/* Forms */
+form,
+label,
+input,
+button,
+select, datalist, optgroup, option,
+textarea,
+output,
+progress,
+meter,
+fieldset,
+legend,
+/* Interactive elements */
+details, summary,
+menu, menuitem,
+dialog,
+/* Scripting */
+script, noscript,
+template,
+canvas {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}

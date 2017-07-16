@@ -3,6 +3,7 @@
 @import "./fonts/_transport";
 @import "./variables/_colors";
 @import "./variables/_media-queries";
+@import "./_reset";
 @import "./_global";
 
 a {
@@ -18,12 +19,16 @@ a:hover {
   color: var(--light-blue) !important;
 }
 
+input,
+select,
+textarea {
+  border: 1px solid var(--light-gray);
+}
+
 input:focus,
 select:focus,
 textarea:focus {
-  outline: 0 !important;
-  border: 1px solid var(--blue) !important;
-  box-shadow: none !important;
+   box-shadow: none !important;
 }
 
 body {

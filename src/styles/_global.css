@@ -1,42 +1,14 @@
 /* Global Styles */
 
-address,
-blockquote,
-form,
-fieldset,
-figure,
-dl,
-ol,
-ul,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-pre,
-table {
-  margin: 0;
-  padding: 0;
-  font: inherit;
-}
-
-address,
-blockquote,
-form,
-fieldset,
-figure,
-dl,
-ol,
-ul,
-p,
-pre,
-table {
+p, address, hr, pre, blockquote,
+ol, ul, dl,
+figure, figcaption {
   margin-bottom: var(--spacing-medium);
 }
 
-dt,
+ol { list-style: decimal; }
+ul { list-style: square; }
+
 li {
   margin-bottom: var(--spacing-medium);
   margin-left: 1.33333rem;
@@ -54,7 +26,6 @@ a:hover {
 input:focus,
 select:focus,
 textarea:focus {
-  outline: 0;
-  border: 1px solid var(--blue);
+  outline: 1px solid var(--blue);
   box-shadow: none;
 }
