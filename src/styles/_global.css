@@ -1,3 +1,5 @@
+@import "tachyons/src/_spacing";
+
 /* Global Styles */
 
 p, address, hr, pre, blockquote,
@@ -6,7 +8,6 @@ figure, figcaption {
   margin-bottom: var(--spacing-medium);
 }
 
-ol { list-style: decimal; }
 ul { list-style: square; }
 
 li {

@@ -59,19 +59,19 @@
 @import "tachyons/src/_styles";
 
 /* Custom Modules */
-@import "./modules/_box-shadow";
-@import "./modules/_flexbox";
-@import "./modules/_font-family";
-@import "./modules/_hovers";
-@import "./modules/_states";
+@import "modules/_box-shadow";
+@import "modules/_flexbox";
+@import "modules/_font-family";
+@import "modules/_hovers";
+@import "modules/_states";
 
 /* Skins */
 @import "tachyons-skins-pseudo/src/tachyons-skins-pseudo";
 
 /* Variables */
 /* Importing here will allow you to override any variables in the modules */
-@import "./variables/_colors";
-@import "./variables/_media-queries";
+@import "variables/_colors";
+@import "variables/_media-queries";
 
 /* Debugging */
 /*@import "tachyons/src/_debug-children";*/
@@ -81,5 +81,5 @@
 /* @import "tachyons/src/_debug";  */
 
 /* Global Styles */
-@import "./_reset";
-@import "./_global";
+@import "_reset";
+@import "_global";

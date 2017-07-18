@@ -1,8 +1,8 @@
-@import "./fonts/_transport";
-@import "./variables/_colors";
-@import "./variables/_media-queries";
-@import "./_reset";
-@import "./_global";
+@import "fonts/_transport";
+@import "variables/_colors";
+@import "variables/_media-queries";
+@import "_reset";
+@import "_global";
 
 a {
   color: var(--blue) !important;
