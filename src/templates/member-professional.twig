@@ -3,7 +3,7 @@
 {% block member_details %}
   {% if post.company_affiliation %}
     <div>
-      {{ post.company_affiliation }}
+      {{ function("get_userdata", post.company_affiliation).display_name }}
     </div>
   {% endif %}
 
