@@ -8,12 +8,14 @@ figure, figcaption {
   margin-bottom: var(--spacing-medium);
 }
 
+ol, ul {
+  padding-left: 1.33333rem;
+}
+
 ul { list-style: square; }
 
 li {
   margin-bottom: var(--spacing-medium);
-  margin-left: 1.33333rem;
-  padding-left: var(--spacing-extra-small);
 }
 
 a {
