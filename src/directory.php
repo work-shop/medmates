@@ -39,8 +39,6 @@ foreach ($search_queries as $query) {
 if (!empty($search_queries)) {
   if (!empty($filters)) {
     $user_meta_query = array("relation" => "AND");
-  } else {
-    $user_meta_query = array("relation" => "OR");
   }
 
   if (!empty($filters)) {
@@ -57,29 +55,35 @@ if (!empty($search_queries)) {
     $user_meta_query[] = $user_meta_query_filters;
   }
 
-  $user_meta_query_extras = array("relation" => "OR");
+  if (!empty($queries)) {
+    $user_meta_query_extras = array("relation" => "OR");
 
-  $meta_query_keys = array(
-    "first_name",
-    "last_name",
-    "description",
-    "job_title",
-    "job_functions",
-    "company_affiliation",
-    "development_stage",
-  );
+    $meta_query_keys = array(
+      "first_name",
+      "last_name",
+      "description",
+      "job_title",
+      "job_functions",
+      "company_affiliation",
+      "development_stage",
+    );
 
-  foreach ($meta_query_keys as $key) {
-    foreach ($queries as $value) {
-      $user_meta_query_extras[] = array(
-        "key" => $key,
-        "value" => $value,
-        "compare" => "LIKE"
-      );
+    foreach ($meta_query_keys as $key) {
+      foreach ($queries as $value) {
+        $user_meta_query_extras[] = array(
+          "key" => $key,
+          "value" => $value,
+          "compare" => "LIKE"
+        );
+      }
+    }
+
+    if (empty($filters)) {
+      $user_meta_query = $user_meta_query_extras;
+    } else {
+      $user_meta_query[] = $user_meta_query_extras;
     }
   }
-
-  $user_meta_query[] = $user_meta_query_extras;
 }
 
 $user_query = new WP_User_Query(array(
@@ -130,6 +134,8 @@ if ($total_members > $per_page) {
 $context["posts"] = $members;
 $context["wp_title"] = "Directory";
 $context["industry_categories"] = get_field_object("field_596eb67cebf9f")["choices"];
+
+// Links
 $context["directory_link"] = user_trailingslashit(get_site_url() . "/members");
 $context["companies_link"] = user_trailingslashit(get_site_url() . "/member-category/company");
 $context["professionals_link"] = user_trailingslashit(get_site_url() . "/member-category/professional");
