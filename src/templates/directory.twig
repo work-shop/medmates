@@ -1,5 +1,7 @@
 {% extends "page.twig" %}
 
+{% set member_category_plural = (member_category == "company") ? "companies" : "professionals" %}
+
 {% block content %}
   {{ parent() }}
 
@@ -23,7 +25,7 @@
     {% include "components/title.twig" with { "content": "Search" } %}
 
     <p class="mb3">
-      Search for {{ (member_category == "company") ? "companies" : "professionals" }} in the {{ site.title }} directory.
+      Search for {{ member_category_plural }} in the {{ site.title }} directory.
     </p>
 
     <nav class="mb3">
@@ -36,7 +38,7 @@
       </div>
     </nav>
 
-    {% include "components/search-form.twig" %}
+    {% include "components/search-form.twig" with { "search_placeholder": "Search for " ~ member_category_plural ~ "…" } %}
   </section>
 
   <div class="mb5">
