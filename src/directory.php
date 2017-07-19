@@ -43,7 +43,7 @@ $filters = [];
 $queries = [];
 
 foreach ($search_queries as $query) {
-  if (preg_match("/filter=(.*)/i", $query, $matches)) {
+  if (preg_match("/filter:(.*)/i", $query, $matches)) {
     $filters[] = $matches[1];
   } else {
     $queries[] = $query;
@@ -126,7 +126,6 @@ if ($total_members > $per_page) {
   $base = str_replace($big, "%#%", esc_url(get_pagenum_link($big)));
   $pg_args = array(
     "base" => $base,
-    "format" => "/",
     "total" => ceil($total_members / $per_page),
     "current" => max(1, $paged)
   );
