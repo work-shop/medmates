@@ -26,6 +26,10 @@
           <a class="dib f3 dark-gray hover-gray no-underline" href="{{ item.link }}">{{ item.title }}</a>
         </div>
       {% endfor %}
+
+      <div>
+        <a class="dib f3 dark-gray hover-gray no-underline" href="{{ search_link }}">Search</a>
+      </div>
     </div>
   </section>
 
@@ -52,27 +56,25 @@
       {% endif %}
     {% endif %}
 
-    {% if item.link matches "/^.*search.*$/" %}
-      <a class="flex-no-shrink dn dib-l ml3 f3 lh-solid dark-gray hover-gray no-underline" href="{{ item.link }}">
-        <img style="min-width: 24px;" class="db" src="{{ theme.link }}/images/icon-search.svg" alt="{{ item.title }}" title="{{ item.title }}">
-      </a>
-    {% else %}
-      <section class="dn db-l ml3 mr2 hide-child">
-        <h1 class="mv0 f3 normal lh-solid">
-          <a class="dib dark-gray hover-gray no-underline" href="{{ item.link }}">{{ item.title }}</a>
-        </h1>
+    <section class="dn db-l ml3 mr2 hide-child">
+      <h1 class="mv0 f3 normal lh-solid">
+        <a class="dib dark-gray hover-gray no-underline" href="{{ item.link }}">{{ item.title }}</a>
+      </h1>
 
-        {% if item.get_children %}
-          <div class="child absolute mt1 nl3 pa3 pt2 bg-white shadow-6">
-            <div class="pt1"></div>
-            {% for subitem in item.get_children %}
-              <div>
-                <a class="dib" href="{{ subitem.link }}">{{ subitem.title }}</a>
-              </div>
-            {% endfor %}
-          </div>
-        {% endif %}
-      </section>
-    {% endif %}
+      {% if item.get_children %}
+        <div class="child absolute mt1 nl3 pa3 pt2 bg-white shadow-6">
+          <div class="pt1"></div>
+          {% for subitem in item.get_children %}
+            <div>
+              <a class="dib" href="{{ subitem.link }}">{{ subitem.title }}</a>
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </section>
   {% endfor %}
+
+  <a class="flex-no-shrink dn dib-l ml3 f3 lh-solid dark-gray hover-gray no-underline" href="{{ search_link }}">
+    <img style="min-width: 24px;" class="db" src="{{ theme.link }}/images/icon-search.svg" alt="Search" title="Search">
+  </a>
 </nav>

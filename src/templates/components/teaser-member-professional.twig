@@ -1,0 +1,25 @@
+{% extends "components/teaser-member.twig" %}
+
+{% block member_details %}
+  {% if post.company_affiliation or post.job_title or post.job_functions %}
+    <div>
+      {% if post.company_affiliation %}
+        <div>
+          {{ post.company_affiliation }}
+        </div>
+      {% endif %}
+
+      {% if post.job_title %}
+        <div>
+          {{ post.job_title }}
+        </div>
+      {% endif %}
+
+      {% if post.job_functions %}
+        <div>
+          {{ post.job_functions }}
+        </div>
+      {% endif %}
+    </div>
+  {% endif %}
+{% endblock %}

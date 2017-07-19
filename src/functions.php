@@ -35,7 +35,6 @@ class MyTimberSite extends TimberSite {
     add_action("init", array($this, "register_resource_post_type"));
     add_action("init", array($this, "register_event_category"));
     add_action("init", array($this, "register_resource_category"));
-    add_action("init", array($this, "register_industry_category"));
     add_action("wp_enqueue_scripts", array($this, "enqueue_scripts"));
     add_action("wp_enqueue_scripts", array($this, "enqueue_styles"));
     add_action("login_enqueue_scripts", array($this, "enqueue_login_styles"));
@@ -149,13 +148,13 @@ class MyTimberSite extends TimberSite {
       "labels" => $labels,
       "public" => true,
       "supports" => array("title", "editor", "excerpt", "thumbnail"),
-      "taxonomies" => array("post_tag"),
       "rewrite" => array(
-        "slug" => "active-team"
+        "slug" => "active-team",
+        "with_front" => false
       )
     );
 
-    register_post_type("team", $args);
+    register_post_type("active_team", $args);
   }
 
   function register_event_post_type() {
@@ -181,9 +180,10 @@ class MyTimberSite extends TimberSite {
       "labels" => $labels,
       "public" => true,
       "supports" => array("title", "editor", "excerpt", "thumbnail"),
-      "taxonomies" => array("event_category", "post_tag"),
+      "taxonomies" => array("event_category"),
       "rewrite" => array(
-        "slug" => "event"
+        "slug" => "event",
+        "with_front" => false
       )
     );
 
@@ -213,9 +213,10 @@ class MyTimberSite extends TimberSite {
       "labels" => $labels,
       "public" => true,
       "supports" => array("title", "editor", "excerpt", "thumbnail", "page-attributes"),
-      "taxonomies" => array("resource_category", "post_tag"),
+      "taxonomies" => array("resource_category"),
       "rewrite" => array(
-        "slug" => "resource"
+        "slug" => "resource",
+        "with_front" => false
       )
     );
 
@@ -244,7 +245,8 @@ class MyTimberSite extends TimberSite {
       "hierarchical" => true,
       "show_admin_column" => true,
       "rewrite" => array(
-        "slug" => "event-category"
+        "slug" => "event-category",
+        "with_front" => false
       )
     );
 
@@ -273,40 +275,12 @@ class MyTimberSite extends TimberSite {
       "hierarchical" => true,
       "show_admin_column" => true,
       "rewrite" => array(
-        "slug" => "resource-category"
+        "slug" => "resource-category",
+        "with_front" => false
       )
     );
 
     register_taxonomy("resource_category", "resource", $args);
-  }
-
-  function register_industry_category() {
-    $labels = array(
-      "name" => __("Industry Categories"),
-      "singular_name" => __("Industry Category"),
-      "search_items" => __("Search Industry Categories"),
-      "all_items" => __("All Industry Categories"),
-      "parent_item" => __("Parent Industry Category"),
-      "edit_item" => __("Edit Industry Category"),
-      "view_item" => __("View Industry Category"),
-      "update_item" => __("Update Industry Category"),
-      "add_new_item" => __("Add New Industry Category"),
-      "new_item_name" => __("New Industry Category Name"),
-      "not_found" => __("No industry categories found"),
-      "no_terms" => __("No industry categories")
-    );
-
-    $args = array(
-      "labels" => $labels,
-      "public" => true,
-      "hierarchical" => true,
-      "show_admin_column" => true,
-      "rewrite" => array(
-        "slug" => "industry-category"
-      )
-    );
-
-    register_taxonomy("industry_category", "", $args);
   }
 
   function my_registration_save($user_id) {
@@ -342,7 +316,9 @@ class MyTimberSite extends TimberSite {
 
   // Hide some ACF fields from the user profile page
   function my_acf_hide_field_on_profile_page($field) {
-    if (is_admin()) {
+    global $pagenow;
+
+    if (is_admin() && ($pagenow === "user-edit.php"|| "profile.php")) {
       $fields_to_hide = array(
         "field_5968fd11a35f8", // Member role
         "field_5968fabdd18fd", // First name
@@ -363,7 +339,9 @@ class MyTimberSite extends TimberSite {
 
   // Set user role field for ACF fields in the profile page
   function my_acf_load_user_role_field($field) {
-    if (is_user_logged_in()) {
+    global $pagenow;
+
+    if (is_user_logged_in() && ($pagenow === "user-edit.php" || "profile.php")) {
       // Get user ID
       if (IS_PROFILE_PAGE)  {
         $user_id = get_current_user_id();
@@ -413,6 +391,8 @@ class MyTimberSite extends TimberSite {
 
   function add_to_context($context) {
     $context["menu"] = new TimberMenu();
+    $context["search_query"] = get_search_query();
+    $context["search_link"] = user_trailingslashit(get_site_url() . "/search");
     $context["join_link"] = wp_registration_url();
     $context["login_link"] = wp_login_url(get_site_url());
     $context["logout_link"] = wp_logout_url(get_site_url());

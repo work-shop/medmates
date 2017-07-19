@@ -1,9 +1,17 @@
-{% extends "base.twig" %}
+{% extends "page.twig" %}
 
 {% block content %}
-  <article class="mw6">
-    <div>
-      {{ post.content }}
-    </div>
-  </article>
+  <section class="mb5">
+    {{ parent() }}
+  </section>
+
+  <section class="mb5">
+    {% include "components/search-form.twig" %}
+  </section>
+
+  <div class="mb5">
+    {% include "components/post-list.twig" %}
+  </div>
+
+  {% include "components/join-callout.twig" %}
 {% endblock %}

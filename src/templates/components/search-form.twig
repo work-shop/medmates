@@ -1,0 +1,4 @@
+<form class="flex w-75-m w-50-l" role="search" action="{{ search_action | default(search_url) }}">
+  <input class="w-100" type="text" name="s" placeholder="Search {{ site.title }}…" value="{{ search_query }}">
+  <input class="w4 ml1" type="submit" value="Search">
+</form>

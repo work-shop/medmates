@@ -3,17 +3,56 @@
 {% block content %}
   {{ parent() }}
 
-  <nav class="mb5">
-    {% include "components/title.twig" with { "content": "Companies", "link": companies_link } %}
-    {% include "components/title.twig" with { "content": "Professionals", "link": professionals_link } %}
+  <nav class="flex-m mb4">
+    {% if member_category == "company" %}
+      <span class="dib mb3 f3 b lh-title light-blue">Companies</span>
+    {% else %}
+      <a class="dib mb3 f3 b lh-title" href="{{ companies_link }}">Companies</a>
+    {% endif %}
+
+    <div class="ml3-m">
+      {% if member_category == "professional" %}
+        <span class="dib mb3 f3 b lh-title light-blue">Professionals</span>
+      {% else %}
+        <a class="dib mb3 f3 b lh-title" href="{{ professionals_link }}">Professionals</a>
+      {% endif %}
+    </div>
   </nav>
 
-  <div class="mb3">
-    {% include "components/post-list.twig" with { "teaser_template": "components/teaser-member.twig" } %}
-  </div>
+  <section class="mb5">
+    {% include "components/title.twig" with { "content": "Search" } %}
 
-  <div class="mb5">
-    {% include "components/pagination.twig" %}
+    <p class="mb3">
+      Search for {{ (member_category == "company") ? "companies" : "professionals" }} in the {{ site.title }} directory.
+    </p>
+
+    <nav class="mb3">
+      <div class="flex-l flex-wrap-l">
+        {% for category_slug, category in industry_categories %}
+          <div class="mr3-l mb2-l">
+            <a href="?s=filter={{ category_slug }}">{{ category }}</a>
+          </div>
+        {% endfor %}
+      </div>
+    </nav>
+
+    {% include "components/search-form.twig" %}
+  </section>
+
+  <div class="mb3">
+    {% include "components/title.twig" with { "content": "Members" } %}
+
+    {% if posts %}
+      {% if member_category == "company" %}
+        {% include "components/post-list.twig" with { "teaser_template": "components/teaser-member-company.twig" } %}
+      {% else %}
+        {% include "components/post-list.twig" with { "teaser_template": "components/teaser-member-professional.twig" } %}
+      {% endif %}
+    {% else %}
+      <div>
+        No members were found. Please modify your search parameters and try again.
+      </div>
+    {% endif %}
   </div>
 
   {% include "components/join-callout.twig" %}

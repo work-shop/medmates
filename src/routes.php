@@ -28,21 +28,25 @@ Routes::map("/", function ($params) {
   Routes::load("page.php", $params, null, 200);
 });
 
-Routes::map("/home", function ($params) {
+Routes::map("home", function ($params) {
   Routes::load("404.php", null, null, 404);
 });
 
-Routes::map("/active-teams", function ($params) {
-  $params["posts"] = Timber::get_posts("post_type=team&numberposts=-1&orderby=title&order=ASC");
+Routes::map("search", function ($params) {
+  Routes::load("search.php", $params, null, 200);
+});
+
+Routes::map("active-teams", function ($params) {
+  $params["posts"] = Timber::get_posts("post_type=active_team&numberposts=-1&orderby=title&order=ASC");
   Routes::load("page.php", $params, null, 200);
 });
 
-Routes::map("/events", function ($params) {
+Routes::map("events", function ($params) {
   $params["posts"] = Timber::get_posts("post_type=event&numberposts=-1&orderby=title&order=ASC");
   Routes::load("page.php", $params, null, 200);
 });
 
-Routes::map("/resources", function ($params) {
+Routes::map("resources", function ($params) {
   $params["posts"] = Timber::get_posts("post_type=resource&numberposts=-1&orderby=title&order=ASC");
   Routes::load("page.php", $params, null, 200);
 });
@@ -69,8 +73,7 @@ Routes::map("members/page/:page_number", function ($params) {
   }
 });
 
-Routes::map("member-category/company", function ($params) {
-  $params["member_role"] = "company";
+Routes::map("member-category/:member_role", function ($params) {
   $params["per_page"] = get_option("posts_per_page");
 
   if (is_page_number_valid(1, $params["member_role"], $params["per_page"])) {
@@ -80,30 +83,7 @@ Routes::map("member-category/company", function ($params) {
   }
 });
 
-Routes::map("member-category/company/page/:page_number", function ($params) {
-  $params["member_role"] = "company";
-  $params["per_page"] = get_option("posts_per_page");
-
-  if (is_page_number_valid($params["page_number"], $params["member_role"], $params["per_page"])) {
-    Routes::load("directory.php", $params, null, 200);
-  } else {
-    Routes::load("404.php", null, null, 404);
-  }
-});
-
-Routes::map("member-category/professional", function ($params) {
-  $params["member_role"] = "professional";
-  $params["per_page"] = get_option("posts_per_page");
-
-  if (is_page_number_valid(1, $params["member_role"], $params["per_page"])) {
-    Routes::load("directory.php", $params, null, 200);
-  } else {
-    Routes::load("404.php", null, null, 404);
-  }
-});
-
-Routes::map("member-category/professional/page/:page_number", function ($params) {
-  $params["member_role"] = "professional";
+Routes::map("member-category/:member_role/page/:page_number", function ($params) {
   $params["per_page"] = get_option("posts_per_page");
 
   if (is_page_number_valid($params["page_number"], $params["member_role"], $params["per_page"])) {

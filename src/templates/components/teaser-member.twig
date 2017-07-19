@@ -10,20 +10,7 @@
   <div>
     {% include "components/subtitle.twig" with { "content": post.display_name, "link": post.link } %}
 
-    {% if post.company_affiliation or post.professional_title or post.job_functions %}
-      <div>
-        {% if post.company_affiliation %}
-          {% include "components/metadata.twig" with { "content": post.company_affiliation } %}
-        {% endif %}
-
-        {% if post.professional_title %}
-          {% include "components/metadata.twig" with { "content": post.professional_title } %}
-        {% endif %}
-
-        {% if post.job_functions %}
-          {% include "components/metadata.twig" with { "content": post.job_functions } %}
-        {% endif %}
-      </div>
-    {% endif %}
+    {% block member_details %}
+    {% endblock %}
   </div>
 </article>

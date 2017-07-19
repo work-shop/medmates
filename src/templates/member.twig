@@ -9,11 +9,11 @@
 
       <div class="ml4-m">
         <div class="mw6 mb3">
-          {% if not post.get_field("industry_categories")[0].errors %}
+          {% if post.get_field("industry_categories")[0] %}
             {% set metadata = "" %}
 
             {% for category in post.get_field("industry_categories") %}
-              {% set metadata = metadata ~ category.name %}
+              {% set metadata = metadata ~ category.label %}
 
               {% if not loop.last %}
                 {% set metadata = metadata ~ ", " %}
