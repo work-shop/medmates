@@ -7,10 +7,9 @@ $base_path = preg_replace("/\?.+|\/search.+/i", "", $base_path);
 
 if ($_GET) {
   $s = get_query_var("s");
-  // var_dump($s);
 
   if ($s != "") {
-    wp_redirect(site_url("$base_path/search/") . urlencode($s));
+    wp_redirect(str_replace("%20", "+", esc_url(site_url("$base_path/search/$s"))));
   } else {
     wp_redirect(site_url($base_path));
   }
@@ -44,7 +43,7 @@ $filters = [];
 $queries = [];
 
 foreach ($search_queries as $query) {
-  if (preg_match("/filter>(.*)/i", $query, $matches)) {
+  if (preg_match("/filter=(.*)/i", $query, $matches)) {
     $filters[] = $matches[1];
   } else {
     $queries[] = $query;
