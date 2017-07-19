@@ -2,8 +2,23 @@
 
 global $params;
 
+$base_path = $_SERVER["REQUEST_URI"];
+$base_path = preg_replace("/\?.+|\/search.+/i", "", $base_path);
+
+if ($_GET) {
+  $s = get_query_var("s");
+  // var_dump($s);
+
+  if ($s != "") {
+    wp_redirect(site_url("$base_path/search/") . urlencode($s));
+  } else {
+    wp_redirect(site_url($base_path));
+  }
+  exit();
+}
+
 $context = Timber::get_context();
-$search_query = get_search_query();
+$search_query = urldecode($params["s"]);
 $member_role[] = $params["member_role"];
 $per_page = get_option("posts_per_page");
 $paged = 1;
@@ -29,7 +44,7 @@ $filters = [];
 $queries = [];
 
 foreach ($search_queries as $query) {
-  if (preg_match("/filter=(.*)/i", $query, $matches)) {
+  if (preg_match("/filter>(.*)/i", $query, $matches)) {
     $filters[] = $matches[1];
   } else {
     $queries[] = $query;
@@ -133,6 +148,7 @@ if ($total_members > $per_page) {
 
 $context["posts"] = $members;
 $context["wp_title"] = "Directory";
+$context["base_path"] = $base_path;
 $context["industry_categories"] = get_field_object("field_596eb67cebf9f")["choices"];
 
 // Links
@@ -144,5 +160,8 @@ $context["professionals_link"] = user_trailingslashit(get_site_url() . "/member-
 $search_action = $_SERVER["REQUEST_URI"];
 $search_action = preg_replace("/\/page\/\d(\?s.+)?/i", "", $search_action);
 $context["search_action"] = user_trailingslashit(get_site_url() . $search_action);
+
+// Search input value
+$context["search_query"] = $search_query;
 
 Timber::render("directory.twig", $context);

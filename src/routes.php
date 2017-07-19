@@ -32,7 +32,15 @@ Routes::map("members", function ($params) {
   Routes::load("directory.php", $params, null, 200);
 });
 
+Routes::map("members/search/:s", function ($params) {
+  Routes::load("directory.php", $params, null, 200);
+});
+
 Routes::map("members/page/:page_number", function ($params) {
+  Routes::load("directory.php", $params, null, 200);
+});
+
+Routes::map("members/search/:s/page/:page_number", function ($params) {
   Routes::load("directory.php", $params, null, 200);
 });
 
@@ -40,7 +48,15 @@ Routes::map("member-category/:member_role", function ($params) {
   Routes::load("directory.php", $params, null, 200);
 });
 
+Routes::map("member-category/:member_role/search/:s", function ($params) {
+  Routes::load("directory.php", $params, null, 200);
+});
+
 Routes::map("member-category/:member_role/page/:page_number", function ($params) {
+  Routes::load("directory.php", $params, null, 200);
+});
+
+Routes::map("member-category/:member_role/search/:s/page/:page_number", function ($params) {
   Routes::load("directory.php", $params, null, 200);
 });
 
