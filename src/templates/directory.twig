@@ -2,22 +2,18 @@
 
 {% set member_category_plural = (member_category == "company") ? "companies" : "professionals" %}
 
+{% block header_title %}
+  {{ wp_title }}: {{ member_category_plural | title }}
+{% endblock %}
+
 {% block content %}
   {{ parent() }}
 
   <nav class="flex-m mb4">
-    {% if member_category == "company" %}
-      <span class="dib mb3 f3 b lh-title light-blue">Companies</span>
-    {% else %}
-      <a class="dib mb3 f3 b lh-title" href="{{ companies_link }}">Companies</a>
-    {% endif %}
+    <a class="dib mb3 f3 b lh-title" href="{{ companies_link }}">Companies</a>
 
     <div class="ml3-m">
-      {% if member_category == "professional" %}
-        <span class="dib mb3 f3 b lh-title light-blue">Professionals</span>
-      {% else %}
-        <a class="dib mb3 f3 b lh-title" href="{{ professionals_link }}">Professionals</a>
-      {% endif %}
+      <a class="dib mb3 f3 b lh-title" href="{{ professionals_link }}">Professionals</a>
     </div>
   </nav>
 
