@@ -39,8 +39,8 @@ class MyTimberSite extends TimberSite {
     add_action("wp_enqueue_scripts", array($this, "enqueue_styles"));
     add_action("login_enqueue_scripts", array($this, "enqueue_login_styles"));
     add_action("user_register", array($this, "my_registration_save"));
-    add_filter("acf/load_field", array($this, "my_acf_load_user_role_field"));
     add_filter("acf/load_field", array($this, "my_acf_hide_field_on_profile_page"));
+    add_filter("acf/load_field", array($this, "my_acf_load_user_role_field"));
     add_filter("login_headerurl", array($this, "my_login_header_url"));
     add_filter("login_headertitle", array($this, "my_login_header_title"));
     add_filter("timber_context", array($this, "add_to_context"));
