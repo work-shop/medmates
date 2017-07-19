@@ -4,9 +4,16 @@ global $params;
 
 $context = Timber::get_context();
 $search_query = get_search_query();
-$member_role = $params["member_role"];
-$per_page = $params["per_page"];
+$member_role[] = $params["member_role"];
+$per_page = get_option("posts_per_page");
 $paged = 1;
+
+if (!isset($params["member_role"])) {
+  $member_role = array("company", "professional");
+} else {
+  $context["member_category"] = $member_role[0];
+  $context["member_category_plural"] = ($member_role[0] === "professional") ? "professionals" : "companies";
+}
 
 if (isset($params["page_number"])) {
   $paged = $params["page_number"];
@@ -78,7 +85,7 @@ if (!empty($search_queries)) {
 $user_query = new WP_User_Query(array(
   "offset" => $paged ? ($paged - 1) * $per_page : 0,
   "number" => $per_page,
-  "role" => $member_role,
+  "role__in" => $member_role,
   "meta_key" => "last_name",
   "orderby" => "meta_value",
   "order" => "ASC",
@@ -123,7 +130,7 @@ if ($total_members > $per_page) {
 $context["posts"] = $members;
 $context["wp_title"] = "Directory";
 $context["industry_categories"] = get_field_object("field_596eb67cebf9f")["choices"];
-$context["member_category"] = $member_role;
+$context["directory_link"] = user_trailingslashit(get_site_url() . "/members");
 $context["companies_link"] = user_trailingslashit(get_site_url() . "/member-category/company");
 $context["professionals_link"] = user_trailingslashit(get_site_url() . "/member-category/professional");
 

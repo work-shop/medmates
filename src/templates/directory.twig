@@ -1,16 +1,20 @@
 {% extends "page.twig" %}
 
-{% set member_category_plural = (member_category == "company") ? "companies" : "professionals" %}
+{% set search_member_category = (member_category) ? member_category_plural : "professionals and companies" %}
 
 {% block header_title %}
-  {{ wp_title }}: {{ member_category_plural | title }}
+  {{ wp_title }}{% if member_category %}: {{ member_category_plural | title }}{% endif %}
 {% endblock %}
 
 {% block content %}
   {{ parent() }}
 
   <nav class="flex-m mb4">
-    <a class="dib mb3 f3 b lh-title" href="{{ companies_link }}">Companies</a>
+    <a class="dib mb3 f3 b lh-title" href="{{ directory_link }}">All</a>
+
+    <div class="ml3-m">
+      <a class="dib mb3 f3 b lh-title" href="{{ companies_link }}">Companies</a>
+    </div>
 
     <div class="ml3-m">
       <a class="dib mb3 f3 b lh-title" href="{{ professionals_link }}">Professionals</a>
@@ -21,7 +25,7 @@
     {% include "components/title.twig" with { "content": "Search" } %}
 
     <p class="mb3">
-      Search for {{ member_category_plural }} in the {{ site.title }} directory.
+      Search for {{ search_member_category }} in the {{ site.title }} directory.
     </p>
 
     <nav class="mb3">
@@ -34,7 +38,9 @@
       </div>
     </nav>
 
-    {% include "components/search-form.twig" with { "search_placeholder": "Search for " ~ member_category_plural ~ "…" } %}
+    {% include "components/search-form.twig" with {
+      "search_placeholder": "Search for " ~ search_member_category ~ "…"
+    } %}
   </section>
 
   <div class="mb5">
