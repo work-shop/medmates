@@ -8,12 +8,12 @@
       </section>
     {% endif %}
 
-    {% if post.what_we_do %}
-      <section class="mw7 mb5" id="what-we-do">
-        {% include "components/title.twig" with { "content": "What We Do" } %}
+    {% if post.featured_teams %}
+      <section class="mw7 mb5" id="featured-teams">
+        {% include "components/title.twig" with { "content": "Featured Teams" } %}
 
-        <div>
-          {{ post.what_we_do }}
+        <div class="mb5">
+          {% include "components/post-list.twig" with { "posts": post.get_field("featured_teams") } %}
         </div>
       </section>
     {% endif %}
