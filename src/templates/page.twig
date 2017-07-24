@@ -1,11 +1,16 @@
 {% extends "base.twig" %}
 
 {% block content %}
-  {% if post.content %}
-    <article>
-      <div class="mw7 mb5">
+  <article class="mb5">
+    {% if post.content %}
+      <section class="mw7 mb5 f4-m">
         {{ post.content }}
-      </div>
-    </article>
-  {% endif %}
+      </section>
+    {% endif %}
+
+    {% block page_content %}
+    {% endblock %}
+  </article>
+
+  {% include "components/join-callout.twig" %}
 {% endblock %}

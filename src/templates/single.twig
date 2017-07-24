@@ -2,10 +2,17 @@
 
 {% block content %}
   {% if post.content %}
-    <article>
-      <div class="mw7">
-        {{ post.content }}
-      </div>
+    <article class="mb5">
+      {% block single_post_content %}
+        <div class="mw7 f4-m">
+          {{ post.content }}
+        </div>
+      {% endblock %}
     </article>
   {% endif %}
+
+  {% block single_content %}
+  {% endblock %}
+
+  {% include "components/join-callout.twig" %}
 {% endblock %}

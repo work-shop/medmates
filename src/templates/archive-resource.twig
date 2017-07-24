@@ -2,12 +2,12 @@
 
 {% block page_content %}
   <div class="mb5">
-    {% include "components/posts-grid.twig" %}
+    {% include "components/submenu-listing.twig" %}
   </div>
 
   {% if post.contact_information %}
     <section class="mw6 mb5">
-      {% include "components/title.twig" with { "content": "Join a Team" } %}
+      {% include "components/title.twig" with { "content": "Submit a Resource" } %}
 
       {{ post.contact_information }}
     </section>

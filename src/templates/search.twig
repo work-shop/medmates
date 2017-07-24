@@ -1,15 +1,11 @@
 {% extends "page.twig" %}
 
-{% block content %}
-  {{ parent() }}
-
+{% block page_content %}
   <section class="mb5">
     {% include "components/search-form.twig" %}
   </section>
 
   <div class="mb5">
-    {% include "components/post-list.twig" %}
+    {% include "components/posts-list.twig" %}
   </div>
-
-  {% include "components/join-callout.twig" %}
 {% endblock %}

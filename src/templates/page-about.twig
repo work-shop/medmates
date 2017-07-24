@@ -1,116 +1,106 @@
 {% extends "page.twig" %}
 
-{% block content %}
-  <article class="mb5">
-    {% if post.content %}
-      <section class="mw7 mb5">
-        {{ post.content }}
-      </section>
-    {% endif %}
+{% block page_content %}
+  {% if post.featured_teams %}
+    <section class="mw7 mb5" id="featured-teams">
+      {% include "components/title.twig" with { "content": "Featured Teams" } %}
 
-    {% if post.featured_teams %}
-      <section class="mw7 mb5" id="featured-teams">
-        {% include "components/title.twig" with { "content": "Featured Teams" } %}
-
-        <div class="mb5">
-          {% include "components/post-list.twig" with { "posts": post.get_field("featured_teams") } %}
-        </div>
-      </section>
-    {% endif %}
-    </section>
-
-    {% if post.history %}
-      <section class="mw7 mb5" id="history">
-        {% include "components/title.twig" with { "content": "History" } %}
-
-        <div>
-          {{ post.history }}
-        </div>
-      </section>
-    {% endif %}
-
-    {% if post.board_of_directors or post.staff %}
-      <div class="flex-l">
-        {% if post.board_of_directors %}
-          <section class="w-50-l mb5" id="board-of-directors">
-            {% include "components/title.twig" with {"content": "Board of Directors" } %}
-
-            {% for member_id in post.board_of_directors %}
-              {% set member = TimberUser(member_id) %}
-
-              <div class="mb4">
-                {% include "components/teaser-contact.twig" with { "post": member } %}
-              </div>
-            {% endfor %}
-          </section>
-        {% endif %}
-
-        {% if post.staff %}
-          <section class="w-50-l mb5" id="staff">
-            {% include "components/title.twig" with {"content": "Staff" } %}
-
-            {% for member_id in post.staff %}
-              {% set member = TimberUser(member_id) %}
-
-              <div class="mb4">
-                {% include "components/teaser-contact.twig" with { "post": member } %}
-              </div>
-            {% endfor %}
-          </section>
-        {% endif %}
+      <div class="mb5">
+        {% include "components/posts-grid.twig" with { "posts": post.get_field("featured_teams") } %}
       </div>
-    {% endif %}
+    </section>
+  {% endif %}
+  </section>
 
-    {% set partners = post.get_field("partners") %}
-    {% if partners %}
-      <section class="mb5" id="partners">
-        {% include "components/title.twig" with {"content": "Partners" } %}
+  {% if post.history %}
+    <section class="mw7 mb5" id="history">
+      {% include "components/title.twig" with { "content": "History" } %}
 
-        <div class="flex-m flex-wrap-m mb4">
-          {% for partner in partners %}
-            <div class="flex-m justify-center-m items-center w5 w-33-m ph3 pv4 pv3-m pa4-l">
-              <a href="{{ partner.url }}" target="_blank"><img class="dib border-box pa2-m pa0-l"
-                 src="{{ TimberImage(partner.logo).src("medium") }}"
-                 title="{{ partner.name }}" alt="{{ partner.name }}"></a>
+      <div>
+        {{ post.history }}
+      </div>
+    </section>
+  {% endif %}
+
+  {% if post.board_of_directors or post.staff %}
+    <div class="flex-l">
+      {% if post.board_of_directors %}
+        <section class="w-50-l mb5" id="board-of-directors">
+          {% include "components/title.twig" with {"content": "Board of Directors" } %}
+
+          {% for member_id in post.board_of_directors %}
+            {% set member = TimberUser(member_id) %}
+
+            <div class="mb4">
+              {% include "components/teaser-contact.twig" with { "post": member } %}
             </div>
           {% endfor %}
-        </div>
-      </section>
-    {% endif %}
+        </section>
+      {% endif %}
 
-    {% if post.sponsors %}
-      <section id="sponsors">
-        {% include "components/title.twig" with {"content": "Sponsors" } %}
+      {% if post.staff %}
+        <section class="w-50-l mb5" id="staff">
+          {% include "components/title.twig" with {"content": "Staff" } %}
 
-        {% set sponsor_tiers = {
-          "platinum": "Platinum",
-          "gold": "Gold",
-          "silver": "Silver",
-          "media": "Media"
-        } %}
+          {% for member_id in post.staff %}
+            {% set member = TimberUser(member_id) %}
 
-        {% for tier, tier_label in sponsor_tiers %}
-          {% set sponsors = post.get_field(tier ~ "_sponsors") %}
-
-          {% if sponsors %}
-            <h2 class="mb3">
-              {% include "components/metadata.twig" with { "content": tier_label } %}
-            </h2>
-
-            <div class="flex flex-wrap mb4">
-              {% for sponsor in sponsors %}
-                <div class="flex justify-center items-center w-50 w-33-m w-25-l ph3 pv3 pa4-l">
-                  <a href="{{ sponsor.url }}" target="_blank"><img class="dib border-box pa2-m pa0-l"
-                     src="{{ TimberImage(sponsor.logo).src("medium") }}"
-                     title="{{ sponsor.name }}" alt="{{ sponsor.name }}"></a>
-                </div>
-              {% endfor %}
+            <div class="mb4">
+              {% include "components/teaser-contact.twig" with { "post": member } %}
             </div>
-          {% endif %}
-        {% endfor %}
-      </section>
-    {% endif %}
-  </article>
+          {% endfor %}
+        </section>
+      {% endif %}
+    </div>
+  {% endif %}
 
-  {% include "components/join-callout.twig" %}
+  {% set partners = post.get_field("partners") %}
+  {% if partners %}
+    <section class="mb5" id="partners">
+      {% include "components/title.twig" with {"content": "Partners" } %}
+
+      <div class="flex-m flex-wrap-m mb4">
+        {% for partner in partners %}
+          <div class="flex-m justify-center-m items-center w5 w-33-m ph3 pv4 pv3-m pa4-l">
+            <a href="{{ partner.url }}" target="_blank"><img class="dib border-box pa2-m pa0-l"
+                src="{{ TimberImage(partner.logo).src("medium") }}"
+                title="{{ partner.name }}" alt="{{ partner.name }}"></a>
+          </div>
+        {% endfor %}
+      </div>
+    </section>
+  {% endif %}
+
+  {% if post.sponsors %}
+    <section id="sponsors">
+      {% include "components/title.twig" with {"content": "Sponsors" } %}
+
+      {% set sponsor_tiers = {
+        "platinum": "Platinum",
+        "gold": "Gold",
+        "silver": "Silver",
+        "media": "Media"
+      } %}
+
+      {% for tier, tier_label in sponsor_tiers %}
+        {% set sponsors = post.get_field(tier ~ "_sponsors") %}
+
+        {% if sponsors %}
+          <h2 class="mb3">
+            {% include "components/metadata.twig" with { "content": tier_label } %}
+          </h2>
+
+          <div class="flex flex-wrap mb4">
+            {% for sponsor in sponsors %}
+              <div class="flex justify-center items-center w-50 w-33-m w-25-l ph3 pv3 pa4-l">
+                <a href="{{ sponsor.url }}" target="_blank"><img class="dib border-box pa2-m pa0-l"
+                    src="{{ TimberImage(sponsor.logo).src("medium") }}"
+                    title="{{ sponsor.name }}" alt="{{ sponsor.name }}"></a>
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </section>
+  {% endif %}
 {% endblock %}

@@ -1,7 +1,11 @@
 <?php
 
 Routes::map("/", function ($params) {
-  $params["posts"] = Timber::get_posts("post_type=post&numberposts=5");
+  $args = array(
+    "post_type" => "post",
+    "posts_per_page" => 4
+  );
+  $params["posts"] = Timber::get_posts($args);
   Routes::load("page.php", $params, null, 200);
 });
 
@@ -14,18 +18,29 @@ Routes::map("search", function ($params) {
 });
 
 Routes::map("active-teams", function ($params) {
-  $params["posts"] = Timber::get_posts("post_type=active_team&numberposts=-1&orderby=title&order=ASC");
+  $args = array(
+    "post_type" => "active_team",
+    "posts_per_page" => -1,
+    "orderby" => "title",
+    "order" => "ASC"
+  );
+  $params["posts"] = Timber::get_posts($args);
   Routes::load("page.php", $params, null, 200);
 });
 
-Routes::map("events", function ($params) {
-  $params["posts"] = Timber::get_posts("post_type=event&numberposts=-1&orderby=title&order=ASC");
-  Routes::load("page.php", $params, null, 200);
+Routes::map("events/:year/:month", function ($params) {
+  Routes::load("archive-event.php", $params, null, 200);
 });
 
 Routes::map("resources", function ($params) {
-  $params["posts"] = Timber::get_posts("post_type=resource&numberposts=-1&orderby=title&order=ASC");
-  Routes::load("page.php", $params, null, 200);
+  $args = array(
+    "post_type" => "resource",
+    "posts_per_page" => -1,
+    "orderby" => "title",
+    "order" => "ASC"
+  );
+  $params["posts"] = Timber::get_posts($args);
+  Routes::load("archive.php", $params, null, 200);
 });
 
 Routes::map("members", function ($params) {

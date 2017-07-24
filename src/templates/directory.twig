@@ -6,9 +6,7 @@
   {{ wp_title }}{% if member_category %}: {{ member_category_plural | title }}{% endif %}
 {% endblock %}
 
-{% block content %}
-  {{ parent() }}
-
+{% block page_content %}
   <nav class="flex-m mb4">
     <a class="dib mb3 f3 b lh-title" href="{{ directory_link }}">All</a>
 
@@ -48,9 +46,9 @@
 
     {% if posts %}
       {% if member_category == "company" %}
-        {% include "components/post-list.twig" with { "teaser_template": "components/teaser-member-company.twig" } %}
+        {% include "components/posts-grid.twig" with { "teaser_template": "components/teaser-member-company.twig" } %}
       {% else %}
-        {% include "components/post-list.twig" with { "teaser_template": "components/teaser-member-professional.twig" } %}
+        {% include "components/posts-grid.twig" with { "teaser_template": "components/teaser-member-professional.twig" } %}
       {% endif %}
     {% else %}
       <div>
@@ -58,6 +56,4 @@
       </div>
     {% endif %}
   </div>
-
-  {% include "components/join-callout.twig" %}
 {% endblock %}

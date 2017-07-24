@@ -1,5 +1,3 @@
 <?php
 
-$context = Timber::get_context();
-
-Timber::render("archive.twig", $context);
+require_once("archive.php");

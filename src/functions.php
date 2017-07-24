@@ -151,7 +151,8 @@ class MyTimberSite extends TimberSite {
       "rewrite" => array(
         "slug" => "active-team",
         "with_front" => false
-      )
+      ),
+      "show_in_rest" => true
     );
 
     register_post_type("active_team", $args);
@@ -180,11 +181,13 @@ class MyTimberSite extends TimberSite {
       "labels" => $labels,
       "public" => true,
       "supports" => array("title", "editor", "excerpt", "thumbnail"),
+      "has_archive" => "events",
       "taxonomies" => array("event_category"),
       "rewrite" => array(
         "slug" => "event",
         "with_front" => false
-      )
+      ),
+      "show_in_rest" => true
     );
 
     register_post_type("event", $args);
@@ -213,11 +216,13 @@ class MyTimberSite extends TimberSite {
       "labels" => $labels,
       "public" => true,
       "supports" => array("title", "editor", "excerpt", "thumbnail", "page-attributes"),
+      "has_archive" => "resources",
       "taxonomies" => array("resource_category"),
       "rewrite" => array(
         "slug" => "resource",
         "with_front" => false
-      )
+      ),
+      "show_in_rest" => true
     );
 
     register_post_type("resource", $args);

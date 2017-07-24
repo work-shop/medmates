@@ -2,8 +2,14 @@
 
 {% block content %}
   <section class="mb5">
-    {% include "components/post-list.twig" %}
+    {% include [
+      "components/posts-" ~ posts_list_format ~ ".twig",
+      "components/posts-grid.twig"
+    ] %}
   </section>
+
+  {% block archive_content %}
+  {% endblock %}
 
   {% include "components/join-callout.twig" %}
 {% endblock %}

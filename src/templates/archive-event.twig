@@ -1,6 +1,8 @@
-{% extends "page.twig" %}
+{% extends "archive.twig" %}
 
-{% block page_content %}
+{% set posts_list_format = "list" %}
+
+{% block archive_content %}
   <div class="mb5">
     {% include "components/submenu-listing.twig" %}
   </div>

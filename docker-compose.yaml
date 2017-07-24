@@ -60,4 +60,4 @@ services:
       - ${VOLUME_BASE_PATH}:/usr/src/app
       - node_modules:/usr/src/app/node_modules
     working_dir: /usr/src/app
-    command: sh -c "yarn install; yarn start;"
+    command: sh -c "yarn install; yarn run start;"

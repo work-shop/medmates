@@ -1,0 +1,11 @@
+{% extends "single.twig" %}
+
+{% block single_content %}
+  {% if post.contact_information %}
+    <section class="mw6 mb5">
+      {% include "components/title.twig" with { "content": "Contact" } %}
+
+      {{ post.contact_information }}
+    </section>
+  {% endif %}
+{% endblock %}

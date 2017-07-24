@@ -1,73 +1,71 @@
-{% extends "base.twig" %}
+{% extends "page.twig" %}
 
-{% block content %}
-  <article>
-    <div class="flex-m mb5">
-      {% if post.avatar %}
-        <img class="flex-no-shrink db mb3 mb0-m" src="{{ post.avatar(256) }}" width="256" height="256" alt="">
-      {% endif %}
+{% block page_content %}
+  <div class="flex-m mb5">
+    {% if post.avatar %}
+      <img class="flex-no-shrink db mb3 mb0-m" src="{{ post.avatar(256) }}" width="256" height="256" alt="">
+    {% endif %}
 
-      <div class="ml4-m">
-        <div class="mw6 mb3">
-          {% if post.get_field("industry_categories")[0] %}
-            {% set metadata = "" %}
+    <div class="ml4-m">
+      <div class="mw6 mb3">
+        {% if post.get_field("industry_categories")[0] %}
+          {% set metadata = "" %}
 
-            {% for category in post.get_field("industry_categories") %}
-              {% set metadata = metadata ~ category.label %}
+          {% for category in post.get_field("industry_categories") %}
+            {% set metadata = metadata ~ category.label %}
 
-              {% if not loop.last %}
-                {% set metadata = metadata ~ ", " %}
-              {% endif %}
-            {% endfor %}
-
-            <div class="mw5 mb3">
-              {% include "components/metadata.twig" with { "content": metadata } %}
-            </div>
-          {% endif %}
-
-          {% block member_details %}
-          {% endblock %}
-        </div>
-
-        {% if post.user_url or post.linkedin_url or post.facebook_url or post.twitter_url %}
-          <div>
-            {% if post.user_url %}
-              <a href="{{ post.user_url }}" target="_blank">Website</a>{% spaceless %}
-                {% if post.linkedin_url or post.facebook_url or post.twitter_url %}, {% endif %}
-              {% endspaceless %}
+            {% if not loop.last %}
+              {% set metadata = metadata ~ ", " %}
             {% endif %}
+          {% endfor %}
 
-            {% if post.linkedin_url %}
-              <a href="{{ post.linkedin_url }}" target="_blank">LinkedIn</a>{% spaceless %}
-                {% if post.facebook_url or post.twitter_url %}, {% endif %}
-              {% endspaceless %}
-            {% endif %}
-
-            {% if post.facebook_url %}
-              <a href="{{ post.facebook_url }}" target="_blank">Facebook</a>{% spaceless %}
-                {% if post.twitter_url %}, {% endif %}
-              {% endspaceless %}
-            {% endif %}
-
-            {% if post.twitter_url %}
-              <a href="{{ post.twitter_url }}" target="_blank">Twitter</a>
-            {% endif %}
+          <div class="mw5 mb3">
+            {% include "components/metadata.twig" with { "content": metadata } %}
           </div>
         {% endif %}
+
+        {% block member_details %}
+        {% endblock %}
       </div>
-    </div>
 
-    {% block member_contact %}
-    {% endblock %}
+      {% if post.user_url or post.linkedin_url or post.facebook_url or post.twitter_url %}
+        <div>
+          {% if post.user_url %}
+            <a href="{{ post.user_url }}" target="_blank">Website</a>{% spaceless %}
+              {% if post.linkedin_url or post.facebook_url or post.twitter_url %}, {% endif %}
+            {% endspaceless %}
+          {% endif %}
 
-    {% if post.description %}
-      <section>
-        {% include "components/title.twig" with { "content": "Biography" } %}
+          {% if post.linkedin_url %}
+            <a href="{{ post.linkedin_url }}" target="_blank">LinkedIn</a>{% spaceless %}
+              {% if post.facebook_url or post.twitter_url %}, {% endif %}
+            {% endspaceless %}
+          {% endif %}
 
-        <div class="mw7">
-          {{ post.description | wpautop }}
+          {% if post.facebook_url %}
+            <a href="{{ post.facebook_url }}" target="_blank">Facebook</a>{% spaceless %}
+              {% if post.twitter_url %}, {% endif %}
+            {% endspaceless %}
+          {% endif %}
+
+          {% if post.twitter_url %}
+            <a href="{{ post.twitter_url }}" target="_blank">Twitter</a>
+          {% endif %}
         </div>
-      </section>
-    {% endif %}
-  </article>
+      {% endif %}
+    </div>
+  </div>
+
+  {% block member_contact %}
+  {% endblock %}
+
+  {% if post.description %}
+    <section>
+      {% include "components/title.twig" with { "content": "Biography" } %}
+
+      <div class="mw7">
+        {{ post.description | wpautop }}
+      </div>
+    </section>
+  {% endif %}
 {% endblock %}
