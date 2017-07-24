@@ -1,7 +1,6 @@
 <?php
 
 global $params;
-var_dump("hi");
 
 $context = Timber::get_context();
 $post = Timber::get_post();

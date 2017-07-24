@@ -14,6 +14,4 @@ if ($post_type_archive_slug) {
 
 array_unshift($templates, "archive-$post_type.twig");
 
-var_dump($templates);
-
 Timber::render($templates, $context);
