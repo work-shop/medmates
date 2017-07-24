@@ -323,7 +323,7 @@ class MyTimberSite extends TimberSite {
   function my_acf_hide_field_on_profile_page($field) {
     global $pagenow;
 
-    if (is_admin() && ($pagenow === "user-edit.php"|| "profile.php")) {
+    if (is_admin() && ($pagenow === "user-edit.php") || ($pagenow === "profile.php")) {
       $fields_to_hide = array(
         "field_5968fd11a35f8", // Member role
         "field_5968fabdd18fd", // First name
