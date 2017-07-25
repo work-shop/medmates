@@ -107,8 +107,20 @@ select {
   margin: 3px 0 20px;
 }
 
-#login form p {
+#login form p:not(.description):not(#reg_passmail) {
   line-height: 0;
+}
+
+#login p.description,
+#login #reg_passmail {
+  margin-bottom: var(--spacing-extra-small);
+  font-size: 0.875rem;
+  color: var(--gray);
+}
+
+#login ul.acf-radio-list li,
+#login ul.acf-checkbox-list li {
+  font-size: 0.875rem;
 }
 
 .acf-required {
