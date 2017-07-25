@@ -1,0 +1,15 @@
+{% extends "base.twig" %}
+
+{% block content %}
+  {% block taxonomy_content %}
+  {% endblock %}
+
+  <section class="mb5">
+    {% include [
+      "components/posts-" ~ posts_list_format ~ ".twig",
+      "components/posts-grid.twig"
+    ] %}
+  </section>
+
+  {% include "components/join-callout.twig" %}
+{% endblock %}
