@@ -1,0 +1,20 @@
+.icon {
+  background-repeat: no-repeat;
+}
+
+.icon > span {
+  font-size: 0;
+}
+
+.icon-menu {
+  width: 48px;
+  height: 36px;
+  background-image: url("../images/icon-menu.svg");
+}
+
+
+.icon-search {
+  width: 24px;
+  height: 24px;
+  background-image: url("../images/icon-search.svg");
+}
