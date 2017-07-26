@@ -6,12 +6,20 @@
 
 {% block page_content %}
   <section class="mb5">
-    <div class="mb4">
-      {% include "components/title.twig" with { "content": "Latest News" } %}
-    </div>
+    <div class="flex-l">
+      <div class="order-1 mw6-m w-40-l mb5">
+        {% include "components/title.twig" with { "content": "Events" } %}
 
-    <div class="mw7 mb4">
-      {% include "components/posts-list.twig" %}
+        <div id="calendar" class="mini"></div>
+      </div>
+
+      <div class="order-0 w-60-l mb4 mr5-l">
+        <div class="mb4">
+          {% include "components/title.twig" with { "content": "Latest News" } %}
+        </div>
+
+        {% include "components/posts-list.twig" %}
+      </div>
     </div>
   </section>
 {% endblock %}

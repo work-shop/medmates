@@ -252,7 +252,8 @@ class MyTimberSite extends TimberSite {
       "rewrite" => array(
         "slug" => "event-category",
         "with_front" => false
-      )
+      ),
+      "show_in_rest" => true
     );
 
     register_taxonomy("event_category", "event", $args);
@@ -282,7 +283,8 @@ class MyTimberSite extends TimberSite {
       "rewrite" => array(
         "slug" => "resource-category",
         "with_front" => false
-      )
+      ),
+      "show_in_rest" => true
     );
 
     register_taxonomy("resource_category", "resource", $args);

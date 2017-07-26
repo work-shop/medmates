@@ -18,15 +18,27 @@ const moduleRules = {
   },
   libStyle: {
     test: /\.css$/i,
-    include: /node_modules/,
+    include: [
+      /node_modules/,
+      /styles\/lib/
+    ],
     use: [
       "style-loader",
-      "css-loader"
+      {
+        loader: "css-loader",
+        options: {
+          importLoaders: 1
+        }
+      },
+      "postcss-loader"
     ]
   },
   style: {
     test: /\.css$/i,
-    exclude: /node_modules/,
+    exclude: [
+      /node_modules/,
+      /styles\/lib/
+    ],
     use: ExtractTextPlugin.extract({
       fallback: {
         loader: "style-loader",

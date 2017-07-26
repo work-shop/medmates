@@ -1,0 +1,111 @@
+@import "../variables/_media-queries.css";
+@import "../variables/_colors.css";
+
+
+
+/* All calendars */
+
+#calendar td.fc-today {
+  background-color: transparent;
+}
+
+
+
+/* Full calendar */
+
+#calendar.full td.fc-today {
+  background-color: var(--light-yellow);
+}
+
+#calendar.full .fc-event {
+  font-size: 0.875rem;
+  line-height: inherit;
+}
+
+#calendar.full .fc-event,
+#calendar.full .fc-event-dot {
+  background-color: var(--blue);
+  border-color: var(--blue);
+}
+
+
+@media (--breakpoint-large) {
+  #calendar.full .fc-basic-view .fc-body .fc-row {
+    min-height: 6rem;
+  }
+}
+
+
+
+/* Mini calendar */
+
+#calendar.mini .fc-view-container {
+  margin-left: -1rem;
+  margin-right: -1rem;
+  background-color: var(--yellow);
+  color: var(--white);
+}
+
+#calendar.mini .fc-head-container {
+  display: none;
+}
+
+#calendar.mini .fc-scroller {
+  padding: 1rem;
+}
+
+#calendar.mini td,
+#calendar.mini th {
+  border-style: none;
+}
+
+#calendar.mini .fc-head-container > .fc-row {
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--white);
+}
+
+#calendar.mini .fc-basic-view .fc-body .fc-row {
+  min-height: 0;
+  text-align: center;
+}
+
+#calendar.mini .fc-basic-view .fc-week-number,
+#calendar.mini .fc-basic-view .fc-day-number {
+  padding: 0;
+}
+
+#calendar.mini .fc-day-header,
+#calendar.mini .fc-day-number {
+   line-height: 2rem;
+}
+
+#calendar.mini td.fc-day-top > span {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  font-size: 0.875rem;
+}
+
+#calendar.mini td.fc-event-day-top > span {
+  background-color: var(--white);
+  color: var(--dark-gray);
+  cursor: pointer;
+}
+
+#calendar.mini .fc-day-number {
+  float: none;
+}
+
+#calendar.mini .fc-event {
+  display: none;
+}
+
+
+@media (--breakpoint-medium) {
+  #calendar.mini .fc-view-container {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
