@@ -5,14 +5,14 @@ global $params;
 $context = Timber::get_context();
 $post = Timber::get_post();
 
-$is_paginated = false;
+$has_date_slug = false;
 if (isset($params["year"]) && isset($params["month"])) {
-  $is_paginated = true;
+  $has_date_slug = true;
 }
 
 date_default_timezone_set(get_option("timezone_string"));
 $time = time();
-if ($is_paginated) {
+if ($has_date_slug) {
   $year = $params["year"];
   $month = $params["month"];
   $time = strtotime("$year-$month");
@@ -56,7 +56,7 @@ $query = array(
 $context["post"] = $post;
 $context["posts"] = Timber::get_posts($query);
 $context["wp_title"] = "Upcoming Events";
-if ($is_paginated) {
+if ($has_date_slug) {
   $context["wp_title"] = "Events in " . date("F, Y", $time);
 }
 

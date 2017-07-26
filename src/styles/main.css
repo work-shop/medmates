@@ -1,10 +1,3 @@
-/*!
- * Theme Name: MedMates
- * Author: Bearform LLC
- * Author URI: https://bearform.xyz
- * Version: 1.0
-**/
-
 /* Modules */
 @import "tachyons/src/_box-sizing";
 @import "tachyons/src/_aspect-ratios";
@@ -68,8 +61,13 @@
 /* Skins */
 @import "tachyons-skins-pseudo/src/tachyons-skins-pseudo";
 
+/* Components */
+@import "components/_logo";
+@import "components/_search-icon";
+
 /* Variables */
 /* Importing here will allow you to override any variables in the modules */
+@import "variables/_spacing";
 @import "variables/_colors";
 @import "variables/_media-queries";
 
@@ -79,7 +77,3 @@
 
 /* Uncomment out the line below to help debug layout issues */
 /* @import "tachyons/src/_debug";  */
-
-/* Global Styles */
-@import "_reset";
-@import "_global";

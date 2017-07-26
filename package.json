@@ -1,6 +1,6 @@
 {
   "name": "wp-dev-kit",
-  "version": "6.0.0",
+  "version": "7.0.0",
   "description": "WordPress development kit",
   "author": "Bearform LLC (https://bearform.xyz)",
   "license": "ISC",
@@ -14,26 +14,31 @@
   },
   "homepage": "https://github.com/bearform/wp-dev-kit#readme",
   "scripts": {
-    "start": "gulp",
-    "build": "gulp build"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "webpack --watch",
+    "build": "webpack -p"
   },
   "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
     "babel-preset-env": "^1.6.0",
-    "babel-register": "^6.24.1",
-    "browser-sync": "^2.18.12",
-    "cssnano": "^3.10.0",
-    "del": "^3.0.0",
-    "gulp": "gulpjs/gulp#4.0",
-    "gulp-babel": "^6.1.2",
-    "gulp-flatten": "^0.3.1",
-    "gulp-plumber": "^1.1.0",
-    "gulp-postcss": "^7.0.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-sourcemaps": "^2.6.0",
-    "gulp-uglify": "^3.0.0",
+    "browser-sync": "^2.18.13",
+    "browser-sync-webpack-plugin": "^1.2.0",
+    "clean-webpack-plugin": "^0.1.16",
+    "copy-webpack-plugin": "^4.0.1",
+    "css-loader": "^0.28.4",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "file-loader": "^0.11.2",
+    "image-webpack-loader": "^3.3.1",
     "postcss-cssnext": "^3.0.2",
     "postcss-import": "^10.0.0",
+    "postcss-loader": "^2.0.6",
+    "style-loader": "^0.18.2",
     "tachyons": "^4.7.4",
-    "tachyons-skins-pseudo": "^1.0.3"
+    "tachyons-skins-pseudo": "^1.0.3",
+    "webpack": "^3.4.0"
+  },
+  "dependencies": {
+    "fullcalendar": "^3.4.0"
   }
 }

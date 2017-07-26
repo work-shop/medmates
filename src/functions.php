@@ -377,21 +377,29 @@ class MyTimberSite extends TimberSite {
   function enqueue_scripts() {
     wp_enqueue_script("jquery");
 
-    $bundle_src = get_template_directory_uri() . "/bundle.js";
-    $bundle_ver = filemtime(get_template_directory() . "/bundle.js");
+    $bundle_src = get_template_directory_uri() . "/scripts/bundle.js";
+    $bundle_ver = filemtime(get_template_directory() . "/scripts/bundle.js");
     wp_enqueue_script("bundle", $bundle_src, array("jquery"), $bundle_ver, true);
   }
 
   function enqueue_styles() {
-    $style_src = get_stylesheet_uri();
-    $style_ver = filemtime(get_stylesheet_directory() . "/style.css");
-    wp_enqueue_style("style", $style_src, array(), $style_ver);
+    $base_src = get_template_directory_uri() . "/styles/base.css";
+    $base_ver = filemtime(get_template_directory() . "/styles/base.css");
+    wp_enqueue_style("base", $base_src, array(), $base_ver);
+
+    $main_src = get_template_directory_uri() . "/styles/main.css";
+    $main_ver = filemtime(get_template_directory() . "/styles/main.css");
+    wp_enqueue_style("main", $main_src, array("base"), $main_ver);
   }
 
   function enqueue_login_styles() {
-    $style_login_src = get_stylesheet_directory_uri() . "/style-login.css";
-    $style_login_ver = filemtime(get_stylesheet_directory() . "/style-login.css");
-    wp_enqueue_style("style-login", $style_login_src, array(), $style_login_ver);
+    $base_src = get_template_directory_uri() . "/styles/base.css";
+    $base_ver = filemtime(get_template_directory() . "/styles/base.css");
+    wp_enqueue_style("base", $base_src, array(), $base_ver);
+
+    $login_src = get_template_directory_uri() . "/styles/login.css";
+    $login_ver = filemtime(get_template_directory() . "/styles/login.css");
+    wp_enqueue_style("wp-login", $login_src, array("base"), $login_ver);
   }
 
   function add_to_context($context) {

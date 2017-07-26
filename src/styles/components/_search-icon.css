@@ -1,0 +1,10 @@
+.search-icon {
+  width: 24px;
+  height: 24px;
+  background-image: url("../images/icon-search.svg");
+  background-repeat: no-repeat;
+}
+
+.search-icon > span {
+  font-size: 0;
+}

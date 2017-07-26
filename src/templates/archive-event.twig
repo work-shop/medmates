@@ -2,6 +2,10 @@
 
 {% set posts_list_format = "list" %}
 
+{% block archive_header %}
+  <div id="calendar" class="mb5"></div>
+{% endblock %}
+
 {% block archive_content %}
   <div class="mb5">
     {% include "components/submenu-listing.twig" %}

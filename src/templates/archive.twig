@@ -1,6 +1,9 @@
 {% extends "base.twig" %}
 
 {% block content %}
+  {% block archive_header %}
+  {% endblock %}
+
   <section class="mb5">
     {% include [
       "components/posts-" ~ posts_list_format ~ ".twig",

@@ -1,0 +1,9 @@
+/* Variables */
+@import url("variables/_spacing.css");
+@import url("variables/_colors.css");
+@import url("variables/_media-queries.css");
+
+/* Base parts */
+@import url("base/_reset.css");
+@import url("base/_global.css");
+@import url("base/_fonts.css");

@@ -1,8 +1,8 @@
-@import "fonts/_transport";
+/* Variables */
+@import "variables/_spacing";
 @import "variables/_colors";
 @import "variables/_media-queries";
-@import "_reset";
-@import "_global";
+
 
 a {
   color: var(--blue) !important;
@@ -64,7 +64,7 @@ select {
 }
 
 .login h1 a {
-  background-image: url("images/logo.svg");
+  background-image: url("../images/logo.svg");
   width: 192px;
   height: 54px;
   margin: 0 25px 2rem;
