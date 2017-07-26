@@ -1,10 +1,13 @@
 {% extends "base.twig" %}
 
 {% block content %}
+  {% block single_header %}
+  {% endblock %}
+
   {% if post.content %}
     <article class="mb5">
       {% block single_post_content %}
-        <div class="mw7">
+        <div class="mw7 f4-m">
           {{ post.content }}
         </div>
       {% endblock %}

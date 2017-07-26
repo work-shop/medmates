@@ -59,12 +59,6 @@
   border-style: none;
 }
 
-#calendar.mini .fc-head-container > .fc-row {
-  margin-bottom: 0.5rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--white);
-}
-
 #calendar.mini .fc-basic-view .fc-body .fc-row {
   min-height: 0;
   text-align: center;
@@ -80,23 +74,26 @@
    line-height: 2rem;
 }
 
-#calendar.mini td.fc-day-top > span {
-  display: inline-block;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
-  font-size: 0.875rem;
-  transition: background-color 400ms ease-out, color 200ms ease-out;
-}
-
-#calendar.mini td.fc-event-day-top > span {
-  background-color: var(--white);
-  color: var(--dark-gray);
+#calendar.mini td.fc-event-day-top {
   cursor: pointer;
 }
 
 #calendar.mini .fc-day-number {
   float: none;
+  pointer-events: none;
+}
+
+#calendar.mini td.fc-day-top .fc-day-number {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  font-size: 0.875rem;
+}
+
+#calendar.mini td.fc-event-day-top .fc-day-number {
+  background-color: var(--white);
+  color: var(--dark-gray);
 }
 
 #calendar.mini .fc-event {

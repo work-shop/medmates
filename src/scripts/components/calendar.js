@@ -5,20 +5,26 @@ import "../../styles/lib/fullcalendar.css";
 
 $("#calendar").fullCalendar({
   events: getEvents,
-  eventRender: function (event, element, view) {
-    const dateString = $.fullCalendar.formatDate(event.start, "Y-MM-DD");
-    view.el.find(`.fc-day[data-date="${dateString}"]`).addClass("fc-event-day");
-    view.el.find(`.fc-day-top[data-date="${dateString}"]`).addClass("fc-event-day-top");
-  },
+  eventRender: renderEvent,
   height: "auto",
   header: false,
   dayNamesShort: ["S", "M", "T", "W", "T", "F", "S"],
-  // dayClick: onDayClick,
-  eventClick: onDayClick,
+  dayClick: onDayClick
 });
 
-function onDayClick(event, jsEvent, view) {
-  console.log(event);
+function renderEvent(event, element, view) {
+  const dateString = $.fullCalendar.formatDate(event.start, "Y-MM-DD");
+  const $dayTopEvent = view.el.find(`.fc-day-top[data-date="${dateString}"]`);
+  $dayTopEvent.addClass("fc-event-day-top");
+  $dayTopEvent.attr("data-event-url", event.url);
+}
+
+function onDayClick(day, jsEvent, view) {
+  const $target = $(jsEvent.target);
+  if ($target.hasClass("fc-event-day-top")) {
+    const url = $target.attr("data-event-url");
+    window.location.href = url;
+  }
 }
 
 function getEvents(start, end, timezone, callback) {

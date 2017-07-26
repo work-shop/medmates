@@ -7,16 +7,8 @@
 {% block page_content %}
   <section class="mb5">
     <div class="flex-l nb5-l">
-      <div class="order-1 mw6-m mw5-l mb5">
-        <div class="flex items-baseline">
-          <div class="flex-auto">
-            {% include "components/title.twig" with { "content": "Events" } %}
-          </div>
-
-          <a class="lh-title" href="{{ site.link }}/events">View More</a>
-        </div>
-
-        <div id="calendar" class="mini"></div>
+      <div class="order-1 mw6-m w-40-l mb5">
+        {% include "components/mini-calendar.twig" %}
       </div>
 
       <div class="order-0 mb4 mr5-l">

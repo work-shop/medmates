@@ -1,11 +1,27 @@
 {% extends "single.twig" %}
 
-{% block single_content %}
+{% block content %}
+  <div class="flex-l">
+    {% if post.content %}
+      <article class="mb4 mr5-l">
+        {% block single_post_content %}
+          <div class="mw7 f4-m">
+            {{ post.content }}
+          </div>
+        {% endblock %}
+      </article>
+    {% endif %}
+
+    <div class="mw6-m w-40-l mt3 mb5">
+      {% include "components/mini-calendar.twig" %}
+    </div>
+  </div>
+
   {% if post.team_members %}
     <section class="mb5">
       {% include "components/title.twig" with {"content": "Team Members" } %}
 
-      {% for member_id in post.team_members %}
+       {% for member_id in post.team_members %}
         {% set member = TimberUser(member_id) %}
 
         <div class="mb4">
@@ -22,4 +38,6 @@
       {{ post.contact_information }}
     </section>
   {% endif %}
+
+  {% include "components/join-callout.twig" %}
 {% endblock %}
