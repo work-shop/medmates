@@ -31,7 +31,7 @@
 
 @media (--breakpoint-large) {
   #calendar.full .fc-basic-view .fc-body .fc-row {
-    min-height: 6rem;
+    min-height: 8rem;
   }
 }
 
