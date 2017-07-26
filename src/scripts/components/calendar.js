@@ -13,11 +13,12 @@ $("#calendar").fullCalendar({
   height: "auto",
   header: false,
   dayNamesShort: ["S", "M", "T", "W", "T", "F", "S"],
-  dayClick: onDayClick
+  // dayClick: onDayClick,
+  eventClick: onDayClick,
 });
 
-function onDayClick(date, jsEvent, view) {
-  console.log(date.format());
+function onDayClick(event, jsEvent, view) {
+  console.log(event);
 }
 
 function getEvents(start, end, timezone, callback) {
