@@ -3,8 +3,20 @@ import fullCalendar from "fullcalendar";
 import "fullcalendar/dist/fullcalendar.css";
 import "../../styles/lib/fullcalendar.css";
 
-$("#calendar").fullCalendar({
+const pathname = window.location.pathname;
+const yearMonth = pathname.match(/\/(\d+)\/(\d+)$/);
+let defaultDate;
+if (yearMonth) {
+  const year = yearMonth[1];
+  const month = yearMonth[2];
+  defaultDate = $.fullCalendar.moment(`${year}-${month}`);
+} else {
+  defaultDate = $.fullCalendar.moment();
+}
+
+$("#fullcalendar").fullCalendar({
   events: getEvents,
+  defaultDate,
   eventRender: renderEvent,
   height: "auto",
   header: false,

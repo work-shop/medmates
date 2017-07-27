@@ -20,6 +20,20 @@ if ($has_date_slug) {
 $pagination_start_date = date("Y-m-d", $time);
 $pagination_end_date = date("Y-m-t", $time);
 
+// Pagination
+$prev_date = date("Y/m", strtotime("-1 month", $time));
+$next_date = date("Y/m", strtotime("+1 month", $time));
+$pagination = array(
+  "prev" => array(
+    "link" => user_trailingslashit(get_site_url() . "/events/$prev_date")
+  ),
+  "next" => array(
+    "link" => user_trailingslashit(get_site_url() . "/events/$next_date")
+  )
+);
+$context["pagination"] = $pagination;
+$context["pagination_name"] = "Month";
+
 $query = array(
   "post_type" => "event",
   "posts_per_page" => -1,
@@ -45,10 +59,19 @@ $query = array(
       )
     ),
     array(
-      "key" => "end_date",
-      "value" => $pagination_start_date,
-      "compare" => ">=",
-      "type" => "DATE"
+      "relation" => "AND",
+      array(
+        "key" => "start_date",
+        "value" => $pagination_end_date,
+        "compare" => "<=",
+        "type" => "DATE"
+      ),
+      array(
+        "key" => "end_date",
+        "value" => $pagination_start_date,
+        "compare" => ">=",
+        "type" => "DATE"
+      )
     )
   )
 );

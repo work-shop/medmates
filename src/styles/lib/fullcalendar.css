@@ -5,7 +5,7 @@
 
 /* All calendars */
 
-#calendar td.fc-today {
+#fullcalendar td.fc-today {
   background-color: transparent;
 }
 
@@ -13,24 +13,24 @@
 
 /* Full calendar */
 
-#calendar.full td.fc-today {
+#fullcalendar.full td.fc-today {
   background-color: var(--light-yellow);
 }
 
-#calendar.full .fc-event {
+#fullcalendar.full .fc-event {
   font-size: 0.875rem;
   line-height: inherit;
 }
 
-#calendar.full .fc-event,
-#calendar.full .fc-event-dot {
+#fullcalendar.full .fc-event,
+#fullcalendar.full .fc-event-dot {
   background-color: var(--blue);
   border-color: var(--blue);
 }
 
 
 @media (--breakpoint-large) {
-  #calendar.full .fc-basic-view .fc-body .fc-row {
+  #fullcalendar.full .fc-basic-view .fc-body .fc-row {
     min-height: 8rem;
   }
 }
@@ -39,51 +39,51 @@
 
 /* Mini calendar */
 
-#calendar.mini .fc-view-container {
+#fullcalendar.mini .fc-view-container {
   margin-left: -1rem;
   margin-right: -1rem;
   background-color: var(--yellow);
   color: var(--white);
 }
 
-#calendar.mini .fc-head-container {
+#fullcalendar.mini .fc-head-container {
   display: none;
 }
 
-#calendar.mini .fc-scroller {
+#fullcalendar.mini .fc-scroller {
   padding: 1rem;
 }
 
-#calendar.mini td,
-#calendar.mini th {
+#fullcalendar.mini td,
+#fullcalendar.mini th {
   border-style: none;
 }
 
-#calendar.mini .fc-basic-view .fc-body .fc-row {
+#fullcalendar.mini .fc-basic-view .fc-body .fc-row {
   min-height: 0;
   text-align: center;
 }
 
-#calendar.mini .fc-basic-view .fc-week-number,
-#calendar.mini .fc-basic-view .fc-day-number {
+#fullcalendar.mini .fc-basic-view .fc-week-number,
+#fullcalendar.mini .fc-basic-view .fc-day-number {
   padding: 0;
 }
 
-#calendar.mini .fc-day-header,
-#calendar.mini .fc-day-number {
+#fullcalendar.mini .fc-day-header,
+#fullcalendar.mini .fc-day-number {
    line-height: 2rem;
 }
 
-#calendar.mini td.fc-event-day-top {
+#fullcalendar.mini td.fc-event-day-top {
   cursor: pointer;
 }
 
-#calendar.mini .fc-day-number {
+#fullcalendar.mini .fc-day-number {
   float: none;
   pointer-events: none;
 }
 
-#calendar.mini td.fc-day-top .fc-day-number {
+#fullcalendar.mini td.fc-day-top .fc-day-number {
   display: inline-block;
   width: 2rem;
   height: 2rem;
@@ -91,18 +91,18 @@
   font-size: 0.875rem;
 }
 
-#calendar.mini td.fc-event-day-top .fc-day-number {
+#fullcalendar.mini td.fc-event-day-top .fc-day-number {
   background-color: var(--white);
   color: var(--dark-gray);
 }
 
-#calendar.mini .fc-event {
+#fullcalendar.mini .fc-event {
   display: none;
 }
 
 
 @media (--breakpoint-medium) {
-  #calendar.mini .fc-view-container {
+  #fullcalendar.mini .fc-view-container {
     margin-left: 0;
     margin-right: 0;
   }

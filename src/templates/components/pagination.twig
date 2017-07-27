@@ -1,16 +1,17 @@
 {% set pagination = pagination | default(posts.pagination) %}
+{% set pagination_name = pagination_name | default("Page") %}
 
 {% if pagination.prev or pagination.next %}
   <nav>
     {% if pagination.prev %}
-      <span class="{% if pagination.prev and pagination.next %} mr3 {% endif %}">
-        <a href="{{ pagination.prev.link }}">Previous Page</a>
+      <span class="{% if pagination.prev and pagination.next %} mr4 {% endif %}">
+        <a href="{{ pagination.prev.link }}">◄ View Previous {{ pagination_name }}</a>
       </span>
     {% endif %}
 
     {% if pagination.next %}
       <span>
-        <a href="{{ pagination.next.link }}">Next Page</a>
+        <a href="{{ pagination.next.link }}">View Next {{ pagination_name }} ►</a>
       </span>
     {% endif %}
   </nav>
