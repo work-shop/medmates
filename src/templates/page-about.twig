@@ -26,13 +26,16 @@
     <div class="flex-l">
       {% if post.board_of_directors %}
         <section class="w-50-l mb5" id="board-of-directors">
-          {% include "components/title.twig" with {"content": "Board of Directors" } %}
+          {% include "components/title.twig" with { "content": "Board of Directors" } %}
 
           {% for member_id in post.board_of_directors %}
             {% set member = TimberUser(member_id) %}
 
             <div class="mb4">
-              {% include "components/teaser-contact.twig" with { "post": member } %}
+              {% include "components/teaser-contact.twig" with {
+                "post": member,
+                "hide_contact_info": true
+              } %}
             </div>
           {% endfor %}
         </section>
@@ -40,7 +43,7 @@
 
       {% if post.staff %}
         <section class="w-50-l mb5" id="staff">
-          {% include "components/title.twig" with {"content": "Staff" } %}
+          {% include "components/title.twig" with { "content": "Staff" } %}
 
           {% for member_id in post.staff %}
             {% set member = TimberUser(member_id) %}
@@ -57,7 +60,7 @@
   {% set partners = post.get_field("partners") %}
   {% if partners %}
     <section class="mb5" id="partners">
-      {% include "components/title.twig" with {"content": "Partners" } %}
+      {% include "components/title.twig" with { "content": "Partners" } %}
 
       <div class="flex-m flex-wrap-m mb4">
         {% for partner in partners %}
@@ -73,7 +76,7 @@
 
   {% if post.sponsors %}
     <section id="sponsors">
-      {% include "components/title.twig" with {"content": "Sponsors" } %}
+      {% include "components/title.twig" with { "content": "Sponsors" } %}
 
       {% set sponsor_tiers = {
         "platinum": "Platinum",

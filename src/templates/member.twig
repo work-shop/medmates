@@ -1,4 +1,8 @@
 {% extends "page.twig" %}
+{% set avatar = function("get_avatar_url", "user_" ~ post.id, {
+  "size": 256,
+  "default": "identicon"
+}) %}
 
 {% block page_content %}
   {% if user.ID == member_id %}
@@ -9,7 +13,7 @@
 
   <div class="flex-m mb5">
     {% if post.avatar %}
-      <img class="flex-no-shrink db mb3 mb0-m" src="{{ post.avatar(256) }}" width="256" height="256" alt="">
+      <img class="flex-no-shrink db mb3 mb0-m" src="{{ avatar }}" width="256" height="256" alt="">
     {% endif %}
 
     <div class="ml4-m">

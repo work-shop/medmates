@@ -1,13 +1,17 @@
+{% set avatar = function("get_avatar_url", "user_" ~ post.id, {
+  "size": 128,
+  "default": "identicon"
+}) %}
+
 <article class="flex">
   {% if post.avatar %}
     <div class="flex-no-shrink mr3 mr4-m">
-      <img class="db" src="{{ post.avatar(128) }}" width="128" height="128" alt="">
+      <img class="db" src="{{ avatar }}" width="128" height="128" alt="">
     </div>
   {% endif %}
 
   <div>
     {% include "components/subtitle.twig" with { "content": post.display_name } %}
-
     {% if post.job_title or post.user_email or post.phone_number %}
       {% if post.job_title %}
         <div>
@@ -15,16 +19,18 @@
         </div>
       {% endif %}
 
-      {% if post.user_email %}
-        <div>
-          <a href="mailto:{{ post.user_email }}">{{ post.user_email }}</a>
-        </div>
-      {% endif %}
+      {% if not hide_contact_info %}
+        {% if post.user_email %}
+          <div>
+            <a href="mailto:{{ post.user_email }}">{{ post.user_email }}</a>
+          </div>
+        {% endif %}
 
-      {% if post.phone_number %}
-        <div>
-          {{ post.phone_number }}
-        </div>
+        {% if post.phone_number %}
+          <div>
+            {{ post.phone_number }}
+          </div>
+        {% endif %}
       {% endif %}
     {% endif %}
   </div>
