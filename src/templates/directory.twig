@@ -10,11 +10,11 @@
   <nav class="flex-m mb4">
     <a class="dib mb3 f3 b lh-title" href="{{ directory_link }}">All</a>
 
-    <div class="ml3-m">
+    <div class="ml4-m">
       <a class="dib mb3 f3 b lh-title" href="{{ companies_link }}">Companies</a>
     </div>
 
-    <div class="ml3-m">
+    <div class="ml4-m">
       <a class="dib mb3 f3 b lh-title" href="{{ professionals_link }}">Professionals</a>
     </div>
   </nav>
@@ -29,7 +29,7 @@
     <nav class="mb3">
       <div class="flex-l flex-wrap-l">
         {% for category_slug, category in industry_categories %}
-          <div class="mr3-l mb2-l">
+          <div class="mr4-l mb2-l">
             <a href="{{ base_path }}/search/filter:{{ category_slug }}">{{ category }}</a>
           </div>
         {% endfor %}
