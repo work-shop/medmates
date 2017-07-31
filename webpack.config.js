@@ -121,7 +121,7 @@ module.exports = {
     ]),
     new ExtractTextPlugin("[name]"),
     new BrowserSyncPlugin({
-      proxy: "wordpress",
+      proxy: "localhost:8080",
       port: 3000,
       ui: {
         port: 3001
