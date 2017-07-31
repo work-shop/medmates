@@ -16,9 +16,9 @@
   <div>
     {% include "components/subtitle.twig" with { "content": post.display_name, "link": post.link } %}
 
-    {% if member_role == "professional" %}
+    {% if member_role == "individual" %}
       <div class="nt2 mb3">
-        {% include "components/metadata.twig" with { "content": "Professional" } %}
+        {% include "components/metadata.twig" with { "content": "Individual" } %}
       </div>
 
       {% if post.company_affiliation or post.job_title or post.job_functions %}

@@ -24,10 +24,10 @@ $per_page = 14;
 $paged = 1;
 
 if (!isset($params["member_role"])) {
-  $member_role = array("company", "professional");
+  $member_role = array("company", "individual");
 } else {
   $context["member_category"] = $member_role[0];
-  $context["member_category_plural"] = ($member_role[0] === "professional") ? "professionals" : "companies";
+  $context["member_category_plural"] = ($member_role[0] === "individual") ? "individuals" : "companies";
 }
 
 if (isset($params["page_number"])) {
@@ -153,7 +153,7 @@ $context["industry_categories"] = get_field_object("field_596eb67cebf9f")["choic
 // Links
 $context["directory_link"] = user_trailingslashit(get_site_url() . "/members");
 $context["companies_link"] = user_trailingslashit(get_site_url() . "/member-category/company");
-$context["professionals_link"] = user_trailingslashit(get_site_url() . "/member-category/professional");
+$context["individuals_link"] = user_trailingslashit(get_site_url() . "/member-category/individual");
 
 // Strip page number and search query from search form action
 $search_action = $_SERVER["REQUEST_URI"];

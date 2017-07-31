@@ -27,7 +27,7 @@ class MyTimberSite extends TimberSite {
     add_action("init", array($this, "remove_comment_support"));
     add_action("admin_menu", array($this, "remove_menu_items"));
     add_action("wp_before_admin_bar_render", array($this, "remove_admin_bar_items"));
-    add_action("init", array($this, "add_professional_role"));
+    add_action("init", array($this, "add_individual_role"));
     add_action("init", array($this, "add_company_role"));
     add_action("admin_menu", array($this, "change_post_menu_label"));
     add_action("init", array($this, "register_team_post_type"));
@@ -52,7 +52,7 @@ class MyTimberSite extends TimberSite {
 
   // Remove the leftover personal options from the profile page for members
   function my_remove_personal_options($subject) {
-    if (current_user_can("professional") || current_user_can("company")) {
+    if (current_user_can("individual") || current_user_can("company")) {
       $subject = preg_replace("#<h2>Personal Options</h2>.+?/table>#s", "", $subject, 1);
     }
 
@@ -69,7 +69,7 @@ class MyTimberSite extends TimberSite {
 
   // Remove the admin bar for members
   function remove_admin_bar_for_members() {
-    if (current_user_can("professional") || current_user_can("company")) {
+    if (current_user_can("individual") || current_user_can("company")) {
       show_admin_bar(false);
     }
   }
@@ -102,12 +102,12 @@ class MyTimberSite extends TimberSite {
     $wp_admin_bar->remove_menu("comments");
   }
 
-  function add_professional_role() {
+  function add_individual_role() {
     $caps = array(
       "read" => true
     );
 
-    add_role("professional", __("Professional"), $caps);
+    add_role("individual", __("Individual"), $caps);
   }
 
   function add_company_role() {

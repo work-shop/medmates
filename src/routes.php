@@ -85,7 +85,7 @@ Routes::map("member-category/:member_role/search/:s/page/:page_number", function
 
 Routes::map("member/:member_id", function ($params) {
   $member = get_userdata($params["member_id"]);
-  $valid_member_roles = array("professional", "company");
+  $valid_member_roles = array("individual", "company");
 
   // If member exists and its role is a valid one, show the member page
   if ($member && (array_intersect((array) $member->roles, $valid_member_roles))) {
