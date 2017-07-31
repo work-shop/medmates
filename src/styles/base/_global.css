@@ -3,7 +3,7 @@
 p, address, hr, pre, blockquote,
 ol, ul, dl,
 figure, figcaption {
-  margin-bottom: var(--spacing-medium);
+  margin-bottom: 2em;
 }
 
 ol, ul {
@@ -13,7 +13,7 @@ ol, ul {
 ul { list-style: square; }
 
 li {
-  margin-bottom: var(--spacing-medium);
+  margin-bottom: 2em;
 }
 
 a {

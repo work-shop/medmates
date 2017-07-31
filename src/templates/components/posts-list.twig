@@ -1,6 +1,6 @@
-<div class="mw7 mb4">
+<div class="mw7 mb5">
   {% for post in posts %}
-    <div class="mb4">
+    <div class="mb5">
       {% include teaser_template |
         default(["components/teaser-" ~ post.post_type ~ ".twig", "components/teaser.twig"]) %}
     </div>

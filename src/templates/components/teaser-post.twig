@@ -1,14 +1,13 @@
 <article>
   {% include "components/subtitle.twig" with { "content": post.title, "link": post.link } %}
 
-  <div class="nt2">
   {% include "components/metadata-post.twig" %}
-</div>
+
   {% if post.get_thumbnail %}
     <a href="{{ post.link }}"><img class="db" src="{{ post.thumbnail.src }}"></a>
   {% endif %}
 
-  <p class="mb0">
+  <p class="mt3 mb0">
     {{ post.get_preview(50, false, "") }}
   </p>
 </article>
