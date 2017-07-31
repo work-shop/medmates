@@ -85,7 +85,7 @@ if (isset($params["category"])) {
       array(
         "taxonomy" => "event_category",
         "field" => "slug",
-        "terms" => "expo",
+        "terms" => $params["category"],
       )
     )
   );
