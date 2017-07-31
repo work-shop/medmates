@@ -92,11 +92,23 @@ if (isset($params["category"])) {
   $query = array_merge($query, $tax_query);
 }
 
+// Page title
+if (!$has_date_slug) {
+  $page_title = "Upcoming";
+}
+if (isset($params["category"])) {
+  $category_object = get_term_by("slug", $params["category"], "event_category");
+  $category_name = $category_object->name;
+  $category_name = str_replace("Event", "", $category_name);
+  $page_title .= " $category_name";
+}
+$page_title .= " Events";
+if ($has_date_slug) {
+  $page_title .= " in " . date("F, Y", $time);
+}
+
 $context["post"] = $post;
 $context["posts"] = Timber::get_posts($query);
-$context["wp_title"] = "Upcoming Events";
-if ($has_date_slug) {
-  $context["wp_title"] = "Events in " . date("F, Y", $time);
-}
+$context["wp_title"] = $page_title;
 
 Timber::render("archive-event.twig", $context);
