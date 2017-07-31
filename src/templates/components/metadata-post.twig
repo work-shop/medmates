@@ -1,5 +1,5 @@
 {% set metadata = "Posted " ~
-  post.post_date_gmt | time_ago ~
+  post.post_date_gmt|time_ago ~
   " by " ~ post.author ~
   " in <a href='" ~ post.category.link ~ "'>" ~ post.category ~ "</a>" %}
 {% include "components/metadata.twig" with { "content": metadata } %}

@@ -1,5 +1,5 @@
-{% set pagination = pagination | default(posts.pagination) %}
-{% set pagination_name = pagination_name | default("Page") %}
+{% set pagination = pagination|default(posts.pagination) %}
+{% set pagination_name = pagination_name|default("Page") %}
 
 {% if pagination.prev or pagination.next %}
   <nav>

@@ -3,7 +3,7 @@
 {% set search_member_category = (member_category) ? member_category_plural : "professionals and companies" %}
 
 {% block header_title %}
-  {{ wp_title }}{% if member_category %}: {{ member_category_plural | title }}{% endif %}
+  {{ wp_title }}{% if member_category %}: {{ member_category_plural|title }}{% endif %}
 {% endblock %}
 
 {% block page_content %}
