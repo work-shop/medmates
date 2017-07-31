@@ -29,8 +29,14 @@
 {% block page_content %}
   <section class="mb5">
     <div class="flex-l nb5-l">
-      <div class="order-1 mw6-m w-40-l mb5">
-        {% include "components/mini-calendar.twig" %}
+      <div class="order-1 mw6-m w-40-l">
+        <div class="mb5">
+          {% include "components/mini-calendar.twig" %}
+        </div>
+
+        <div class="mb5">
+          {% include "components/newsletter-callout.twig" %}
+        </div>
       </div>
 
       <div class="order-0 mb4 mr5-l">
