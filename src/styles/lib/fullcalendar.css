@@ -13,6 +13,13 @@
 
 /* Full calendar */
 
+#fullcalendar.full .fc-day-number {
+  display: inline-block;
+  margin-top: 0.125em;
+  margin-right: 0.125em;
+  font-size: 0.875rem;
+}
+
 #fullcalendar.full td.fc-today {
   background-color: var(--light-yellow);
 }
@@ -31,7 +38,7 @@
 
 @media (--breakpoint-large) {
   #fullcalendar.full .fc-basic-view .fc-body .fc-row {
-    min-height: 8rem;
+    min-height: 6rem;
   }
 }
 
