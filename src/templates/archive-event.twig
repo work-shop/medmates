@@ -1,5 +1,6 @@
 {% extends "archive.twig" %}
 
+{% set post = { "slug": "events" } %}
 {% set posts_list_format = "list" %}
 
 {% block archive_content %}
@@ -7,7 +8,8 @@
     {% include "components/calendar.twig" %}
   </div>
 
-  <div class="mb5">
+  <div class="mb5 dn-l">
+    {% include "components/title.twig" with { "content": "Categories" } %}
     {% include "components/submenu-listing.twig" %}
   </div>
 {% endblock %}

@@ -1,5 +1,6 @@
 {% extends "archive.twig" %}
 
+{% set post = { "slug": "articles" } %}
 {% set posts_list_format = "list" %}
 
 {% block header_title %}
@@ -7,4 +8,11 @@
   {% if parent()|trim != "News" %}
     News
   {% endif %}
+{% endblock %}
+
+{% block archive_content %}
+  <div class="mb5 dn-l">
+    {% include "components/title.twig" with { "content": "Categories" } %}
+    {% include "components/submenu-listing.twig" %}
+  </div>
 {% endblock %}

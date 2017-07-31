@@ -3,7 +3,6 @@
 global $params;
 
 $context = Timber::get_context();
-$post = Timber::get_post();
 
 $has_date_slug = false;
 if (isset($params["year"]) && isset($params["month"])) {
@@ -107,7 +106,6 @@ if ($has_date_slug) {
   $page_title .= " in " . date("F, Y", $time);
 }
 
-$context["post"] = $post;
 $context["posts"] = Timber::get_posts($query);
 $context["wp_title"] = $page_title;
 
