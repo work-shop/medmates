@@ -1,7 +1,9 @@
 <article>
   {% include "components/subtitle.twig" with { "content": post.title, "link": post.link } %}
 
-  {% include "components/metadata-post.twig" %}
+  <div class="nt2 mb3">
+    {% include "components/metadata-post.twig" %}
+  </div>
 
   {% if post.get_thumbnail %}
     <a href="{{ post.link }}"><img class="db" src="{{ post.thumbnail.src }}"></a>
