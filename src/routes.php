@@ -32,6 +32,14 @@ Routes::map("events/:year/:month", function ($params) {
   Routes::load("archive-event.php", $params, null, 200);
 });
 
+Routes::map("event-category/:category", function ($params) {
+  Routes::load("archive-event.php", $params, null, 200);
+});
+
+Routes::map("event-category/:category/:year/:month", function ($params) {
+  Routes::load("archive-event.php", $params, null, 200);
+});
+
 Routes::map("resources", function ($params) {
   $args = array(
     "post_type" => "resource",

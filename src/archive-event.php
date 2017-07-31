@@ -11,7 +11,7 @@ if (isset($params["year"]) && isset($params["month"])) {
 }
 
 date_default_timezone_set(get_option("timezone_string"));
-$time = time();
+$time = strtotime(date("Y-m"));
 if ($has_date_slug) {
   $year = $params["year"];
   $month = $params["month"];
@@ -21,14 +21,16 @@ $pagination_start_date = date("Y-m-d", $time);
 $pagination_end_date = date("Y-m-t", $time);
 
 // Pagination
+$base_path = $_SERVER["REQUEST_URI"];
+$base_path = preg_replace("/\/(\d+)\/(\d+)$/", "", $base_path);
 $prev_date = date("Y/m", strtotime("-1 month", $time));
 $next_date = date("Y/m", strtotime("+1 month", $time));
 $pagination = array(
   "prev" => array(
-    "link" => user_trailingslashit(get_site_url() . "/events/$prev_date")
+    "link" => user_trailingslashit(get_site_url() . "$base_path/$prev_date")
   ),
   "next" => array(
-    "link" => user_trailingslashit(get_site_url() . "/events/$next_date")
+    "link" => user_trailingslashit(get_site_url() . "$base_path/$next_date")
   )
 );
 $context["pagination"] = $pagination;
@@ -75,6 +77,20 @@ $query = array(
     )
   )
 );
+
+// Category filter
+if (isset($params["category"])) {
+  $tax_query = array(
+    "tax_query" => array(
+      array(
+        "taxonomy" => "event_category",
+        "field" => "slug",
+        "terms" => "expo",
+      )
+    )
+  );
+  $query = array_merge($query, $tax_query);
+}
 
 $context["post"] = $post;
 $context["posts"] = Timber::get_posts($query);
