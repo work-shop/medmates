@@ -1,6 +1,12 @@
 {% extends "page.twig" %}
 
 {% block page_content %}
+  {% if user.ID == member_id %}
+    <div class="mb4">
+      {% include "components/subtitle.twig" with { "content": "Edit Your Profile", "link": edit_profile_link } %}
+    </div>
+  {% endif %}
+
   <div class="flex-m mb5">
     {% if post.avatar %}
       <img class="flex-no-shrink db mb3 mb0-m" src="{{ post.avatar(256) }}" width="256" height="256" alt="">
