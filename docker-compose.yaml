@@ -4,7 +4,6 @@ volumes:
   database:
   wordpress:
   composer_vendor:
-  node_modules:
 
 services:
   database:
@@ -44,16 +43,3 @@ services:
       - ${VOLUME_BASE_PATH}:/app
       - composer_vendor:/app/vendor
     command: install
-
-  node:
-    depends_on:
-      - wordpress
-    image: node
-    ports:
-      - 3000:3000
-      - 3001:3001
-    volumes:
-      - ${VOLUME_BASE_PATH}:/usr/src/app
-      - node_modules:/usr/src/app/node_modules
-    working_dir: /usr/src/app
-    command: sh -c "yarn install; yarn run watch;"

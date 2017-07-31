@@ -125,8 +125,7 @@ module.exports = {
       port: 3000,
       ui: {
         port: 3001
-      },
-      open: false
+      }
     })
   ]
 };

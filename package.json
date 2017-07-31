@@ -1,6 +1,6 @@
 {
   "name": "wp-dev-kit",
-  "version": "7.0.0",
+  "version": "8.0.0",
   "description": "WordPress development kit",
   "author": "Bearform LLC (https://bearform.xyz)",
   "license": "ISC",
@@ -17,6 +17,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "webpack --watch",
     "build": "webpack -p"
+  },
+  "dependencies": {
+    "fullcalendar": "^3.4.0"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
@@ -35,10 +38,7 @@
     "postcss-loader": "^2.0.6",
     "style-loader": "^0.18.2",
     "tachyons": "^4.7.4",
-    "tachyons-skins-pseudo": "^1.0.3",
-    "webpack": "^3.4.0"
-  },
-  "dependencies": {
-    "fullcalendar": "^3.4.0"
+    "tachyons-skins-pseudo": "^1.0.4",
+    "webpack": "^3.4.1"
   }
 }
