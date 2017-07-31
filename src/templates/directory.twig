@@ -45,11 +45,7 @@
     {% include "components/title.twig" with { "content": "Members" } %}
 
     {% if posts %}
-      {% if member_category == "company" %}
-        {% include "components/posts-grid.twig" with { "teaser_template": "components/teaser-member-company.twig" } %}
-      {% else %}
-        {% include "components/posts-grid.twig" with { "teaser_template": "components/teaser-member-professional.twig" } %}
-      {% endif %}
+      {% include "components/posts-grid.twig" with { "teaser_template": "components/teaser-member.twig" } %}
     {% else %}
       <div>
         No members were found. Please modify your search parameters and try again.

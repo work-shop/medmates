@@ -1,3 +1,5 @@
+{% set member_role = function("get_userdata", post.id).roles[0] %}
+
 <article class="flex">
   {% if post.avatar %}
     <div class="flex-no-shrink mr3 mr4-m">
@@ -10,7 +12,47 @@
   <div>
     {% include "components/subtitle.twig" with { "content": post.display_name, "link": post.link } %}
 
-    {% block member_details %}
-    {% endblock %}
+    {% if member_role == "professional" %}
+      <div class="nt2 mb3">
+        {% include "components/metadata.twig" with { "content": "Professional" } %}
+      </div>
+
+      {% if post.company_affiliation or post.job_title or post.job_functions %}
+        <div>
+          {% if post.company_affiliation %}
+            <div>
+              {{ function("get_userdata", post.company_affiliation).display_name }}
+            </div>
+          {% endif %}
+
+          {% if post.job_title %}
+            <div>
+              {{ post.job_title }}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+    {% elseif member_role == "company" %}
+      <div class="nt2 mb3">
+        {% include "components/metadata.twig" with { "content": "Company" } %}
+      </div>
+
+      {% if post.development_stage or post.number_of_employees %}
+        <div>
+          {% if post.development_stage %}
+            <div>
+              {{ post.get_field("development_stage").label }}
+            </div>
+          {% endif %}
+
+          {% if post.number_of_employees %}
+            <div>
+              {{ post.number_of_employees }} Employees
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+
+    {% endif %}
   </div>
 </article>

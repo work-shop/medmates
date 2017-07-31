@@ -19,7 +19,7 @@ if ($_GET) {
 $context = Timber::get_context();
 $search_query = urldecode($params["s"]);
 $member_role[] = $params["member_role"];
-$per_page = get_option("posts_per_page");
+$per_page = 14;
 $paged = 1;
 
 if (!isset($params["member_role"])) {
