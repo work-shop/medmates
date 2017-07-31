@@ -1,3 +1,10 @@
 {% extends "archive.twig" %}
 
 {% set posts_list_format = "list" %}
+
+{% block header_title %}
+  {{ parent() }}
+  {% if parent()|trim != "News" %}
+    News
+  {% endif %}
+{% endblock %}

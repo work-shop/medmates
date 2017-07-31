@@ -1,5 +1,9 @@
 {% extends "taxonomy.twig" %}
 
+{% block header_title %}
+  {{ parent() }} Resources
+{% endblock %}
+
 {% block taxonomy_content %}
   {% if description %}
     <section class="mw7 mb5 f4-m">
