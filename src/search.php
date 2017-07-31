@@ -1,19 +1,21 @@
 <?php
 
-if ($_GET) {
-  $s = get_query_var("s");
+$context = Timber::get_context();
 
-  if ($s != "") {
-    wp_redirect(str_replace("%20", "+", esc_url(site_url("/search/$s"))));
-  } else {
-    wp_redirect(site_url($base_path));
-  }
-  exit();
+if (isset($_GET["s"])) {
+  $s = $_GET["s"];
+  $redirect_url = ($_GET["s"]) ? "/search/$s" : "/search";
+  $redirect_url = esc_url($redirect_url);
+  wp_redirect(esc_url($redirect_url));
+  exit;
 }
 
-$context = Timber::get_context();
-$search_query = get_search_query();
+$s = get_query_var("s");
+if (!$s) {
+  $context["posts"] = [];
+}
 
+$search_query = get_search_query();
 $context["wp_title"] = ($search_query) ? "Search Results for “" . $search_query . "”" : "Search";
 
 Timber::render("search.twig", $context);

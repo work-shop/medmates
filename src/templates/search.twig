@@ -3,9 +3,12 @@
 {% block page_content %}
   <section class="mb5">
     {% include "components/search-form.twig" %}
+    <p>
+      Looking for a member? You can <a href="{{ directory_link }}">find them in our directory</a>.
+    </p>
   </section>
 
   <div class="mb5">
-    {% include "components/posts-list.twig" %}
+    {% include "components/posts-list.twig" with { "teaser_template": "components/teaser-search.twig" } %}
   </div>
 {% endblock %}

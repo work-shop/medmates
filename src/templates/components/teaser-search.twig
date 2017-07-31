@@ -1,0 +1,20 @@
+{% set post_type = post.type.labels.singular_name %}
+{% if post_type == "Post" %}
+  {% set post_type = "Article" %}
+{% endif %}
+
+<article>
+  <div class="mb2">
+    {% include "components/metadata.twig" with { "content": post_type } %}
+  </div>
+
+  {% include "components/subtitle.twig" with { "content": post.title, "link": post.link } %}
+
+  {% if post.get_thumbnail %}
+    <a href="{{ post.link }}"><img class="db" src="{{ post.thumbnail.src }}"></a>
+  {% endif %}
+
+  <p class="mt3 mb0">
+    {{ post.get_preview(50, false, "") }}
+  </p>
+</article>

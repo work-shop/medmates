@@ -9,7 +9,8 @@ if ($_GET) {
   $s = get_query_var("s");
 
   if ($s != "") {
-    wp_redirect(str_replace("%20", "+", esc_url(site_url("$base_path/search/$s"))));
+    $redirect_url = esc_url(site_url("$base_path/search/$s"));
+    wp_redirect($redirect_url);
   } else {
     wp_redirect(site_url($base_path));
   }
