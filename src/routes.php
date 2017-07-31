@@ -3,7 +3,7 @@
 Routes::map("/", function ($params) {
   $args = array(
     "post_type" => "post",
-    "posts_per_page" => 4
+    "posts_per_page" => 3
   );
   $params["posts"] = Timber::get_posts($args);
   Routes::load("page.php", $params, null, 200);
