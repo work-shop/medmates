@@ -1,7 +1,29 @@
 {% extends "page.twig" %}
 
 {% block header_title %}
-  {{ site.description }}
+  <div class="f1">
+    {{ site.description }}
+  </div>
+{% endblock %}
+
+{% block header_content %}
+  <div class="flex-l mt4 mb3">
+    <div class="w-50-l mb3 mb0-l mr3-l pa3 bg-white">
+      <div class="pt1 pb2 ph2">
+        {% if not user %}
+          {% include "components/join-callout.twig" with { "link": join_link } %}
+        {% else %}
+          {% include "components/directory-callout.twig" with { "link": directory_link } %}
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="w-50-l ml3-l pa3 bg-white">
+      <div class="pt1 pb2 ph2">
+        {% include "components/resources-callout.twig" with { "link": resources_link }  %}
+      </div>
+    </div>
+  </div>
 {% endblock %}
 
 {% block page_content %}

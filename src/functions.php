@@ -409,6 +409,8 @@ class MyTimberSite extends TimberSite {
     $context["search_query"] = get_search_query();
     $context["search_link"] = user_trailingslashit(get_site_url() . "/search");
     $context["join_link"] = wp_registration_url();
+    $context["directory_link"] = user_trailingslashit(get_site_url() . "/members");
+    $context["resources_link"] = user_trailingslashit(get_site_url() . "/resources");
     $context["login_link"] = wp_login_url(get_site_url());
     $context["logout_link"] = wp_logout_url(get_site_url());
     $context["profile_link"] = user_trailingslashit(get_site_url() . "/member/" . get_current_user_id());
