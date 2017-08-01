@@ -41,10 +41,11 @@
  */
 
 class ICS {
-  const DT_FORMAT = 'Ymd\THis\Z';
+  const DT_FORMAT = 'Ymd\THis';
 
   protected $properties = array();
   private $available_properties = array(
+    'timezone',
     'description',
     'dtend',
     'dtstart',
@@ -81,6 +82,7 @@ class ICS {
       'VERSION:2.0',
       'PRODID:-//hacksw/handcal//NONSGML v1.0//EN',
       'CALSCALE:GREGORIAN',
+      'X-WR-TIMEZONE:' . $this->properties['timezone'],
       'BEGIN:VEVENT'
     );
 

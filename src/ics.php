@@ -2,17 +2,23 @@
 
 include "lib/ICS.php";
 
-header("Content-Type: text/calendar; charset=UTF-8");
-header("Content-Disposition: attachment; filename=event.ics");
+const isDebugMode = false;
+
+if (!isDebugMode) {
+  header("Content-Type: text/calendar; charset=UTF-8");
+  header("Content-Disposition: attachment; filename=event.ics");
+}
 
 $ics_array = [];
 
+$ics_array["timezone"] = get_option("timezone_string");
+
 if ($_GET["location"]) {
-  $ics_array["location"] = $_GET["location"];
+  $ics_array["location"] = html_entity_decode($_GET["location"]);
 }
 
 if ($_GET["description"]) {
-  $ics_array["description"] = $_GET["description"];
+  $ics_array["description"] = html_entity_decode($_GET["description"]);
 }
 
 if ($_GET["date_start"]) {
@@ -28,7 +34,7 @@ if ($_GET["date_start"]) {
 }
 
 if ($_GET["summary"]) {
-  $ics_array["summary"] = $_GET["summary"];
+  $ics_array["summary"] = html_entity_decode($_GET["summary"]);
 
 }
 if ($_GET["url"]) {
@@ -37,4 +43,12 @@ if ($_GET["url"]) {
 
 $ics = new ICS($ics_array);
 
+if (isDebugMode) {
+  echo "<pre>";
+}
+
 echo $ics->to_string();
+
+if (isDebugMode) {
+  echo "</pre>";
+}
