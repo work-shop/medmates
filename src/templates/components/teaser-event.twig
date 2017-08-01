@@ -1,0 +1,20 @@
+{% set term = post.terms("event_category")[0] %}
+
+<article>
+  {% include "components/subtitle.twig" with { "content": post.title, "link": post.link } %}
+
+  <div class="nt2 mb3">
+    {% set metadata = "<a href='" ~ term.link ~ "'>" ~ term.title ~ " Event</a>"
+      ~ " for " ~ post.get_field("event_access").label
+      ~ " on " ~ post.start_date|date("F j, Y") %}
+    {% include "components/metadata.twig" with { "content": metadata } %}
+  </div>
+
+  {% if post.get_thumbnail %}
+    <a href="{{ post.link }}"><img class="db" src="{{ post.thumbnail.src }}"></a>
+  {% endif %}
+
+  <p class="mt3 mb0">
+    {{ post.get_preview(50, false, "") }}
+  </p>
+</article>

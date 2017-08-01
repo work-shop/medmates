@@ -1,24 +1,27 @@
 {% extends "single.twig" %}
 
+{% set term = post.terms("event_category")[0] %}
+
 {% block single_header %}
   <section class="mw6 mb5">
     {% if post.event_access %}
-      <div class="mb3">
-        {% include "components/metadata.twig" with { "content": post.get_field("event_access").label } %}
+      <div class="mb4">
+        {% set metadata = "<a href='" ~ term.link ~ "'>" ~ term.title ~ " Event</a>"
+          ~ " for " ~ post.get_field("event_access").label %}
+        {% include "components/metadata.twig" with { "content": metadata } %}
       </div>
     {% endif %}
 
     {% if post.start_date %}
       <div class="mb3">
-        {{ post.start_date|date("F jS, Y") }}
-
+        {{ post.start_date|date("F j, Y") }}
         {% if post.end_date %}
           {% if post.end_date|date("Y-m-d") == post.start_date|date("Y-m-d") %}
             from {{ post.start_date|date("g:ia") }}
             to {{ post.end_date|date("g:ia") }}
           {% else %}
             at {{ post.start_date|date("g:ia") }}
-            to {{ post.end_date|date("F jS, Y") }}
+            to {{ post.end_date|date("F j, Y") }}
             at {{ post.end_date|date("g:ia") }}
           {% endif %}
         {% else %}
@@ -28,7 +31,7 @@
     {% endif %}
 
     {% if post.location %}
-      <address class="nt3 nb3">
+      <address class="nt3 nb4">
         {{ post.location|wpautop }}
       </address>
     {% endif %}
