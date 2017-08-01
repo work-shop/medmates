@@ -1,0 +1,50 @@
+{% extends "single.twig" %}
+
+{% block header_title %}
+  Event: {{ parent() }}
+{% endblock %}
+
+{% block single_header %}
+  <section class="mw6 mb5">
+    {% if post.event_access %}
+      <div class="mb3">
+        {% include "components/metadata.twig" with { "content": post.get_field("event_access").label } %}
+      </div>
+    {% endif %}
+
+    {% if post.start_date %}
+      <div>
+        {{ post.start_date|date("F jS, Y") }}
+
+        {% if post.end_date %}
+          {% if post.end_date|date("Y-m-d") == post.start_date|date("Y-m-d") %}
+            from {{ post.start_date|date("g:ia") }}
+            to {{ post.end_date|date("g:ia") }}
+          {% else %}
+            at {{ post.start_date|date("g:ia") }}
+            to {{ post.end_date|date("F jS, Y") }}
+            at {{ post.end_date|date("g:ia") }}
+          {% endif %}
+        {% else %}
+          at {{ post.start_date|date("g:ia") }}
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% if post.location %}
+      <div>
+        {{ post.location.address }}
+      </div>
+    {% endif %}
+  </section>
+{% endblock %}
+
+{% block single_content %}
+  {% if post.contact_information %}
+    <section class="mw6 mb5">
+      {% include "components/title.twig" with { "content": "Contact" } %}
+
+      {{ post.contact_information }}
+    </section>
+  {% endif %}
+{% endblock %}

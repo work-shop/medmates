@@ -99,6 +99,17 @@ if (!empty($search_queries)) {
       $user_meta_query[] = $user_meta_query_extras;
     }
   }
+
+  $user_approval_meta_query = array(
+    "relation" => "AND",
+    array(
+      "key" => "member_approval",
+      "value" => "approved",
+      "compare" => "="
+    )
+  );
+  $user_approval_meta_query[] = $user_meta_query;
+  $user_meta_query = $user_approval_meta_query;
 }
 
 $user_query = new WP_User_Query(array(

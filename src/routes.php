@@ -88,7 +88,9 @@ Routes::map("member/:member_id", function ($params) {
   $valid_member_roles = array("individual", "company");
 
   // If member exists and its role is a valid one, show the member page
-  if ($member && (array_intersect((array) $member->roles, $valid_member_roles))) {
+  if ($member
+      && (array_intersect((array) $member->roles, $valid_member_roles))
+      && $member->member_approval === "approved") {
     Routes::load("member.php", $params, null, 200);
   } else {
     Routes::load("404.php", null, null, 404);
