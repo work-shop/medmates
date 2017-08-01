@@ -96,3 +96,7 @@ Routes::map("member/:member_id", function ($params) {
     Routes::load("404.php", null, null, 404);
   }
 });
+
+Routes::map("ics", function ($params) {
+  Routes::load("ics.php", $params, null, 200);
+});
