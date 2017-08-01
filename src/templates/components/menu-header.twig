@@ -46,6 +46,14 @@
             <div>
               <a class="dib" href="{{ subitem.link }}">{{ subitem.title }}</a>
             </div>
+
+            {% if loop.last and item.title == "Membership" %}
+              {% if not user %}
+                <div>
+                  <a class="dib" href="{{ join_link }}">Join</a>
+                </div>
+              {% endif %}
+            {% endif %}
           {% endfor %}
         </div>
       {% endif %}
