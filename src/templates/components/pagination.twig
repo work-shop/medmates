@@ -4,14 +4,14 @@
 {% if pagination.prev or pagination.next %}
   <nav>
     {% if pagination.prev %}
-      <span class="{% if pagination.prev and pagination.next %} mr4 {% endif %}">
-        <a href="{{ pagination.prev.link }}">◄ View Previous {{ pagination_name }}</a>
+      <span class="nowrap {% if pagination.prev and pagination.next %} mr4 {% endif %}">
+        <a href="{{ pagination.prev.link }}">◄ Previous {{ pagination_name }}</a>
       </span>
     {% endif %}
 
     {% if pagination.next %}
-      <span>
-        <a href="{{ pagination.next.link }}">View Next {{ pagination_name }} ►</a>
+      <span class="nowrap">
+        <a href="{{ pagination.next.link }}">Next {{ pagination_name }} ►</a>
       </span>
     {% endif %}
   </nav>

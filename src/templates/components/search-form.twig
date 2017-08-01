@@ -1,4 +1,4 @@
-<form class="flex w-75-m w-50-l" role="search" action="{{ search_action|default(search_url) }}">
+<form class="flex-m w-75-m w-50-l" role="search" action="{{ search_action|default(search_url) }}">
   <input class="w-100" type="text" name="s" placeholder="{{ search_placeholder|default("Search " ~ site.title ~ "…") }}" value="{{ search_query }}">
-  <input class="w4 ml2" type="submit" value="Search">
+  <input class="w4 mt2 mt0-m ml2-m" type="submit" value="Search">
 </form>
