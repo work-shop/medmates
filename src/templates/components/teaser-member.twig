@@ -1,5 +1,5 @@
-{% set member_role = function("get_userdata", post.id).roles[0] %}
-{% set avatar = function("get_avatar_url", "user_" ~ post.id, {
+{% set member_role = function("get_userdata", post.ID).roles[0] %}
+{% set avatar = function("get_avatar_url", "user_" ~ post.ID, {
   "size": 128,
   "default": "identicon"
 }) %}

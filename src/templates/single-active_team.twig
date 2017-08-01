@@ -17,17 +17,17 @@
     </div>
   </div>
 
-  {% if post.team_members %}
+  {% if team_members %}
     <section class="mb5">
       {% include "components/title.twig" with {"content": "Team Members" } %}
 
-       {% for member_id in post.team_members %}
-        {% set member = TimberUser(member_id) %}
-
         <div class="mb4">
-          {% include "components/teaser-contact.twig" with { "post": member } %}
+          {% include "components/posts-grid.twig" with {
+            "posts": team_members,
+            "teaser_template": "components/teaser-member.twig"
+          } %}
         </div>
-      {% endfor %}
+
     </section>
   {% endif %}
 

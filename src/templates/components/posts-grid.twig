@@ -1,8 +1,10 @@
 <div class="flex-l flex-wrap-l mb4">
   {% for post in posts %}
-    <div class="w-50-l mb4 {% if loop.index is odd %}pr4-l{% else %}pl4-l{% endif %}">
-      {% include teaser_template |
-        default(["components/teaser-" ~ post.post_type ~ ".twig", "components/teaser.twig"]) %}
+    <div class="w-50-l mb4 {% if loop.index is odd %} pr4-l {% else %} pl4-l {% endif %}">
+      {% include teaser_template|default([
+        "components/teaser-" ~ post.post_type ~ ".twig",
+        "components/teaser.twig"
+      ]) %}
     </div>
   {% endfor %}
 </div>
