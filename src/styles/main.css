@@ -57,6 +57,7 @@
 @import "modules/_font-family";
 @import "modules/_hovers";
 @import "modules/_states";
+@import "modules/_filters";
 
 /* Skins */
 @import "tachyons-skins-pseudo/src/tachyons-skins-pseudo";
