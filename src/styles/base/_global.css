@@ -40,3 +40,7 @@ textarea:focus {
   outline: 1px solid var(--blue);
   box-shadow: none;
 }
+
+address {
+  font-style: normal;
+}
