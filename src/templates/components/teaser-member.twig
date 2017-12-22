@@ -4,11 +4,16 @@
   "default": "identicon"
 }) %}
 
-<article class="flex">
-  {% if post.avatar %}
+<article class="flex mb4">
+  {% if post.get_field("image") %}
     <div class="flex-no-shrink mr3 mr4-m">
       <a href="{{ post.link }}">
-        <img class="db grayscale" src="{{ avatar }}" width="128" height="128" alt="">
+        {% set image = post.get_field("image") %}
+        {% if member_role == "individual" %}
+            <img class="db grayscale" src="{{ image.sizes.thumbnail }}" alt="{{ image.alt }}" width="{{ image.sizes['thumbnail-width'] }}" height="{{ image.sizes['thumbnail-height'] }}" />
+        {% else %}
+            <img class="db grayscale" src="{{ image.sizes.medium }}" alt="{{ image.alt }}" width="150" />
+        {% endif %}
       </a>
     </div>
   {% endif %}

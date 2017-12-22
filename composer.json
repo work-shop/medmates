@@ -1,34 +1,88 @@
 {
-  "repositories": [
-    {
-      "type": "composer",
-      "url": "https://wpackagist.org"
-    },
-    {
-      "type": "package",
-      "package": {
-        "name": "advanced-custom-fields/advanced-custom-fields-pro",
-        "version": "5.5.14",
-        "type": "wordpress-plugin",
-        "dist": {
-          "type": "zip",
-          "url": "https://connect.advancedcustomfields.com/index.php?p=pro&a=download"
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://wpackagist.org"
         },
-        "require": {
-          "philippbaschke/acf-pro-installer": "^1.0",
-          "composer/installers": "^1.0"
+        {
+            "type": "package",
+            "package": {
+                "name": "advanced-custom-fields/advanced-custom-fields-pro",
+                "version": "5.5.14",
+                "type": "wordpress-mu-plugin",
+                "dist": {
+                    "type": "zip",
+                    "url": "https://connect.advancedcustomfields.com/index.php?p=pro&a=download"
+                },
+                "require": {
+                    "philippbaschke/acf-pro-installer": "^1.0",
+                    "composer/installers": "^1.0"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "janis-elsts/admin-menu-editor-pro",
+                "version": "5.5.14",
+                "type": "wordpress-mu-plugin",
+                "dist": {
+                    "type": "zip",
+                    "url": "http://adminmenueditor.com/?get_product=admin-menu-editor-pro&license_key=J27YEXYVOJ8WW09GM2N7Y565QVFZWLR3"
+                },
+                "require": {
+                    "composer/installers": "^1.0"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "wp-premium/gravityforms",
+                "version": "2.2.5",
+                "type": "wordpress-mu-plugin",
+                "dist": {
+                    "type": "zip",
+                    "url": "https://github.com/wp-premium/gravityforms/archive/master.zip"
+                },
+                "require": {
+                    "composer/installers": "^1.0"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "wp-premium/gravityformsmailchimp",
+                "version": "4.2.0",
+                "type": "wordpress-plugin",
+                "dist": {
+                    "type": "zip",
+                    "url": "https://github.com/wp-premium/gravityformsmailchimp/archive/master.zip"
+                },
+                "require": {
+                    "composer/installers": "^1.0"
+                }
+            }
         }
-      }
+    ],
+    "require": {
+        "wpackagist-plugin/wp-migrate-db": "*",
+        "wpackagist-plugin/post-types-order": "*",
+        "wpackagist-plugin/timber-library": "*",
+        "wpackagist-plugin/post-duplicator": "*",
+        "wpackagist-plugin/acf-to-rest-api": "*",
+        "wpackagist-plugin/acf-gravityforms-add-on": "*",
+        "wpackagist-plugin/ajax-thumbnail-rebuild": "*",
+        "wpackagist-plugin/better-wp-security": "*",
+        "wp-premium/gravityforms": "*",
+        "wp-premium/gravityformsmailchimp": "*",
+        "advanced-custom-fields/advanced-custom-fields-pro": "*"
+    },
+    "extra": {
+        "installer-paths": {
+            "./dist/wp-content/plugins/{$name}": ["type:wordpress-plugin"],
+            "./dist/wp-content/mu-plugins/{$name}": ["type:wordpress-mu-plugin"]
+        }
     }
-  ],
-  "require": {
-    "wpackagist-plugin/wp-migrate-db": "*",
-    "wpackagist-plugin/timber-library": "*",
-    "advanced-custom-fields/advanced-custom-fields-pro": "*"
-  },
-  "extra": {
-    "installer-paths": {
-      "./dist/wp-content/plugins/{$name}": ["type:wordpress-plugin"]
-    }
-  }
 }

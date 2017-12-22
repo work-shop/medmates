@@ -1,0 +1,45 @@
+{% extends "member.twig" %}
+
+{% block member_details %}
+  {% if post.company_affiliation %}
+    <div>
+      <a href="/member/{{ function("get_userdata", post.company_affiliation).ID }}"><p class="b">{{ function("get_userdata", post.company_affiliation).display_name }}</p></a>
+    </div>
+  {% endif %}
+
+  {% if post.job_title %}
+    <div>
+      {{ post.job_title }}
+    </div>
+  {% endif %}
+
+  {% if post.job_functions %}
+    <div>
+      {{ post.job_functions }}
+    </div>
+  {% endif %}
+{% endblock %}
+
+
+
+{% block member_contact %}
+
+  {% if post.get_field('contact_email') or post.phone_number %}
+    <section class="mb5">
+      {% include "components/title.twig" with { "content": "Contact Information" } %}
+
+      {% if post.get_field('contact_email') %}
+        <div>
+          <a href="mailto:{{ post.get_field('contact_email') }}">{{ post.get_field('contact_email') }}</a>
+        </div>
+      {% endif %}
+
+      {% if post.phone_number %}
+        <div>
+          {{ post.phone_number }}
+        </div>
+      {% endif %}
+    </section>
+  {% endif %}
+
+{% endblock %}

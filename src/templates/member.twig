@@ -12,8 +12,8 @@
   {% endif %}
 
   <div class="flex-m mb5">
-    {% if post.avatar %}
-      <img class="flex-no-shrink db mb3 mb0-m grayscale" src="{{ avatar }}" width="256" height="256" alt="">
+    {% if post.get_field("image") %}
+      <img class="flex-no-shrink db mb3 mb0-m grayscale" src="{{ post.get_field("image").sizes.medium }}" width="{{post.get_field("image").sizes['medium-width']}}"  height="{{post.get_field("image").sizes['medium-height']}}">
     {% endif %}
 
     <div class="ml4-m">
@@ -77,5 +77,17 @@
         {{ post.description|wpautop }}
       </div>
     </section>
+  {% endif %}
+
+  {% if post.get_field('why_ri') %}
+  <section>
+    {% include "components/title.twig" with { "content": "Why RI?" } %}
+
+    <div class="mw7 f4-m">
+        <p>
+            {{ post.get_field('why_ri') }}
+        </p>
+    </div>
+  </section>
   {% endif %}
 {% endblock %}

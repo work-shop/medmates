@@ -3,6 +3,9 @@ const CleanWebpackPlugin = require("clean-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const BrowserSyncPlugin = require("browser-sync-webpack-plugin");
+const values = require('object.values');
+
+if ( !Object.values ) { values.shim(); }
 
 const paths = {
   src: "./src",

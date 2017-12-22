@@ -13,7 +13,7 @@
     </div>
   {% endif %}
 
-  {% if post.address %}
+  {% if post.get_field("address") %}
     <address class="mt3">
       {{ post.get_field("address") }}
     </address>
@@ -21,17 +21,16 @@
 {% endblock %}
 
 {% block member_contact %}
-  {% if post.contact_name %}
     <section class="mb5">
-      {% include "components/title.twig" with { "content": "Point of Contact" } %}
+      {% include "components/title.twig" with { "content": "Contact" } %}
 
       <div>
         {{ post.contact_name }}
       </div>
 
-      {% if post.contact_email %}
+      {% if post.get_field('contact_email') %}
         <div>
-          <a href="mailto:{{ post.contact_email }}">{{ post.contact_email }}</a>
+          <a href="mailto:{{ post.get_field('contact_email') }}">{{ post.get_field('contact_email') }}</a>
         </div>
       {% endif %}
 
@@ -41,5 +40,4 @@
         </div>
       {% endif %}
     </section>
-  {% endif %}
 {% endblock %}

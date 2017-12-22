@@ -4,12 +4,14 @@
 }) %}
 
 <article class="flex">
-  {% if post.avatar %}
-    <div class="flex-no-shrink mr3 mr4-m">
-      <img class="db grayscale" src="{{ avatar }}" width="128" height="128" alt="">
-    </div>
-  {% endif %}
-
+    {% if post.get_field("image") %}
+      <div class="flex-no-shrink mr3 mr4-m">
+        <a href="{{ post.link }}">
+          {% set image = post.get_field("image") %}
+          <img class="db grayscale" src="{{ image.sizes.thumbnail }}" alt="{{ image.alt }}" width="{{ image.sizes['thumbnail-width'] }}" height="{{ image.sizes['thumbnail-height'] }}" />
+        </a>
+      </div>
+     {% endif %}
   <div>
     {% include "components/subtitle.twig" with { "content": post.display_name } %}
     {% if post.job_title or post.user_email or post.phone_number %}
